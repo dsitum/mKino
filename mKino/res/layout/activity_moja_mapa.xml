@@ -26,17 +26,18 @@
             style="@style/AppTheme"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:prompt="@string/odaberite_multipleks_lbl"
+            android:entries="@array/lista_multipleksa"
             android:background="#23b6a3" />
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/detalji_filma_lblZanr"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/tmp_pozicija_mape"
-        android:textColor="#ffffffd5" />
-
+    
+    <fragment
+		android:id="@+id/map_fragment"
+		android:layout_width="match_parent"
+		android:layout_gravity="center"
+		android:layout_weight="1"
+		android:layout_height="match_parent"
+		class="com.google.android.gms.maps.SupportMapFragment">
+	</fragment>
 </LinearLayout>

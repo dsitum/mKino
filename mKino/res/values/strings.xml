@@ -36,6 +36,17 @@
     
     <!-- activity_moja_mapa -->
     <string name="tmp_pozicija_mape">Tu ide mapa</string>
+    <string name="odaberite_multipleks_lbl">Odaberite multipleks:</string>
+    <string-array name="lista_multipleksa">
+        <item >Zagreb</item>
+        <item >Rijeka</item>
+        <item >Zadar</item>
+        <item >Šibenik</item>
+        <item >Split</item>
+        <item >Osijek</item>
+        <item >Varaždin</item>
+        <item >Dubrovnik</item>
+    </string-array>
     
     <!-- acitvity_rezervacije -->
     <string name="tmp_rezervacija_tab1">Tab 1. Sve projekcije u pojedinom gradu, moguće ih je pretraživati po imenu, ako se klikne na jednu od njih otvara se tab3</string>
@@ -49,6 +60,7 @@
     <string name="prijava_lozinka">Lozinka:</string>
     <string name="prijava_registriraj_se">Ukoliko nemate korisnički račun molimo Vas da se registrirate.</string>
     <string name="prijava_registriracija">Registracija!</string>
+    
     <!-- dijalog_registracija -->
     <string name="registracija_registriraj_se">Prijavi se!</string>
     <string name="registracija_odustani">Odustani!</string>
@@ -59,6 +71,5 @@
     <string name="registracija_korisnicko_ime">Korisničko ime:</string>
     <string name="registracija_lozinka">Lozinka:</string>
     <string name="registracija_ponovljena_lozinka">Ponovljena lozinka:</string>
-    
     
 </resources>
