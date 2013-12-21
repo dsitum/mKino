@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundDark"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/registracija_lblKorisnickoIme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/prijava_korisnicko_ime"
+        android:textColor="@color/textWhite" />
+
+    <EditText
+        android:id="@+id/registracija_txtKorisnickoIme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/registracija_lblKorisnickoIme"
+        android:layout_below="@+id/registracija_lblKorisnickoIme"
+        android:layout_marginRight="15dp"
+        android:background="@color/textWhite"
+        android:inputType="textCapWords"
+        android:textColor="@color/greenDark" />
+
+    <EditText
+        android:id="@+id/registracija_txtLozinka"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/registracija_lblLozinka"
+        android:layout_below="@+id/registracija_lblLozinka"
+        android:layout_marginRight="15dp"
+        android:background="@color/textWhite"
+        android:inputType="textPassword"
+        android:textColor="@color/greenDark" />
+
+    <TextView
+        android:id="@+id/registracija_lblLozinka"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/registracija_txtKorisnickoIme"
+        android:layout_below="@+id/registracija_txtKorisnickoIme"
+        android:text="@string/prijava_lozinka"
+        android:textColor="@color/textWhite" />
+
+    <TextView
+        android:id="@+id/registracija_lblPonovljenaLozinka"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/registracija_txtLozinka"
+        android:layout_below="@+id/registracija_txtLozinka"
+        android:text="@string/registracija_ponovljena_lozinka"
+        android:textColor="@color/textWhite" />
+
+    <EditText
+        android:id="@+id/registracija_txtPonovljenaLozinka"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/registracija_lblPonovljenaLozinka"
+        android:layout_below="@+id/registracija_lblPonovljenaLozinka"
+        android:layout_marginRight="15dp"
+        android:background="@color/textWhite"
+        android:inputType="textPassword"
+        android:textColor="@color/greenDark" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/registracija_ime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/registracija_lblIme"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/textWhite"
+        android:ems="10"
+        android:inputType="textCapSentences"
+        android:textColor="@color/greenDark" />
+
+    <TextView
+        android:id="@+id/registracija_lblIme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/registracija_ime"
+        android:layout_below="@+id/registracija_txtPonovljenaLozinka"
+        android:text="@string/registracija_ime"
+        android:textColor="@color/textWhite" />
+
+    <TextView
+        android:id="@+id/registracija_prezime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/registracija_ime"
+        android:layout_below="@+id/registracija_ime"
+        android:text="@string/registracija_prezime"
+        android:textColor="@color/textWhite" />
+
+    <EditText
+        android:id="@+id/registracija_txtPrezime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/registracija_prezime"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/textWhite"
+        android:ems="10"
+        android:inputType="textCapSentences"
+        android:textColor="@color/greenDark" />
+
+    <TextView
+        android:id="@+id/registracija_lblEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/registracija_prezime"
+        android:layout_below="@+id/registracija_txtPrezime"
+        android:text="@string/registracija_email"
+        android:textColor="@color/textWhite" />
+
+    <EditText
+        android:id="@+id/registracija_textGrad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/registracija_lblGrad"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/textWhite"
+        android:ems="10"
+        android:inputType="textCapSentences"
+        android:textColor="@color/greenDark" />
+
+    <TextView
+        android:id="@+id/registracija_lblGrad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/registracija_lblEmail"
+        android:layout_below="@+id/registracija_txtEmail"
+        android:text="@string/registracija_grad"
+        android:textColor="@color/textWhite" />
+
+    <EditText
+        android:id="@+id/registracija_txtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/registracija_lblEmail"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/textWhite"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/greenDark" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/registracija_textGrad"
+        android:layout_marginTop="32dp"
+        android:gravity="center_horizontal"
+        android:paddingBottom="20dp" >
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="110sp"
+            android:layout_height="wrap_content"
+            android:background="@color/greenDark"
+            android:text="@string/prijava_prijavi_se"
+            android:textColor="@color/textWhite" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="110sp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@color/greenLight"
+            android:text="@string/prijava_odustani"
+            android:textColor="@color/textWhite" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -41,4 +41,24 @@
     <string name="tmp_rezervacija_tab1">Tab 1. Sve projekcije u pojedinom gradu, moguće ih je pretraživati po imenu, ako se klikne na jednu od njih otvara se tab3</string>
     <string name="tmp_rezervacija_tab2">Tab 2. Sve projekcije za odabrani dan,  poredane kronološki po vremenu početka, (ako se klikne jedna od njih tada se otvara tab3 )</string>
     <string name="tmp_rezervacija_tab3">tab 3. Odabir vremena kliknute projekcije na jednom od prethodna dva taba, a prikazue: malu sliku filma, listbox sa oznacenim danom, listbox sa vremenom projekcije i prikazom dvorane u njemu, tipku za dalje koja poziva login obrazac i nastavlja sa rezervacijom</string>
+    
+    <!-- dijalog_prijava -->
+    <string name="prijava_prijavi_se">Prijavi se!</string>
+    <string name="prijava_odustani">Odustani!</string>
+    <string name="prijava_korisnicko_ime">Korisničko ime:</string>
+    <string name="prijava_lozinka">Lozinka:</string>
+    <string name="prijava_registriraj_se">Ukoliko nemate korisnički račun molimo Vas da se registrirate.</string>
+    <string name="prijava_registriracija">Registracija!</string>
+    <!-- dijalog_registracija -->
+    <string name="registracija_registriraj_se">Prijavi se!</string>
+    <string name="registracija_odustani">Odustani!</string>
+    <string name="registracija_ime">Ime:</string>
+    <string name="registracija_prezime">Prezime:</string>
+    <string name="registracija_email">E-mail:</string>
+    <string name="registracija_grad">Grad:</string>
+    <string name="registracija_korisnicko_ime">Korisničko ime:</string>
+    <string name="registracija_lozinka">Lozinka:</string>
+    <string name="registracija_ponovljena_lozinka">Ponovljena lozinka:</string>
+    
+    
 </resources>

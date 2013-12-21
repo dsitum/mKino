@@ -13,7 +13,7 @@ public class AktualnoActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.acitivity_aktualno);
-		//dodao lo
+	
 		Log.d("debug", "test");
 		
 	}
