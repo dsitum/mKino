@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#202020"
+    android:orientation="vertical"
+    >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="10dp" 
+        android:src="@drawable/film_ikona_predlozak" />
+
+    <TextView
+        android:id="@+id/rezervacija_lblGrad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffffd5"
+        android:textStyle="bold" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/detalji_filma_lblTrajanje"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:text="Trajanje:"
+                android:textColor="#ffffffd5"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/detalji_filma_trajanje"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="90min"
+                android:textColor="#ffffffd5"
+                android:textStyle="normal" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/detalji_filma_lblZanr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:text="Žanr:"
+                android:textColor="#ffffffd5"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/detalji_filma_zanr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Drama"
+                android:textColor="#ffffffd5" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/detalji_filma_redatelj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:text="Redatelj:"
+                android:textColor="#ffffffd5"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/detalji_filma_redatelj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Redatelj1"
+                android:textColor="#ffffffd5" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/detalji_filma_lblGlumci"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:text="Glumci: "
+                android:textColor="#ffffffd5"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/detalji_filma_glumci"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Glumac1;Gumac2;glumac3"
+                android:textColor="#ffffffd5" />
+
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/detalji_filma_lblDetalji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:text="Detalji:"
+        android:textColor="#ffffffd5"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/detalji_filma_detalji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#444242"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="Paranoid Brigadier General Jack D. Ripper of Burpelson Air Force Base, he believing that fluoridation of the American water supply is a Soviet plot to poison the U.S. populace, is able to deploy through a back door mechanism a nuclear attack on the Soviet Union without the knowledge of his superiors, including the Chair of the Joint Chiefs of Staff, General Buck Turgidson, and President Merkin Muffley. Only Ripper knows the code to recall the B-52 bombers and he has shut down communication in and out of Burpelson as a measure to protect this attack. Ripper&apos;s executive officer, RAF Group Captain Lionel Mandrake (on exchange from Britain), who is being held at Burpelson by Ripper, believes he knows the recall codes if he can only get a message to the outside world. Meanwhile at the Pentagon War Room, key persons including Muffley, Turgidson and nuclear scientist and adviser, a former Nazi named Dr. Strangelove, are discussing measures to stop the attack or mitigate its blow-up into an ... Written by Huggo"
+        android:textColor="#ffffffd5"
+        android:textStyle="normal" />
+
+</LinearLayout>
+</ScrollView>

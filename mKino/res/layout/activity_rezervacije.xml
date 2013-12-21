@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#282828"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/rezervacija_lblGrad"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#23b684"
+            android:gravity="center"
+            android:text="Grad:"
+            android:textColor="#ffffffd5"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spinner1"
+            style="@style/AppTheme"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="#23b6a3" />
+    </LinearLayout>
+
+    <TabHost
+        android:id="@android:id/tabhost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" >
+            </TabWidget>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:id="@+id/rezerviraj_tabSviFilmovi"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tab 1. Sve projekcije u pojedinom gradu, moguće ih je pretraživati po imenu, ako se klikne na jednu od njih otvara se tab3 "
+                        android:textColor="#ffffffd5" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tab 2. Sve projekcije za odabrani dan,  poredane kronološki po vremenu početka, (ako se klikne jedna od njih tada se otvara tab3 )"
+                        android:textColor="#ffffffd5" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="tab 3. Odabir vremena kliknute projekcije na jednom od prethodna dva taba, a prikazue: malu sliku filma, listbox sa oznacenim danom, listbox sa vremenom projekcije i prikazom dvorane u njemu, tipku za dalje koja poziva login obrazac i nastavlja sa rezervacijom"
+                        android:textColor="#ffffffd5" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rezerviraj_tabRezervacijeZaDan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rezervacije_tabOdaberiTermin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
+
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+
+</LinearLayout>

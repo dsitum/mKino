@@ -1,4 +1,6 @@
-package com.example.mkino;
+package hr.air.mkino;
+
+import com.example.mkino.R;
 
 import android.os.Bundle;
 import android.app.Activity;

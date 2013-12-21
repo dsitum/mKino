@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#282828"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="7" >
+
+        <TextView
+            android:id="@+id/detalji_filma_naslov"
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
+            android:background="#23b684"
+            android:gravity="center"
+            android:text="Grad: "
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#ffffffd5"
+            android:typeface="sans" />
+
+        <Spinner
+            android:id="@+id/spinner1"
+            style="@style/AppTheme"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="#23b6a3" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/detalji_filma_lblZanr"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Tu ide mapa"
+        android:textColor="#ffffffd5" />
+
+</LinearLayout>
