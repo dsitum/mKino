@@ -7,8 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.3"
+        android:layout_height="70dp"
         android:orientation="horizontal" >
 
         <TextView
@@ -18,7 +17,7 @@
             android:layout_gravity="left"
             android:background="#23b684"
             android:gravity="center"
-            android:text="Grad: "
+            android:text="@string/grad_label"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#ffffffd5"
             android:typeface="sans" />
@@ -28,7 +27,6 @@
             style="@style/AppTheme"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="0.7"
             android:background="#23b6a3" />
 
     </LinearLayout>
@@ -38,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Tražilica: "
+        android:text="@string/trazilica_label"
         android:textColor="#ffffffd5" />
 
     <ListView

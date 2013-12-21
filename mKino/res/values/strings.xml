@@ -3,6 +3,42 @@
 
     <string name="app_name">mKino</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-
+    
+    
+    <!-- activity_pocetna -->
+    <string name="pocetni_logo">Logo aplikacije</string>
+    <string name="pocetni_btnMapa">Gumb za mapu</string>
+    <string name="pocetna_btnMojeRezervacije">Moje rezervacije gumb</string>
+    <string name="pocetna_brnRezerviraj">Gumb za rezerviranje</string>
+    <string name="pocetna_btnAktualno">Gumb za prikaz aktualnih filmova</string>
+    
+    
+    <!-- activity_aktualno -->
+    <string name="grad_label">Grad:</string>
+    <string name="trazilica_label">Tražilica:</string>
+    
+    
+    <!-- activity_detalji_filma -->
+    <string name="slika_filma">Slika filma</string>
+    <string name="detalji_filma_lblTrajanje">Trajanje:</string>
+    <string name="detalji_filma_lblZanr">Žanr:</string>
+    <string name="detalji_filma_lblRedatelj">Redatelj:</string>
+    <string name="detalji_filma_lblGlumci">Glavne uloge:</string>
+    <string name="detalji_filma_lblDetalji">Detalji:</string>
+    
+    <string name="tmp_naslov_filma">Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb</string>
+    <string name="tmp_trajanje_filma">90min</string>
+    <string name="tmp_zanr_filma">Drama</string>
+    <string name="tmp_redatelj_filma">Redatelj1</string>
+    <string name="tmp_glumci_filma">Glumac1, Glumac2, Glumac3, Glumac4, Glumac5</string>
+    <string name="tmp_detalji_filma">Paranoid Brigadier General Jack D. Ripper of Burpelson Air Force Base, he believing that fluoridation of the American water supply is a Soviet plot to poison the U.S. populace, is able to deploy through a back door mechanism a nuclear attack on the Soviet Union without the knowledge of his superiors, including the Chair of the Joint Chiefs of Staff, General Buck Turgidson, and President Merkin Muffley. Only Ripper knows the code to recall the B-52 bombers and he has shut down communication in and out of Burpelson as a measure to protect this attack. Ripper\'s executive officer, RAF Group Captain Lionel Mandrake (on exchange from Britain), who is being held at Burpelson by Ripper, believes he knows the recall codes if he can only get a message to the outside world. Meanwhile at the Pentagon War Room, key persons including Muffley, Turgidson and nuclear scientist and adviser, a former Nazi named Dr. Strangelove, are discussing measures to stop the attack or mitigate its blow-up into an</string>
+    
+    
+    <!-- activity_moja_mapa -->
+    <string name="tmp_pozicija_mape">Tu ide mapa</string>
+    
+    <!-- acitvity_rezervacije -->
+    <string name="tmp_rezervacija_tab1">Tab 1. Sve projekcije u pojedinom gradu, moguće ih je pretraživati po imenu, ako se klikne na jednu od njih otvara se tab3</string>
+    <string name="tmp_rezervacija_tab2">Tab 2. Sve projekcije za odabrani dan,  poredane kronološki po vremenu početka, (ako se klikne jedna od njih tada se otvara tab3 )</string>
+    <string name="tmp_rezervacija_tab3">tab 3. Odabir vremena kliknute projekcije na jednom od prethodna dva taba, a prikazue: malu sliku filma, listbox sa oznacenim danom, listbox sa vremenom projekcije i prikazom dvorane u njemu, tipku za dalje koja poziva login obrazac i nastavlja sa rezervacijom</string>
 </resources>

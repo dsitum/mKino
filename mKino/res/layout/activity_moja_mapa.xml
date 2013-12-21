@@ -11,12 +11,12 @@
         android:layout_weight="7" >
 
         <TextView
-            android:id="@+id/detalji_filma_naslov"
+            android:id="@+id/grad_lbl"
             android:layout_width="72dp"
             android:layout_height="match_parent"
             android:background="#23b684"
             android:gravity="center"
-            android:text="Grad: "
+            android:text="@string/grad_label"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#ffffffd5"
             android:typeface="sans" />
@@ -26,7 +26,6 @@
             style="@style/AppTheme"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="1"
             android:background="#23b6a3" />
 
     </LinearLayout>
@@ -37,7 +36,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="Tu ide mapa"
+        android:text="@string/tmp_pozicija_mape"
         android:textColor="#ffffffd5" />
 
 </LinearLayout>

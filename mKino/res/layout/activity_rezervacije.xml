@@ -16,7 +16,7 @@
             android:layout_weight="1"
             android:background="#23b684"
             android:gravity="center"
-            android:text="Grad:"
+            android:text="@string/grad_label"
             android:textColor="#ffffffd5"
             android:textStyle="bold" />
 
@@ -60,21 +60,21 @@
                         android:id="@+id/textView1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tab 1. Sve projekcije u pojedinom gradu, moguće ih je pretraživati po imenu, ako se klikne na jednu od njih otvara se tab3 "
+                        android:text="@string/tmp_rezervacija_tab1"
                         android:textColor="#ffffffd5" />
 
                     <TextView
                         android:id="@+id/textView2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tab 2. Sve projekcije za odabrani dan,  poredane kronološki po vremenu početka, (ako se klikne jedna od njih tada se otvara tab3 )"
+                        android:text="@string/tmp_rezervacija_tab2"
                         android:textColor="#ffffffd5" />
 
                     <TextView
                         android:id="@+id/textView3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="tab 3. Odabir vremena kliknute projekcije na jednom od prethodna dva taba, a prikazue: malu sliku filma, listbox sa oznacenim danom, listbox sa vremenom projekcije i prikazom dvorane u njemu, tipku za dalje koja poziva login obrazac i nastavlja sa rezervacijom"
+                        android:text="@string/tmp_rezervacija_tab3"
                         android:textColor="#ffffffd5" />
 
                 </LinearLayout>
