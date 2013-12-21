@@ -22,7 +22,7 @@
             android:typeface="sans" />
 
         <Spinner
-            android:id="@+id/spinner1"
+            android:id="@+id/mapa"
             style="@style/AppTheme"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
