@@ -19,7 +19,6 @@ import hr.air.mkino.server.JsonMultipleksi;
 import hr.air.mkino.tipovi.MultipleksInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -149,11 +148,27 @@ public class MojaMapaActivity extends FragmentActivity {
 	 */
 	private int indeksNajblizegMultipleksa() {
 		PratiteljLokacije pratitelj = new PratiteljLokacije(this);
+		
 		if (pratitelj.lokacijaDostupna())
 		{
+			int indeksNajblizegMultipleksa = 0;
+			float udaljenostDoNajblizegMultipleksa = 999999999;  // za poèetnu udaljenost stavimo neki jako veliki broj (jer se traži najmanja udaljenost)
 			
+			for (MultipleksInfo multipleks : multipleksi)
+			{
+				float tmpUdaljenost = pratitelj.udaljenostDo(multipleks.getZemljopisnaDuzina(), multipleks.getZemljopisnaSirina());
+				if (tmpUdaljenost < udaljenostDoNajblizegMultipleksa)
+				{
+					udaljenostDoNajblizegMultipleksa = tmpUdaljenost;
+					indeksNajblizegMultipleksa = multipleks.getIdMultipleksa();
+				}
+			}
+			
+			return indeksNajblizegMultipleksa - 1;  // oduzimamo 1 jer u bazi podaci poèinju od 1, a nama za spinner trebaju podaci od 0
 		}
-		Log.d("AIR", "Test");
-		return 0;
+		else
+		{
+			return 0;
+		}
 	}
 }

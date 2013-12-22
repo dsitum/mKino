@@ -41,8 +41,12 @@ public class PratiteljLokacije implements LocationListener {
 		{
 			upraviteljLokacije.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 60000, 10, this);
 			lokacija = upraviteljLokacije.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-			zemljopisnaSirina = lokacija.getLatitude();
-			zemljopisnaDuzina = lokacija.getLongitude();
+			if (lokacija != null)
+			{
+				lokacijaDostupna = true;
+				zemljopisnaSirina = lokacija.getLatitude();
+				zemljopisnaDuzina = lokacija.getLongitude();
+			}
 		}
 
 		if (gpsUkljucen)
@@ -56,6 +60,14 @@ public class PratiteljLokacije implements LocationListener {
 				zemljopisnaDuzina = lokacija.getLongitude();
 			}
 		}
+	}
+	
+	public float udaljenostDo(float zemljopisnaDuzina, float zemljopisnaSirina)
+	{
+		float[] udaljenost = new float[3];
+		Location.distanceBetween(this.zemljopisnaSirina, this.zemljopisnaDuzina, zemljopisnaSirina, zemljopisnaDuzina, udaljenost);
+		
+		return udaljenost[0];
 	}
 	
 	public double dohvatiZemljopisnuSirinu()
