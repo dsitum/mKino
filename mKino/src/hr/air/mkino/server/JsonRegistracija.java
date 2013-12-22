@@ -21,12 +21,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.AsyncTask;
-
+/**klasa uz pomoæ koje se obavlja komunikacija sa web servisom u svrhu registracije korisnika*/
 public class JsonRegistracija extends AsyncTask<Korisnik, Integer, String> {
 
 	/**
-	 * metoda koja izvršava registraciju putem POST zahtjeva
-	 * @return int sa uspjesnoId
+	 * Metoda koja služi za registraciju korisnika.
+	 * @param popunjen objekt tipa Korisnik sa podacima za prijavu korisnika
+	 * @return identifikacijski broj poruke o uspješnosti registracije
 	 */
 	public int registriraj(Korisnik korisnik)
 	{			
@@ -47,13 +48,12 @@ public class JsonRegistracija extends AsyncTask<Korisnik, Integer, String> {
 	}
 
 	/**
-	 * Parsira JSON string dohvaæen s web servisa
-	 * @param jsonRezultat
-	 * @return integer koji oznaèava uspješnost
+	 * Parsira json string dohvaæen s web servisa
+	 * @param jsonRezultat web servisa
+	 * @return identifikacijski broj poruke o uspješnosti registracije
 	 */
 	private int parsirajJson(String jsonRezultat) {		
 		int povratnaInformacijaId = 7;
-		//String povratnaInformacijaTekst;	
 		
 		try {
 			JSONArray rezultati = new JSONArray(jsonRezultat);
@@ -61,10 +61,8 @@ public class JsonRegistracija extends AsyncTask<Korisnik, Integer, String> {
 			
 				for(int i=0; i<n; i++)
 				{
-				JSONObject rezultat = rezultati.getJSONObject(i);
-				
+				JSONObject rezultat = rezultati.getJSONObject(i);				
 				povratnaInformacijaId = rezultat.getInt("povratnaInformacijaId");
-				//povratnaInformacijaTekst = rezultat.getString("povratnaInformacijaTekst");
 				}
 			}
 		
@@ -76,16 +74,19 @@ public class JsonRegistracija extends AsyncTask<Korisnik, Integer, String> {
 		return povratnaInformacijaId;
 	}
 
-	
+	/**
+	 * Metoda za asinkronu komunikaciju izmeðu aplikacije i web servisa
+	 * @param popunjen objekt tipa Korisnik sa podacima za prijavu korisnika
+	 * @return rezultat web servisa u json formatu
+	 */
 	protected String doInBackground(Korisnik... korisnik) {
-		HttpClient httpKlijent = new DefaultHttpClient();
-	 
+		HttpClient httpKlijent = new DefaultHttpClient();	 
 		HttpPost httpPostZahtjev = new HttpPost("http://mkinoairprojekt.me.pn/skripte/index.php?tip=registracija");
 		String jsonResult = "";
-		ResponseHandler<String> handler = new BasicResponseHandler();
-		
+		ResponseHandler<String> handler = new BasicResponseHandler();		
 		
 		try {
+			/*definiranje POST parametara*/
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
 		    nameValuePairs.add(new BasicNameValuePair("korisnickoIme", korisnik[0].getKorisnickoIme()));
 		    nameValuePairs.add(new BasicNameValuePair("lozinka", korisnik[0].getLozinka()));
@@ -93,10 +94,9 @@ public class JsonRegistracija extends AsyncTask<Korisnik, Integer, String> {
 		    nameValuePairs.add(new BasicNameValuePair("prezime", korisnik[0].getPrezime()));
 		    nameValuePairs.add(new BasicNameValuePair("email", korisnik[0].getEmail()));
 		    nameValuePairs.add(new BasicNameValuePair("telefon", korisnik[0].getTelefon()));
-		    httpPostZahtjev.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-		  
+		    httpPostZahtjev.setEntity(new UrlEncodedFormEntity(nameValuePairs));		  
 		    
+		    /*slanje uz pomoæ POST zahtjeva*/
 			jsonResult = httpKlijent.execute(httpPostZahtjev, handler);
 		}
 		catch(ClientProtocolException e){

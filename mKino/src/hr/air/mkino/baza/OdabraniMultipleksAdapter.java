@@ -65,4 +65,11 @@ public class OdabraniMultipleksAdapter {
 		
 		return rezultatUnosa;
 	}
+	
+	public void obrisiPrijavljenogKorisnika()
+	{
+		db = dbHelper.getWritableDatabase();
+		db.delete(TABLE, null, null);
+		dbHelper.close();
+	}
 }

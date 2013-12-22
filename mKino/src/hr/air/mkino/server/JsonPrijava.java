@@ -20,12 +20,19 @@ import org.json.JSONObject;
 
 import hr.air.mkino.tipovi.Korisnik;
 import android.os.AsyncTask;
-
+/**
+ * klasa koja služi za prijavu korisnika u sustav uz pomoæ asinkrone komunikacije 
+ * izmeðu aplikacije i servisa koji provjerava da li postoji korisnik u bazi 
+ * podataka sa navedenim korisnièkim imenom i lozinkom
+ *  
+ * */
 public class JsonPrijava extends AsyncTask<String, Korisnik, String> {
 
 		/**
-		 * metoda koja izvršava prijavu putem POST zahtjeva
-		 * @return int sa uspjesnoId
+		 * Metoda koja izvršava provjeru korisnika uz pomoæ servisa
+		 * @param korisnicko ime i odgovarajuæa lozinka
+		 * @return popunjeni objekt tipa Korisnik(korisnickoIme, "", ime, prezime, email, telefon) 
+		 * ukoliko je prijava uspjesna  ili null ukoliko prijava nije uspješna
 		 */
 		public Korisnik prijavi(String korisnickoIme, String lozinka)
 		{			
@@ -41,47 +48,53 @@ public class JsonPrijava extends AsyncTask<String, Korisnik, String> {
 				e.printStackTrace();
 			}
 			
-			return  parsirajJson(jsonRezultat);
-			
+			return  parsirajJson(jsonRezultat);			
 		}
 
 		/**
-		 * Parsira JSON string dohvaæen s web servisa
+		 * Parsira json string dohvaæen s web servisa
 		 * @param jsonRezultat
-		 * @return integer koji oznaèava uspješnost
+		 * @return popunjeni objekt tipa Korisnik(korisnickoIme, "", ime, prezime, email, telefon) 
+		 * ukoliko je prijava uspjesna ili null ukoliko prijava nije uspjesna
 		 */
 		private Korisnik parsirajJson(String jsonRezultat) {		
 			Korisnik korisnik = null;
-			//String povratnaInformacijaTekst;	
 			
 			try {
-				JSONArray rezultati = new JSONArray(jsonRezultat);
-				int n = rezultati.length();
-				
+					JSONArray rezultati = new JSONArray(jsonRezultat);
+					int n = rezultati.length();
 					for(int i=0; i<n; i++)
 					{
-					JSONObject rezultat = rezultati.getJSONObject(i);
-					
-					String korisnickoIme = rezultat.getString("korisnickoIme");
-					String lozinka = "";
-					String ime = rezultat.getString("ime");
-					String prezime = rezultat.getString("prezime");
-					String email = rezultat.getString("email");
-					String telefon = rezultat.getString("telefon");
-					
-					korisnik =  new Korisnik(korisnickoIme, lozinka, ime, prezime, email, telefon);
-					
+						JSONObject rezultat = rezultati.getJSONObject(i);
+						
+						String korisnickoIme = rezultat.getString("korisnickoIme");
+						/*lozinka se ne dohvaæa putem web servisa*/
+						String lozinka = "";
+						String ime = rezultat.getString("ime");
+						String prezime = rezultat.getString("prezime");
+						String email = rezultat.getString("email");
+						String telefon = rezultat.getString("telefon");
+						/*unošenje primljenih korisnièkih podataka u objekt*/
+						korisnik =  new Korisnik(korisnickoIme, lozinka, ime, prezime, email, telefon);
+						
 					}
-				}
-			
-			catch (JSONException e) {
+			}			
+			catch (JSONException e) {	
+			/*
+			 * izvršava se ukoliko prijava nije uspješna, odnosno ne postoji
+			 *  korisnik sa traženim korisnièkim imenom i lozinkom
+			 *  */
 				e.printStackTrace();				
 			}
 			
 			return korisnik;
 		}
 
-		
+		/**
+		 * Metoda za asinkronu komunikaciju izmeðu aplikacije i servisa.
+		 * @param korisnicko ime i lozinka u obliku ArrayList
+		 * @return odgovor servisa u json obliku
+		 * */
 		protected String doInBackground(String... podaciPrijava) {
 			HttpClient httpKlijent = new DefaultHttpClient();
 		 

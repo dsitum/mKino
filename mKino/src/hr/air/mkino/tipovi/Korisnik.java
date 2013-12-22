@@ -1,6 +1,6 @@
 package hr.air.mkino.tipovi;
 
-/*Klasa predstavlja složeni tip podataka koji predstavlja pojedinog korisnika aplikacije
+/*Klasa predstavlja složeni tip podataka koji opisuje pojedinog korisnika aplikacije
  * */
 public class Korisnik {
 	private String korisnickoIme;
@@ -10,7 +10,7 @@ public class Korisnik {
 	private String email;
 	private String telefon;
 
-	//konstruktor 
+	
 	public Korisnik(String korisnickoIme, String lozinka, String ime,
 			String prezime, String email, String telefon) {
 		this.korisnickoIme = korisnickoIme;
