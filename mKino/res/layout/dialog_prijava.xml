@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundDark"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
 
     <TextView
         android:id="@+id/registracija_lblKorisnickoIme"
@@ -18,49 +19,51 @@
         android:textColor="@color/textWhite" />
 
     <EditText
-        android:id="@+id/registracija_txtKorisnickoIme"
+        android:id="@+id/dialog_prijava_txtKorisnickoIme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/registracija_lblKorisnickoIme"
         android:layout_below="@+id/registracija_lblKorisnickoIme"
         android:layout_marginRight="15dp"
         android:background="@color/textWhite"
-        android:inputType="textCapWords"
-        android:textColor="@color/greenDark" />
+        android:inputType="text"
+        android:textColor="@color/backgroundDark"
+        android:textColorHint="@color/greenDark" />
 
     <TextView
         android:id="@+id/registracija_lblLozinka"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/registracija_txtKorisnickoIme"
+        android:layout_below="@+id/dialog_prijava_txtKorisnickoIme"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:text="@string/prijava_lozinka"
         android:textColor="@color/textWhite" />
 
     <EditText
-        android:id="@+id/registracija_txtLozinka"
+        android:id="@+id/dialog_prijava_txtLozinka"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/registracija_lblLozinka"
         android:layout_below="@+id/registracija_lblLozinka"
         android:layout_marginRight="15dp"
         android:background="@color/textWhite"
-        android:inputType="textCapSentences"
-        android:textColor="@color/greenDark" />
+        android:inputType="text|textPassword"
+        android:textColor="@color/backgroundDark"
+        android:textColorHint="@color/greenDark" />
 
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/registracija_txtLozinka"
+        android:layout_below="@+id/dialog_prijava_txtLozinka"
         android:layout_marginTop="18dp"
         android:gravity="center_horizontal"
         android:paddingBottom="20dp" >
 
         <Button
-            android:id="@+id/btnAdd"
+            android:id="@+id/dialog_prijava_btnPrijaviSe"
             android:layout_width="110sp"
             android:layout_height="wrap_content"
             android:background="@color/greenDark"
@@ -68,7 +71,7 @@
             android:textColor="@color/textWhite" />
 
         <Button
-            android:id="@+id/btnCancel"
+            android:id="@+id/registracija_btnOdustani"
             android:layout_width="110sp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -93,7 +96,7 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/registracija_txtLozinka"
+        android:layout_alignLeft="@+id/dialog_prijava_txtLozinka"
         android:layout_below="@+id/prijava_txtRegistrirajSe"
         android:minHeight="0dp"
         android:minWidth="0dp"

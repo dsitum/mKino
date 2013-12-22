@@ -18,7 +18,7 @@
         android:textColor="@color/textWhite" />
 
     <EditText
-        android:id="@+id/registracija_txtKorisnickoIme"
+        android:id="@+id/dialog_prijava_txtKorisnickoIme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/registracija_lblKorisnickoIme"
@@ -29,7 +29,7 @@
         android:textColor="@color/greenDark" />
 
     <EditText
-        android:id="@+id/registracija_txtLozinka"
+        android:id="@+id/dialog_prijava_txtLozinka"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/registracija_lblLozinka"
@@ -43,8 +43,8 @@
         android:id="@+id/registracija_lblLozinka"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/registracija_txtKorisnickoIme"
-        android:layout_below="@+id/registracija_txtKorisnickoIme"
+        android:layout_alignLeft="@+id/dialog_prijava_txtKorisnickoIme"
+        android:layout_below="@+id/dialog_prijava_txtKorisnickoIme"
         android:text="@string/prijava_lozinka"
         android:textColor="@color/textWhite" />
 
@@ -52,8 +52,8 @@
         android:id="@+id/registracija_lblPonovljenaLozinka"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/registracija_txtLozinka"
-        android:layout_below="@+id/registracija_txtLozinka"
+        android:layout_alignLeft="@+id/dialog_prijava_txtLozinka"
+        android:layout_below="@+id/dialog_prijava_txtLozinka"
         android:text="@string/registracija_ponovljena_lozinka"
         android:textColor="@color/textWhite" />
 
@@ -125,25 +125,25 @@
         android:textColor="@color/textWhite" />
 
     <EditText
-        android:id="@+id/registracija_textGrad"
+        android:id="@+id/registracija_txtTelefon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/registracija_lblGrad"
+        android:layout_below="@+id/registracija_lblTelefon"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:background="@color/textWhite"
         android:ems="10"
-        android:inputType="textCapSentences"
+        android:inputType="text"
         android:textColor="@color/greenDark" />
 
     <TextView
-        android:id="@+id/registracija_lblGrad"
+        android:id="@+id/registracija_lblTelefon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/registracija_lblEmail"
         android:layout_below="@+id/registracija_txtEmail"
-        android:text="@string/registracija_grad"
+        android:text="@string/registracija_telefon"
         android:textColor="@color/textWhite" />
 
     <EditText
@@ -164,21 +164,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/registracija_textGrad"
+        android:layout_below="@+id/registracija_txtTelefon"
         android:layout_marginTop="32dp"
         android:gravity="center_horizontal"
         android:paddingBottom="20dp" >
 
         <Button
-            android:id="@+id/btnAdd"
+            android:id="@+id/registracija_btnRegistrirajSe"
             android:layout_width="110sp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/greenDark"
-            android:text="@string/prijava_prijavi_se"
+            android:text="@string/registracija_registriraj_se"
             android:textColor="@color/textWhite" />
 
         <Button
-            android:id="@+id/btnCancel"
+            android:id="@+id/registracija_btnOdustani"
             android:layout_width="110sp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
