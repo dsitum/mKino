@@ -18,7 +18,7 @@
         android:textColor="@color/textWhite" />
 
     <EditText
-        android:id="@+id/dialog_prijava_txtKorisnickoIme"
+        android:id="@+id/dialog_registracija_txtKorisnickoIme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/registracija_lblKorisnickoIme"
@@ -29,7 +29,7 @@
         android:textColor="@color/greenDark" />
 
     <EditText
-        android:id="@+id/dialog_prijava_txtLozinka"
+        android:id="@+id/dialog_registracija_txtLozinka"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/registracija_lblLozinka"
@@ -43,8 +43,8 @@
         android:id="@+id/registracija_lblLozinka"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/dialog_prijava_txtKorisnickoIme"
-        android:layout_below="@+id/dialog_prijava_txtKorisnickoIme"
+        android:layout_alignLeft="@+id/dialog_registracija_txtKorisnickoIme"
+        android:layout_below="@+id/dialog_registracija_txtKorisnickoIme"
         android:text="@string/prijava_lozinka"
         android:textColor="@color/textWhite" />
 
@@ -52,13 +52,13 @@
         android:id="@+id/registracija_lblPonovljenaLozinka"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/dialog_prijava_txtLozinka"
-        android:layout_below="@+id/dialog_prijava_txtLozinka"
+        android:layout_alignLeft="@+id/dialog_registracija_txtLozinka"
+        android:layout_below="@+id/dialog_registracija_txtLozinka"
         android:text="@string/registracija_ponovljena_lozinka"
         android:textColor="@color/textWhite" />
 
     <EditText
-        android:id="@+id/registracija_txtPonovljenaLozinka"
+        android:id="@+id/dialog_registracija_txtPonovljenaLozinka"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/registracija_lblPonovljenaLozinka"
@@ -72,7 +72,7 @@
     </EditText>
 
     <EditText
-        android:id="@+id/registracija_ime"
+        android:id="@+id/dialog_registracija_txtIme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -88,8 +88,8 @@
         android:id="@+id/registracija_lblIme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/registracija_ime"
-        android:layout_below="@+id/registracija_txtPonovljenaLozinka"
+        android:layout_alignLeft="@+id/dialog_registracija_txtIme"
+        android:layout_below="@+id/dialog_registracija_txtPonovljenaLozinka"
         android:text="@string/registracija_ime"
         android:textColor="@color/textWhite" />
 
@@ -97,13 +97,13 @@
         android:id="@+id/registracija_prezime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/registracija_ime"
-        android:layout_below="@+id/registracija_ime"
+        android:layout_alignLeft="@+id/dialog_registracija_txtIme"
+        android:layout_below="@+id/dialog_registracija_txtIme"
         android:text="@string/registracija_prezime"
         android:textColor="@color/textWhite" />
 
     <EditText
-        android:id="@+id/registracija_txtPrezime"
+        android:id="@+id/dialog_registracija_txtPrezime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -120,12 +120,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/registracija_prezime"
-        android:layout_below="@+id/registracija_txtPrezime"
+        android:layout_below="@+id/dialog_registracija_txtPrezime"
         android:text="@string/registracija_email"
         android:textColor="@color/textWhite" />
 
     <EditText
-        android:id="@+id/registracija_txtTelefon"
+        android:id="@+id/dialog_registracija_txtTelefon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -142,12 +142,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/registracija_lblEmail"
-        android:layout_below="@+id/registracija_txtEmail"
+        android:layout_below="@+id/dialog_registracija_txtEmail"
         android:text="@string/registracija_telefon"
         android:textColor="@color/textWhite" />
 
     <EditText
-        android:id="@+id/registracija_txtEmail"
+        android:id="@+id/dialog_registracija_txtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -164,7 +164,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/registracija_txtTelefon"
+        android:layout_below="@+id/dialog_registracija_txtTelefon"
         android:layout_marginTop="32dp"
         android:gravity="center_horizontal"
         android:paddingBottom="20dp" >

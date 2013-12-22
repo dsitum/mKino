@@ -85,8 +85,13 @@ int id detalji_filma_redatelj 0x7f050012
 int id detalji_filma_trajanje 0x7f05000d
 int id detalji_filma_zanr 0x7f05000f
 int id dialog_prijava_btnPrijaviSe 0x7f05002d
-int id dialog_prijava_txtKorisnickoIme 0x7f050029
-int id dialog_prijava_txtLozinka 0x7f05002b
+int id dialog_registracija_txtEmail 0x7f05003a
+int id dialog_registracija_txtIme 0x7f050033
+int id dialog_registracija_txtKorisnickoIme 0x7f050029
+int id dialog_registracija_txtLozinka 0x7f05002b
+int id dialog_registracija_txtPonovljenaLozinka 0x7f050032
+int id dialog_registracija_txtPrezime 0x7f050036
+int id dialog_registracija_txtTelefon 0x7f050038
 int id grad_lbl 0x7f050018
 int id hybrid 0x7f050004
 int id linearLayout1 0x7f05002c
@@ -108,7 +113,6 @@ int id prijava_btnRegistrirajSe 0x7f05002f
 int id prijava_txtRegistrirajSe 0x7f050022
 int id registracija_btnOdustani 0x7f05002e
 int id registracija_btnRegistrirajSe 0x7f05003b
-int id registracija_ime 0x7f050033
 int id registracija_lblEmail 0x7f050037
 int id registracija_lblIme 0x7f050034
 int id registracija_lblKorisnickoIme 0x7f050028
@@ -116,10 +120,6 @@ int id registracija_lblLozinka 0x7f05002a
 int id registracija_lblPonovljenaLozinka 0x7f050031
 int id registracija_lblTelefon 0x7f050039
 int id registracija_prezime 0x7f050035
-int id registracija_txtEmail 0x7f05003a
-int id registracija_txtPonovljenaLozinka 0x7f050032
-int id registracija_txtPrezime 0x7f050036
-int id registracija_txtTelefon 0x7f050038
 int id rezervacija_lblGrad 0x7f050020
 int id rezervacije_tabOdaberiTermin 0x7f050026
 int id rezerviraj_tabRezervacijeZaDan 0x7f050025

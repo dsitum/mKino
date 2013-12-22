@@ -19,7 +19,7 @@
         android:textColor="@color/textWhite" />
 
     <EditText
-        android:id="@+id/dialog_prijava_txtKorisnickoIme"
+        android:id="@+id/dialog_registracija_txtKorisnickoIme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/registracija_lblKorisnickoIme"
@@ -34,14 +34,14 @@
         android:id="@+id/registracija_lblLozinka"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/dialog_prijava_txtKorisnickoIme"
+        android:layout_below="@+id/dialog_registracija_txtKorisnickoIme"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:text="@string/prijava_lozinka"
         android:textColor="@color/textWhite" />
 
     <EditText
-        android:id="@+id/dialog_prijava_txtLozinka"
+        android:id="@+id/dialog_registracija_txtLozinka"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/registracija_lblLozinka"
@@ -57,7 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/dialog_prijava_txtLozinka"
+        android:layout_below="@+id/dialog_registracija_txtLozinka"
         android:layout_marginTop="18dp"
         android:gravity="center_horizontal"
         android:paddingBottom="20dp" >
@@ -96,7 +96,7 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/dialog_prijava_txtLozinka"
+        android:layout_alignLeft="@+id/dialog_registracija_txtLozinka"
         android:layout_below="@+id/prijava_txtRegistrirajSe"
         android:minHeight="0dp"
         android:minWidth="0dp"
