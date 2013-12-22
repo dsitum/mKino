@@ -28,9 +28,8 @@ public class JsonRegistracija extends AsyncTask<Korisnik, Integer, String> {
 	 * metoda koja izvršava registraciju putem POST zahtjeva
 	 * @return int sa uspjesnoId
 	 */
-	public int registrirajSe(Korisnik korisnik)
-	{
-			
+	public int registriraj(Korisnik korisnik)
+	{			
 		this.execute(korisnik);
 		String jsonRezultat = "";
 		try {

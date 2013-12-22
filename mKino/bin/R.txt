@@ -72,7 +72,7 @@ int drawable mapa_100x93 0x7f020023
 int drawable rezerviraj_100x93 0x7f020024
 int id RelativeLayout1 0x7f050027
 int id RelativeLayout2 0x7f050030
-int id action_settings 0x7f05003c
+int id action_settings 0x7f05003d
 int id detalji_filma_detalji 0x7f050017
 int id detalji_filma_glumci 0x7f050015
 int id detalji_filma_lblDetalji 0x7f050016
@@ -92,14 +92,15 @@ int id dialog_registracija_txtLozinka 0x7f05002b
 int id dialog_registracija_txtPonovljenaLozinka 0x7f050032
 int id dialog_registracija_txtPrezime 0x7f050036
 int id dialog_registracija_txtTelefon 0x7f050038
+int id dijalog_prijava_btnOdustani 0x7f05002e
 int id grad_lbl 0x7f050018
 int id hybrid 0x7f050004
 int id linearLayout1 0x7f05002c
 int id listView1 0x7f050008
 int id map_fragment 0x7f05001a
-int id menu_pocetna_grupaMojRacun 0x7f05003d
-int id menu_pocetna_odjava 0x7f05003f
-int id menu_pocetna_prijava 0x7f05003e
+int id menu_pocetna_grupaMojRacun 0x7f05003e
+int id menu_pocetna_odjava 0x7f050040
+int id menu_pocetna_prijava 0x7f05003f
 int id naslov_filma 0x7f05000a
 int id none 0x7f050000
 int id normal 0x7f050001
@@ -111,7 +112,7 @@ int id pocetni_btnMapa 0x7f05001c
 int id pocetni_logo 0x7f05001b
 int id prijava_btnRegistrirajSe 0x7f05002f
 int id prijava_txtRegistrirajSe 0x7f050022
-int id registracija_btnOdustani 0x7f05002e
+int id registracija_btnOdustani 0x7f05003c
 int id registracija_btnRegistrirajSe 0x7f05003b
 int id registracija_lblEmail 0x7f050037
 int id registracija_lblIme 0x7f050034

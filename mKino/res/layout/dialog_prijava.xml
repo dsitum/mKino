@@ -71,7 +71,7 @@
             android:textColor="@color/textWhite" />
 
         <Button
-            android:id="@+id/registracija_btnOdustani"
+            android:id="@+id/dijalog_prijava_btnOdustani"
             android:layout_width="110sp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"

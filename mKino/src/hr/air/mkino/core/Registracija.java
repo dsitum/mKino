@@ -14,8 +14,6 @@ import android.widget.Toast;
 
 public class Registracija {
 
-	// Metode
-
 	// metoda koja prikazuje dijalog za registraciju
 	public void prikaziDijalog(final Context context) {
 		// otvori dijalog za registraciju
@@ -70,6 +68,11 @@ public class Registracija {
 				
 				//izvršavanje registracije i obavještravanje korisnika o uspješnosti
 				Korisnik korisnik = new Korisnik(korisnickoIme, lozinka, ime, prezime, email, telefon);
+				
+//samo probno postavljanje korisnika kao logiranoG!!!
+				Prijava.prijavljeniKorisnik = korisnik;
+				
+				
 				switch(IzvrsiRegistraciju(korisnik, ponovljenaLozinka))
 				{
 					case 0: 
@@ -170,7 +173,7 @@ public class Registracija {
 		
 		JsonRegistracija jsonReg = new JsonRegistracija();
 		//provjera na korisnièkoj strani je uspješno izvršena, izvršavamo registraciju putem post metode
-		int uspjesnaRegistracija = jsonReg.registrirajSe(korisnik);
+		int uspjesnaRegistracija = jsonReg.registriraj(korisnik);
 		
 		
 		return uspjesnaRegistracija;

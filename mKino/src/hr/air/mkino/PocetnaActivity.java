@@ -5,16 +5,12 @@ import hr.air.mkino.core.Prijava;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -94,8 +90,8 @@ public class PocetnaActivity extends Activity {
 			
 		//prikazivanje dijaloga za odjavu
 		case R.id.menu_pocetna_odjava:
-			//odjaviti se iz aplikacije
-			Toast.makeText(this, "Odjava pritisnuta", Toast.LENGTH_SHORT).show();
+			//odjaviti se iz aplikacije			
+			prijava.odjava(this);			
 			break;	
 		
 		//prikazivanje preference izbornika
@@ -109,7 +105,31 @@ public class PocetnaActivity extends Activity {
     	return true;
     }
 
-    
+    //uklanja opciju prijava/odjava ovisno o stanju aplikacije
+    @Override
+    public boolean onPrepareOptionsMenu (Menu menu) {
+        if (Prijava.prijavljeniKorisnik != null)
+        {
+          //prikaži i uljuèi opciju prijava
+          menu.getItem(1).setEnabled(true);
+          menu.getItem(1).setVisible(true);
+          //iskljuèi i sakrij opciju odjava
+          menu.getItem(0).setEnabled(false);
+          menu.getItem(0).setVisible(false);
+          
+        }
+        else 
+        {
+        	//prikaži i uljuèi opciju odjava      	
+        	menu.getItem(0).setEnabled(true);
+        	menu.getItem(0).setVisible(true);
+        	//iskljuèi i sakrij opciju prijava 
+        	menu.getItem(1).setVisible(false);
+        	menu.getItem(1).setEnabled(false);
+            
+        }
+        return true;
+    }
 	
 	
     
