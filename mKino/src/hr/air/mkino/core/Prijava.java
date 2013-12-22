@@ -16,7 +16,7 @@ public class Prijava {
 	static Korisnik prijavljeniKorisnik;
 	
 	
-	
+		
 	//Metode
 	
 	//metoda koja prikazuje dijalog za prijavu u aplikaciju

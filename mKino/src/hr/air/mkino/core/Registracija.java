@@ -1,6 +1,7 @@
 package hr.air.mkino.core;
 
 import hr.air.mkino.R;
+import hr.air.mkino.server.JsonRegistracija;
 import hr.air.mkino.tipovi.Korisnik;
 import android.app.Dialog;
 import android.content.Context;
@@ -126,7 +127,7 @@ public class Registracija {
 	 * ukolko doðe do pogreške vraæa se broj pogreške ovisno o odgovoru kojeg
 	 * dobije od servisa vraæa se rezultat unosa u bazu podataka
 	 * 
-	 * povrat: 
+	 @return 
 	 * 0 - uspješna registracija 
 	 * 1 - ponovljena lozinka nije jednaka
 	 * 2 -
@@ -141,8 +142,7 @@ public class Registracija {
 	 * 10 - prezime je prazno 
 	 * 11 - lozinka je prazna
 	 * 12 - email je prazan 
-	 * 13 - telefon je
-	 * prazan
+	 * 13 - telefon je prazan
 	 */
 	public int IzvrsiRegistraciju(Korisnik korisnik, String ponovljenaLozinka) {
 		
@@ -168,11 +168,12 @@ public class Registracija {
 		if(!ponovljenaLozinka.equals(korisnik.getLozinka()))
 			return 1;
 		
+		JsonRegistracija jsonReg = new JsonRegistracija();
 		//provjera na korisnièkoj strani je uspješno izvršena, izvršavamo registraciju putem post metode
+		int uspjesnaRegistracija = jsonReg.registrirajSe(korisnik);
 		
 		
-		
-		return 0;
+		return uspjesnaRegistracija;
 	}
 
 }
