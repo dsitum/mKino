@@ -19,7 +19,16 @@ import org.json.JSONObject;
 
 import android.os.AsyncTask;
 
+/**
+ * Ova klasa služi za dohvat svih multipleksa sa web servisa.
+ * @author domagoj
+ *
+ */
 public class JsonMultipleksi extends AsyncTask<Void, Void, String> {
+	/**
+	 * Dohvaæa multiplekse sa web servisa
+	 * @return multipleksi
+	 */
 	public List<MultipleksInfo> dohvatiMultiplekse()
 	{
 		// dohvatiti podatke s web servsa		
@@ -39,6 +48,11 @@ public class JsonMultipleksi extends AsyncTask<Void, Void, String> {
 		return multipleksi;
 	}
 
+	/**
+	 * Parsira JSON string dohvaæen s web servisa
+	 * @param jsonRezultat
+	 * @return multipleksi
+	 */
 	private List<MultipleksInfo> parsirajJson(String jsonRezultat) {
 		List<MultipleksInfo> multipleksi = new ArrayList<MultipleksInfo>();
 		int idMultipleksa;
@@ -70,6 +84,7 @@ public class JsonMultipleksi extends AsyncTask<Void, Void, String> {
 		return multipleksi;
 	}
 
+	// pomoæna metoda koja u pozadini obraðuje http zahtjev (dohvaæanje podataka)
 	@Override
 	protected String doInBackground(Void... params) {
 		HttpClient httpKlijent = new DefaultHttpClient();

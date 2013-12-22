@@ -8,8 +8,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+/**
+ * Ova klasa služi za dohvaæanje multipleksa iz lokalne baze podataka, ukoliko oni ondje postoje
+ * @author domagoj
+ *
+ */
 public class MultipleksAdapter {
-
 	private static String DATABASE="baza";
 	private static String TABLE="multipleksi";
 	private static int VERSION = 1;
@@ -20,9 +24,13 @@ public class MultipleksAdapter {
 	
 	public MultipleksAdapter(Context c)
 	{
-		dbHelper=new DbHelper(c, DATABASE, null, VERSION);
+		dbHelper = new DbHelper(c, DATABASE, null, VERSION);
 	}
 	
+	/**
+	 * Dohvaæa listu multipleksa iz baze podataka u objekte "MultipleksInfo"
+	 * @return
+	 */
 	public List<MultipleksInfo> dohvatiMultiplekse()
 	{
 		List<MultipleksInfo> multipleksi = new ArrayList<MultipleksInfo>();
@@ -44,6 +52,11 @@ public class MultipleksAdapter {
 		return multipleksi;
 	}
 	
+	/**
+	 * Služi za unos multipleksa u lokalnu bazu podataka. Ova metoda se poziva samo u sluèaju kada u lokalnoj bazi ne postoje mulipleksi - najèešæe pri prvom pokretanju aplikacije
+	 * @param multipleks
+	 * @return rezultat unosa (ono što vrati insert funkcija)
+	 */
 	public long unosMultipleksa(MultipleksInfo multipleks)
 	{
 		ContentValues redak = new ContentValues();
