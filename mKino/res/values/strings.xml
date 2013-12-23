@@ -24,7 +24,7 @@
     <string name="detalji_filma_lblTrajanje">Trajanje:</string>
     <string name="detalji_filma_lblZanr">Žanr:</string>
     <string name="detalji_filma_lblRedatelj">Redatelj:</string>
-    <string name="detalji_filma_lblGlumci">Glavne uloge:</string>
+    <string name="detalji_filma_lblGlumci">Uloge:</string>
     <string name="detalji_filma_lblDetalji">Detalji:</string>
     
     <string name="tmp_naslov_filma">Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb</string>

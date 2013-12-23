@@ -10,12 +10,17 @@ import hr.air.mkino.baza.OdabraniMultipleksAdapter;
 import hr.air.mkino.server.JsonFilmovi;
 import hr.air.mkino.tipovi.FilmInfo;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class AktualnoActivity extends Activity {
 	private Spinner spinner;
@@ -33,6 +38,18 @@ public class AktualnoActivity extends Activity {
 		
 		// postavljamo spinner na trenutno odabrani multipleks
 		spinner.setSelection(dohvatiOdabraniMultipleks());
+		
+		// postavljamo listener na ListView s filmovima
+		popisFilmova.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View kliknutiFilm, int pozicijaKliknutogFilma, long idKli) {
+				TextView tv = (TextView) kliknutiFilm.findViewById(R.id.id_filma_u_bazi);
+				int idFilmaUBazi = Integer.parseInt(tv.getText().toString());
+				Intent i = new Intent(AktualnoActivity.this, DetaljiFilmaActivity.class);
+				i.putExtra("idFilmaUBazi", idFilmaUBazi);
+				startActivity(i);
+			}
+		});
 		
 		// dohvaæamo filmove i pohranjujemo ih u ListView "popisFilmova". Tu se automatski prikazuju na zaslon
 		filmovi = dohvatiFilmove();
@@ -79,8 +96,8 @@ public class AktualnoActivity extends Activity {
 	 */
 	private void ucitajFilmoveUListView()
 	{
-		String[] iz = new String[] {"naziv", "glavneUloge"};
-		int[] u = new int[] {R.id.naziv_filma_mali, R.id.uloge_filma_male};
+		String[] iz = new String[] {"idFilma", "naziv", "glavneUloge"};
+		int[] u = new int[] {R.id.id_filma_u_bazi, R.id.naziv_filma_mali, R.id.uloge_filma_male};
 		
 		Map<String, String> stavka;
 		List<Map<String, String>> podaci = new ArrayList<Map<String, String>>();
@@ -88,6 +105,7 @@ public class AktualnoActivity extends Activity {
 		for (FilmInfo film : filmovi)
 		{
 			stavka = new HashMap<String, String>();
+			stavka.put("idFilma", String.valueOf(film.getIdFilma()));
 			stavka.put("naziv", film.getNaziv());
 			stavka.put("glavneUloge", film.getGlavneUloge());
 			podaci.add(stavka);

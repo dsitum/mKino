@@ -78,6 +78,26 @@ public class FilmoviAdapter {
 		return indeksiFilmova;
 	}
 	
+	public FilmInfo dohvatiDetaljeFilma(int idFilma)
+	{
+		String[] stupci = new String[]{KEY,"naziv","opis","redatelj","glavneUloge","trajanje","godina","zanr","aktualno"};
+		db = dbHelper.getReadableDatabase();
+		Cursor c = db.query(TABLE, stupci, "idFilma = ?", new String[] {String.valueOf(idFilma)}, null, null, null);
+		c.moveToFirst();
+		
+		String naziv = c.getString(c.getColumnIndex("naziv"));
+		String opis = c.getString(c.getColumnIndex("opis"));
+		String redatelj = c.getString(c.getColumnIndex("redatelj"));
+		String glavneUloge = c.getString(c.getColumnIndex("glavneUloge"));
+		int trajanje = c.getInt(c.getColumnIndex("trajanje"));
+		int godina = c.getInt(c.getColumnIndex("godina"));
+		String zanr = c.getString(c.getColumnIndex("zanr"));
+		int aktualno = c.getInt(c.getColumnIndex("aktualno"));
+		dbHelper.close();
+		
+		return new FilmInfo(idFilma, naziv, opis, redatelj, glavneUloge, trajanje, godina, zanr, aktualno);
+	}
+	
 	/**
 	 * Služi za ažuriranje trenutne baze filmova.
 	 * Baza se ažurira pomoæu podataka primljenih sa web servisa.
@@ -134,7 +154,7 @@ public class FilmoviAdapter {
 		
 		redak.put("idFilma", film.getIdFilma());
 		redak.put("naziv", film.getNaziv());
-		redak.put("opis", film.getNaziv());
+		redak.put("opis", film.getOpis());
 		redak.put("redatelj", film.getRedatelj());
 		redak.put("glavneUloge", film.getGlavneUloge());
 		redak.put("trajanje", film.getTrajanje());

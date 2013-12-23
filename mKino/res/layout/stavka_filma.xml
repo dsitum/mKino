@@ -31,7 +31,8 @@
             android:layout_gravity="top"
             android:text="@string/tmp_naslov_filma"
             android:textSize="14sp" 
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="#ffffffd5" />
        
         <!-- uloge u filmu -->
         <TextView
@@ -42,7 +43,14 @@
             android:paddingTop="5dp"
             android:text="@string/tmp_glumci_filma"
             android:textSize="12sp"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            android:textColor="#ffffffd5" />
+        
+        <TextView
+            android:id="@+id/id_filma_u_bazi"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
 	        
     </LinearLayout>
 
