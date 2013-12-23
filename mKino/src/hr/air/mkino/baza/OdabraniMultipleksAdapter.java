@@ -23,7 +23,7 @@ public class OdabraniMultipleksAdapter {
 	}
 	
 	/**
-	 * Vraæa informaciju o korisnikovom odabranom multipleksu
+	 * Vraæa informaciju o korisnikovom odabranom multipleksu ili -1 ako multipleks još nije odabran
 	 * @return odabrani multipleks
 	 */
 	public int dohvatiOdabraniMultipleks()
@@ -58,11 +58,19 @@ public class OdabraniMultipleksAdapter {
 		ContentValues redak = new ContentValues();
 		redak.put("id", idOdabranogMultipleksa);
 		
+		obrisiMultipleksIzBaze();
 		db = dbHelper.getWritableDatabase();
-		db.delete(TABLE, null, null);
 		long rezultatUnosa = db.insert(TABLE, null, redak);
 		dbHelper.close();
 		
 		return rezultatUnosa;
+	}
+	
+	public int obrisiMultipleksIzBaze()
+	{
+		db = dbHelper.getWritableDatabase();
+		int rezultatBrisanja = db.delete(TABLE, null, null);
+		dbHelper.close();
+		return rezultatBrisanja;
 	}
 }

@@ -23,10 +23,11 @@
             android:typeface="sans" />
 
         <Spinner
-            android:id="@+id/spinner1"
+            android:id="@+id/odabir_multipleksa_filmovi"
             style="@style/AppTheme"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:entries="@array/lista_multipleksa"
             android:background="#23b6a3" />
 
     </LinearLayout>
@@ -40,7 +41,7 @@
         android:textColor="#ffffffd5" />
 
     <ListView
-        android:id="@+id/listView1"
+        android:id="@+id/popis_filmova"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="2" >

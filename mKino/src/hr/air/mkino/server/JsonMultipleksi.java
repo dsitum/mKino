@@ -37,10 +37,8 @@ public class JsonMultipleksi extends AsyncTask<Void, Void, String> {
 		try {
 			jsonRezultat = this.get();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

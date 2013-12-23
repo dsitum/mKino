@@ -26,7 +26,7 @@ public class DbHelper extends SQLiteOpenHelper {
 		List<String> tablice = new ArrayList<String>();
 		tablice.add("CREATE TABLE IF NOT EXISTS multipleksi (idMultipleksa INTEGER PRIMARY KEY, naziv TEXT, oznaka TEXT, zemljopisnaDuzina REAL, zemljopisnaSirina REAL)");
 		tablice.add("CREATE TABLE IF NOT EXISTS korisnik (idKorisnika INTEGER PRIMARY KEY, korisnickoIme TEXT, ime TEXT, prezime TEXT, email TEXT, telefon TEXT)");
-		tablice.add("CREATE TABLE IF NOT EXISTS filmovi (idFilma INTEGER PRIMARY KEY, naziv TEXT, opis TEXT, glavneUloge TEXT, trajanje INTEGER, godina INTEGER, aktualno INTEGER, zanr TEXT)");
+		tablice.add("CREATE TABLE IF NOT EXISTS filmovi (idFilma INTEGER PRIMARY KEY, naziv TEXT, opis TEXT, redatelj TEXT, glavneUloge TEXT, trajanje INTEGER, godina INTEGER, aktualno INTEGER, zanr TEXT)");
 		tablice.add("CREATE TABLE IF NOT EXISTS odabranimultipleks (id INTEGER)");
 		
 		for (String tablica : tablice)

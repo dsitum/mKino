@@ -38,6 +38,7 @@
     <!-- activity_moja_mapa -->
     <string name="tmp_pozicija_mape">Tu ide mapa</string>
     <string name="odaberite_multipleks_lbl">Odaberite multipleks:</string>
+    <string name="odabir_najblizeg_multipleksa">Odaberi najbliži multipleks</string>
     <string-array name="lista_multipleksa">
         <item >Zagreb</item>
         <item >Rijeka</item>
@@ -77,4 +78,9 @@
     <string name="menu_prijava">Prijavi se</string>
     <string name="menu_odjava">Odjavi se</string>
     <string name="menu_titleGrupaMojRacun">Moj račun</string>
+    
+    <!-- stavka_filma -->
+    <string name="slika_filma_mala">Mala slika filma</string>
+    <string name="naziv_filma_mali_lbl">Naslov:</string>
+    <string name="uloge_male_lbl">Glumci:</string>
 </resources>

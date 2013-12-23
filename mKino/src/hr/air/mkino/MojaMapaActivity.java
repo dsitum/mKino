@@ -20,6 +20,7 @@ import hr.air.mkino.tipovi.MultipleksInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -69,8 +70,21 @@ public class MojaMapaActivity extends FragmentActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.pocetna, menu);
+		getMenuInflater().inflate(R.menu.moja_mapa_activity, menu);
 		return true;
+	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.geolokacija:
+				// brišemo postojeæi multipleks iz baze i postavljamo novi (koji æe biti dobiven geolokacijom)
+				odabraniMultipleks.obrisiMultipleksIzBaze();
+				postaviSpinner(odabraniMultipleks);
+			break;
+		default:
+			break;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 	
 	/**

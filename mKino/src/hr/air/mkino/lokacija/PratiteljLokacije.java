@@ -60,6 +60,8 @@ public class PratiteljLokacije implements LocationListener {
 				zemljopisnaDuzina = lokacija.getLongitude();
 			}
 		}
+		
+		
 	}
 	
 	public float udaljenostDo(float zemljopisnaDuzina, float zemljopisnaSirina)
@@ -88,7 +90,7 @@ public class PratiteljLokacije implements LocationListener {
 	@Override
 	public void onLocationChanged(Location lokacija) {
 		// TODO Auto-generated method stub
-		
+		upraviteljLokacije.removeUpdates(this);
 	}
 
 	@Override
