@@ -79,11 +79,56 @@ public class FilmoviAdapter {
 	}
 	
 	/**
+	 * Služi za ažuriranje trenutne baze filmova.
+	 * Baza se ažurira pomoæu podataka primljenih sa web servisa.
+	 * Pod pojmom ažuriranje se misli na dodavanje filmova koji ne postoje i brisanje onih koji više nisu aktualni
+	 */
+	public void azurirajBazuFilmova(List<FilmInfo> noviFilmovi)
+	{
+		int idFilma;
+		for (FilmInfo noviFilm : noviFilmovi)
+		{
+			idFilma = noviFilm.getIdFilma();
+			// ako film ne postoji u bazi, dodajemo ga
+			if (! filmPostojiUBazi(idFilma))
+			{
+				unosFilma(noviFilm);
+			}
+			else {
+				// a ako film postoji u bazi, oèito je da se radi o filmu koji više nije aktualan (zato je web servis i vratio ponovno podatke o njemu), pa ga brišemo iz baze
+				brisanjeFilma(idFilma);
+			}
+		}
+	}
+	
+	/**
+	 * Za dani identifikacijski broj filma, vratit æe TRUE ako film postoji u lokalnoj bazi i FALSE ako ne postoji
+	 * @param idFilma
+	 * @return TRUE ili FALSE, ovisno o tome postoji li film u bazi
+	 */
+	private boolean filmPostojiUBazi(int idFilma)
+	{
+		String[] stupac = new String[]{KEY};
+		db = dbHelper.getReadableDatabase();
+		String[] whereArgument = {String.valueOf(idFilma)};
+		Cursor c = db.query(TABLE, stupac, "idFilma = ?", whereArgument, null, null, null);
+		
+		boolean filmPostoji;
+		if (c.getCount() > 0)
+			filmPostoji = true;
+		else
+			filmPostoji = false;
+		
+		dbHelper.close();
+		return filmPostoji;
+	}
+	
+	/**
 	 * Služi za unos novog filma u bazu podataka
 	 * @param film
 	 * @return rezultat unosa
 	 */
-	public long unosFilma(FilmInfo film)
+	private long unosFilma(FilmInfo film)
 	{
 		ContentValues redak = new ContentValues();
 		
@@ -101,5 +146,19 @@ public class FilmoviAdapter {
 		long rezultatUnosa = db.insert(TABLE, null, redak);
 		dbHelper.close();
 		return rezultatUnosa;
+	}
+	
+	/**
+	 * Briše film s identifikacijskim brojem "idFilma"
+	 * @param idFilma
+	 * @return
+	 */
+	private long brisanjeFilma(int idFilma)
+	{
+		db = dbHelper.getWritableDatabase();
+		String[] whereArgument = {String.valueOf(idFilma)};
+		long rezultatBrisanja = db.delete(TABLE, "idFilma = ?", whereArgument);
+		dbHelper.close();
+		return rezultatBrisanja;
 	}
 }

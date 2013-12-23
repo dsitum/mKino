@@ -6,13 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 import hr.air.mkino.R;
-import hr.air.mkino.baza.FilmoviAdapter;
 import hr.air.mkino.baza.OdabraniMultipleksAdapter;
 import hr.air.mkino.server.JsonFilmovi;
 import hr.air.mkino.tipovi.FilmInfo;
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -38,7 +36,7 @@ public class AktualnoActivity extends Activity {
 		
 		// dohvaæamo filmove i pohranjujemo ih u ListView "popisFilmova". Tu se automatski prikazuju na zaslon
 		filmovi = dohvatiFilmove();
-		ucitajFilmoveUListView();		
+		ucitajFilmoveUListView();
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

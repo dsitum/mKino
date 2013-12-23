@@ -24,7 +24,6 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
 /**
  * Ova klasa služi za dohvat filmova sa web servisa.
@@ -32,6 +31,8 @@ import android.util.Log;
  *
  */
 public class JsonFilmovi extends AsyncTask<String, Void, String> {
+	FilmoviAdapter bazaFilmova;
+	
 	/**
 	 * Dohvaæa filmove sa web servisa. To ne ukljuèuje one filmove koji se veæ nalaze u lokalnoj bazi
 	 * @return filmovi
@@ -39,8 +40,8 @@ public class JsonFilmovi extends AsyncTask<String, Void, String> {
 	public List<FilmInfo> dohvatiFilmove(Context c)
 	{
 		// najprije dohvaæamo id-eve filmova iz lokalne baze podataka, kako bi znali koje filmove ne trebamo dohvaæati sa webservisa
-		FilmoviAdapter fa = new FilmoviAdapter(c);
-		List<Integer> idFilmova = fa.dohvatiIdFilmova();
+		bazaFilmova = new FilmoviAdapter(c);
+		List<Integer> idFilmova = bazaFilmova.dohvatiIdFilmova();
 		
 		// pretvaramo listu s id-evima filmova u JSON string (moramo ruèno, buduæi da ne postoji neka standardna metoda za to
 		StringBuilder sb = new StringBuilder();
@@ -114,6 +115,12 @@ public class JsonFilmovi extends AsyncTask<String, Void, String> {
 			e.printStackTrace();
 		}
 		
+		// u JSON-u koji smo upravo parsirali (objekt filmovi) se nalaze svi oni filmovi koji nisu u bazi.
+		// vrijeme je da ih se doda u bazu
+		bazaFilmova.azurirajBazuFilmova(filmovi);
+		// nakon ažuriranja baze, dohvaæamo ponovno sve filmove iz baze
+		filmovi = bazaFilmova.dohvatiFilmove();
+		
 		return filmovi;
 	}
 	
@@ -132,7 +139,6 @@ public class JsonFilmovi extends AsyncTask<String, Void, String> {
 			podaci.add(new BasicNameValuePair("bezOvihFilmova", jsonString));
 			httpPost.setEntity(new UrlEncodedFormEntity(podaci));
 		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
