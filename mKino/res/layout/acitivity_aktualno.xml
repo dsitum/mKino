@@ -12,7 +12,7 @@
 
         <TextView
             android:id="@+id/detalji_filma_naslov"
-            android:layout_width="72dp"
+            android:layout_width="77dp"
             android:layout_height="match_parent"
             android:layout_gravity="left"
             android:background="#23b684"

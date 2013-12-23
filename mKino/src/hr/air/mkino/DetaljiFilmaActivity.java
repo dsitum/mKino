@@ -1,11 +1,13 @@
 package hr.air.mkino;
 
 import hr.air.mkino.baza.FilmoviAdapter;
+import hr.air.mkino.server.SlikaFilma;
 import hr.air.mkino.tipovi.FilmInfo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DetaljiFilmaActivity extends Activity {
@@ -33,6 +35,7 @@ public class DetaljiFilmaActivity extends Activity {
 		TextView redatelj = (TextView) findViewById(R.id.detalji_filma_redatelj);
 		TextView glavneUloge = (TextView) findViewById(R.id.detalji_filma_glumci);
 		TextView opis = (TextView) findViewById(R.id.detalji_filma_detalji);
+		ImageView slika = (ImageView) findViewById(R.id.slikaFilma);
 		
 		naslov.setText(detaljiFilma.getNaziv());
 		trajanje.setText(detaljiFilma.getTrajanje() + " minuta");
@@ -40,6 +43,8 @@ public class DetaljiFilmaActivity extends Activity {
 		redatelj.setText(detaljiFilma.getRedatelj());
 		glavneUloge.setText(detaljiFilma.getGlavneUloge());
 		opis.setText(detaljiFilma.getOpis());
+		SlikaFilma sf = new SlikaFilma();
+		slika.setImageBitmap(sf.preuzmiSliku(detaljiFilma.getIdFilma()));
 	}
 
 	@Override

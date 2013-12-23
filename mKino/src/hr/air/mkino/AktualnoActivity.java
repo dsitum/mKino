@@ -106,11 +106,11 @@ public class AktualnoActivity extends Activity {
 		{
 			stavka = new HashMap<String, String>();
 			stavka.put("idFilma", String.valueOf(film.getIdFilma()));
-			stavka.put("naziv", film.getNaziv());
+			stavka.put("naziv",  film.getNaziv());
 			stavka.put("glavneUloge", film.getGlavneUloge());
 			podaci.add(stavka);
 		}
-		
+
 		ListAdapter adapter = new SimpleAdapter(this, podaci, R.layout.stavka_filma, iz, u);
 		popisFilmova.invalidateViews();
 		popisFilmova.setAdapter(adapter);
