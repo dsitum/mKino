@@ -11,8 +11,7 @@
     <string name="pocetna_btnMojeRezervacije">Moje rezervacije gumb</string>
     <string name="pocetna_brnRezerviraj">Gumb za rezerviranje</string>
     <string name="pocetna_btnAktualno">Gumb za prikaz aktualnih filmova</string>
-    
-    
+        
     
     <!-- activity_aktualno -->
     <string name="grad_label">Grad:</string>
@@ -51,9 +50,19 @@
     </string-array>
     
     <!-- acitvity_rezervacije -->
-    <string name="tmp_rezervacija_tab1">Tab 1. Sve projekcije u pojedinom gradu, moguće ih je pretraživati po imenu, ako se klikne na jednu od njih otvara se tab3</string>
-    <string name="tmp_rezervacija_tab2">Tab 2. Sve projekcije za odabrani dan,  poredane kronološki po vremenu početka, (ako se klikne jedna od njih tada se otvara tab3 )</string>
-    <string name="tmp_rezervacija_tab3">tab 3. Odabir vremena kliknute projekcije na jednom od prethodna dva taba, a prikazue: malu sliku filma, listbox sa oznacenim danom, listbox sa vremenom projekcije i prikazom dvorane u njemu, tipku za dalje koja poziva login obrazac i nastavlja sa rezervacijom</string>
+    <string name="rezevacije_grad">Grad:</string>
+    <string name="rezervacije_datum">Datum:</string>
+    <string name="rezervacije_vrijeme">Vrijeme:</string>
+    <string name="rezervacije_rezerviraj">Rezerviraj!</string>
+    <string name="rezervirana_sjedala">Odaberite željena sjedala!</string>
+    <string name="lbl_rezervirana_sjedala">Sjedala:</string>
+    <string name="lbl_vrijeme_projekcije">Vrijeme:</string>
+    <string name="btn_mapa_sjedala">Mapa sjedala</string>
+    
+    
+    <!-- dijalog_mapa_sjedala -->
+    <string name="dijalog_mapa_sjedala_description">Mapa sjedala kino dvorane</string>
+
     
     <!-- dijalog_prijava -->
     <string name="prijava_prijavi_se">Prijavi se!</string>
@@ -83,4 +92,7 @@
     <string name="slika_filma_mala">Mala slika filma</string>
     <string name="naziv_filma_mali_lbl">Naslov:</string>
     <string name="uloge_male_lbl">Glumci:</string>
+    
+    <!--  stavka_projekcije -->
+    
 </resources>

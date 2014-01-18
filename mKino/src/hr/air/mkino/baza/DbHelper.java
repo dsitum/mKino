@@ -27,6 +27,7 @@ public class DbHelper extends SQLiteOpenHelper {
 		tablice.add("CREATE TABLE IF NOT EXISTS multipleksi (idMultipleksa INTEGER PRIMARY KEY, naziv TEXT, oznaka TEXT, zemljopisnaDuzina REAL, zemljopisnaSirina REAL)");
 		tablice.add("CREATE TABLE IF NOT EXISTS korisnik (idKorisnika INTEGER PRIMARY KEY, korisnickoIme TEXT, ime TEXT, prezime TEXT, email TEXT, telefon TEXT)");
 		tablice.add("CREATE TABLE IF NOT EXISTS filmovi (idFilma INTEGER PRIMARY KEY, naziv TEXT, opis TEXT, redatelj TEXT, glavneUloge TEXT, trajanje INTEGER, godina INTEGER, aktualno INTEGER, zanr TEXT)");
+		tablice.add("CREATE TABLE IF NOT EXISTS projekcije(idProjekcije INTEGER PRIMARY KEY, dvorana INTEGER, film INTEGER CONSTRAINT fk55 REFERENCES filmovi(idFilma), vrijemePocetka DATETIME, cijena INTEGER, multipleks INTEGER)");
 		tablice.add("CREATE TABLE IF NOT EXISTS odabranimultipleks (id INTEGER)");
 		tablice.add("CREATE TABLE IF NOT EXISTS prijavljenikorisnik (korisnickoIme TEXT, lozinka TEXT)");
 		

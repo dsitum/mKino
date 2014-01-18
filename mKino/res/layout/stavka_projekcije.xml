@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="horizontal" >
+    
+    <!-- slika s lijeve strane -->
+
+    <ImageView
+        android:id="@+id/mala_slika_projekcije"
+        android:layout_width="80dp"
+        android:layout_height="94dp"
+        android:layout_gravity="left"
+        android:contentDescription="@string/slika_filma_mala"
+        android:src="@drawable/film_ikona_predlozak" />
+    
+    <!-- predstavlja sav tekst pokraj slike, organiziran u 2 retka. Prvi redak je naziv filma, drugi uloge u filmu -->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="94dp"
+        android:layout_gravity="right"
+        android:orientation="vertical"
+        android:paddingLeft="5dp" >
+
+        <!-- naziv filma -->
+
+        <TextView
+            android:id="@+id/naziv_projekcije_mali"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:paddingTop="5dp"
+            android:text="@string/tmp_naslov_filma"
+            android:textColor="#ffffffd5"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+       
+        <!-- uloge u filmu -->
+
+        <TextView
+            android:id="@+id/dvorana_projekcije_mali"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:paddingTop="5dp"
+            android:text="@string/tmp_glumci_filma"
+            android:textColor="#ffffffd5"
+            android:textSize="12sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/vrijeme_projekcije_mali"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:text="@string/tmp_glumci_filma"
+            android:textColor="#ffffffd5"
+            android:textSize="12sp"
+            android:textStyle="italic" />
+        
+        <TextView
+            android:id="@+id/id_projekcije_u_bazi"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+	        
+    </LinearLayout>
+
+</LinearLayout>

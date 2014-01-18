@@ -61,7 +61,7 @@ public class PocetnaActivity extends Activity {
         btnOtvoriRezervacije.setOnClickListener(new OnClickListener() {			
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(context, RezervacijeActivity.class);
+				Intent i = new Intent(context, ProjekcijeActivity.class);
 				startActivity(i);				
 			}
 		});
