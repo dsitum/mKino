@@ -72,4 +72,30 @@ public class MultipleksAdapter {
 		dbHelper.close();
 		return rezultatUnosa;
 	}
+	
+	/**
+	 * MEtoda koja služi za dohvaæanje pojedinog multipleksa prema id-u 
+	 * @param idMultipleksa
+	 * @return Multipleks
+	 */
+	public MultipleksInfo dohvatiMultipleks(int idMultipleksa)
+	{
+		String[] stupci = new String[]{KEY,"naziv","oznaka","zemljopisnaDuzina","zemljopisnaSirina"};
+		db = dbHelper.getReadableDatabase();
+		MultipleksInfo multipleks = null;
+		
+		Cursor c = db.query(TABLE, stupci, "idMultipleksa = ?", new String[] {String.valueOf(idMultipleksa)}, null, null, null);
+		for(c.moveToFirst(); !(c.isAfterLast()); c.moveToNext())
+		{
+			int id = c.getInt(c.getColumnIndex(KEY));
+			String naziv = c.getString(c.getColumnIndex("naziv"));
+			String oznaka = c.getString(c.getColumnIndex("oznaka"));
+			float zemljopisnaDuzina = c.getFloat(c.getColumnIndex("zemljopisnaDuzina"));
+			float zemljopisnaSirina = c.getFloat(c.getColumnIndex("zemljopisnaSirina"));
+			multipleks = new MultipleksInfo(id, naziv, oznaka , zemljopisnaDuzina, zemljopisnaSirina);
+			
+		}
+		dbHelper.close();
+		return multipleks;
+	}
 }

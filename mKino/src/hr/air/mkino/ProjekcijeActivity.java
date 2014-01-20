@@ -1,18 +1,18 @@
 package hr.air.mkino;
 
-
+import hr.air.mkino.core.Rezervacija;
 import hr.air.mkino.server.JsonProjekcije;
 import hr.air.mkino.tipovi.ProjekcijaInfo;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
+
 import java.util.Map;
 
 import android.app.Activity;
+
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -39,7 +39,7 @@ public class ProjekcijeActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_rezervacije);
+		setContentView(R.layout.activity_projekcije);
 		
 		// inicijaliziramo klasne varijable
 		spinnerGrad = (Spinner) findViewById(R.id.rezervacije_spinner_grad);
@@ -47,8 +47,7 @@ public class ProjekcijeActivity extends Activity {
 		popisProjekcija= (ListView) findViewById(R.id.rezervacije_popis_projekcija);
 	
 		int odabraniMultipleks = dohvatiOdabraniMultipleks();
-		/*TODO moramo poveæat za 1*/
-		//odabraniMultipleks += 1;
+
 		// postavljamo spinner na trenutno odabrani multipleks
 		spinnerGrad.setSelection(odabraniMultipleks-1);
 		
@@ -57,13 +56,13 @@ public class ProjekcijeActivity extends Activity {
 		
 		    Date sadasnjiDatum = new Date();
 		    SimpleDateFormat formatDatuma = new SimpleDateFormat("dd.MM.yyyy");
-		    SimpleDateFormat formatDana = new SimpleDateFormat("E");
+
 		    //String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 		    //int danasnjiDan = Calendar.getInstance().get(Calendar.DATE);
 		    for (int i = 0; i < 14; i++)
 		    {			
-		    	dani.add(formatDatuma.format(sadasnjiDatum)+" " +formatDana.format(sadasnjiDatum));
-		    	sadasnjiDatum = dodajDan(sadasnjiDatum, 1);
+		    	dani.add(formatDatuma.format(sadasnjiDatum)+" " +vratiDanUTjednu(sadasnjiDatum));
+		    	sadasnjiDatum = Rezervacija.dodajDan(sadasnjiDatum, 1);
 		    }
 		    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 		            android.R.layout.simple_spinner_item, dani);
@@ -78,7 +77,7 @@ public class ProjekcijeActivity extends Activity {
 		    	@Override
 				public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long indeksDana) {										
 		    		Date sadasnjiDatum = new Date();
-		    		sadasnjiDatum = dodajDan(sadasnjiDatum,(int)indeksDana);		    		
+		    		sadasnjiDatum = Rezervacija.dodajDan(sadasnjiDatum,(int)indeksDana);		    		
 		   		    SimpleDateFormat formatDatuma2 = new SimpleDateFormat("yyyy-MM-dd");
 		    		ucitajProjekcijeUListView(formatDatuma2.format(sadasnjiDatum));
 		    		
@@ -98,7 +97,7 @@ public class ProjekcijeActivity extends Activity {
 		    		//ponovno zahtjevamo projekcije za odabrani grad
 		    		projekcije = dohvatiProjekcije((int)idOdabranogMultipleksa+1);		
 		    		Date sadasnjiDatum = new Date();
-		    		sadasnjiDatum = dodajDan(sadasnjiDatum,(int)spinnerDatum.getSelectedItemPosition());
+		    		sadasnjiDatum = Rezervacija.dodajDan(sadasnjiDatum,(int)spinnerDatum.getSelectedItemPosition());
 		    		 SimpleDateFormat formatDatuma2 = new SimpleDateFormat("yyyy-MM-dd");
 		    		ucitajProjekcijeUListView(formatDatuma2.format(sadasnjiDatum));
 
@@ -122,7 +121,7 @@ public class ProjekcijeActivity extends Activity {
 		
 		// dohvaæamo filmove i pohranjujemo ih u ListView "popisFilmova". Tu se automatski prikazuju na zaslon
 		projekcije = dohvatiProjekcije(odabraniMultipleks);
-		  SimpleDateFormat formatDatuma2 = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat formatDatuma2 = new SimpleDateFormat("yyyy-MM-dd");
 		ucitajProjekcijeUListView(formatDatuma2.format(sadasnjiDatum));
 	
 	}
@@ -188,6 +187,8 @@ public class ProjekcijeActivity extends Activity {
 			vrijeme= projekcija.getVrijemePocetka();			
 			stavka.put("vrijeme", vrijeme.substring(11, 16));
 			stavka.put("dvorana", "Dvorana " + projekcija.getDvorana());
+			
+			/*TODO parsirat datum i provjerit jel najviše pola sata do projekcije, inace se ne moze prikazati*/			
 			if(0==vrijeme.substring(0, 10).compareTo(danProjekcije.substring(0, 10)))
 			{
 				podaci.add(stavka);
@@ -199,14 +200,24 @@ public class ProjekcijeActivity extends Activity {
 		popisProjekcija.setAdapter(adapter);
 		
 	}
-	/*Metoda koja uveæava trenutni datum za jedan dan
-	 * 
-	 * */
-	 public Date dodajDan(Date date, int days)
-	 {
-	        Calendar cal = Calendar.getInstance();
-	        cal.setTime(date);
-	        cal.add(Calendar.DATE, days); //minus number would decrement the days
-	        return cal.getTime();
+	
+	 public String vratiDanUTjednu(Date datum)
+	 {   
+		 String danOriginal;
+		 SimpleDateFormat formatDana = new SimpleDateFormat("E");
+
+		 String[] daniUTjednu = getResources().getStringArray(R.array.dani_u_tjednu);
+		 
+		 danOriginal = formatDana.format(datum);
+		 
+		 if(danOriginal.compareTo("Mon") == 0 ) return  daniUTjednu[0];
+		 else if(danOriginal.compareTo("Tue") == 0 ) return  daniUTjednu[1];
+		 else if(danOriginal.compareTo("Wed") == 0 ) return  daniUTjednu[2];
+		 else if(danOriginal.compareTo("Thu") == 0 ) return  daniUTjednu[3];
+		 else if(danOriginal.compareTo("Fri") == 0 ) return  daniUTjednu[4];
+		 else if(danOriginal.compareTo("Sat") == 0 ) return  daniUTjednu[5];
+		 else if(danOriginal.compareTo("Sun") == 0 ) return  daniUTjednu[6];
+		 else return danOriginal.toString();
+		
 	 }
 }

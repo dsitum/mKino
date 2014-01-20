@@ -53,17 +53,31 @@
     <string name="rezevacije_grad">Grad:</string>
     <string name="rezervacije_datum">Datum:</string>
     <string name="rezervacije_vrijeme">Vrijeme:</string>
+    <string name="lbl_rezervacije_dvorana">Dvorana:</string>
     <string name="rezervacije_rezerviraj">Rezerviraj!</string>
     <string name="rezervirana_sjedala">Odaberite željena sjedala!</string>
     <string name="lbl_rezervirana_sjedala">Sjedala:</string>
     <string name="lbl_vrijeme_projekcije">Vrijeme:</string>
     <string name="btn_mapa_sjedala">Mapa sjedala</string>
-    
+     <string-array name="dani_u_tjednu">
+        <item >Ponedjeljak</item>
+        <item >Utorak</item>
+        <item >Srijeda</item>
+        <item >Četvrtak</item>
+        <item >Petak</item>
+        <item >Subota</item>
+        <item >Nedjelja</item>
+    </string-array>
     
     <!-- dijalog_mapa_sjedala -->
     <string name="dijalog_mapa_sjedala_description">Mapa sjedala kino dvorane</string>
 
-    
+     <!-- dijalog_odabir_sjedala -->
+    <string name="odabir_sjedala_btn_odustani">Odustani</string>
+    <string name="odabir_sjedala_btn_resetiraj">Resetiraj</string>
+    <string name="odabir_sjedala_btn_prihvati">Prihvati</string>
+    <string name="odabir_sjedala_txt_odaberi_sjedalo">Odaberi sjedalo!</string>
+      
     <!-- dijalog_prijava -->
     <string name="prijava_prijavi_se">Prijavi se!</string>
     <string name="prijava_odustani">Odustani!</string>

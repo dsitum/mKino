@@ -1,7 +1,7 @@
 package hr.air.mkino.server;
 
 import hr.air.mkino.baza.FilmoviAdapter;
-import hr.air.mkino.baza.OdabraniMultipleksAdapter;
+
 import hr.air.mkino.baza.ProjekcijeAdapter;
 import hr.air.mkino.tipovi.FilmInfo;
 import hr.air.mkino.tipovi.ProjekcijaInfo;
@@ -9,7 +9,7 @@ import hr.air.mkino.tipovi.ProjekcijaInfo;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -28,13 +28,12 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
+
 
 public class JsonProjekcije extends AsyncTask <String, Void, String> {
 
 ProjekcijeAdapter bazaProjekcija;
-private OdabraniMultipleksAdapter multipleksAdapter;	
+	
 	/**
 	 * Dohvaæa projekcije sa web servisa. To ne ukljuèuje one projekcije koji se veæ nalaze u lokalnoj bazi
 	 * @return projekcije u Jsonformatu
@@ -89,9 +88,8 @@ private OdabraniMultipleksAdapter multipleksAdapter;
 		int film;
 		int dvorana;
 		String vrijemePocetka;
-		int cijena;
-		/*TODO odrediti koji je grad odabran!!!!*/
-		int multipleks;//=	multipleksAdapter.dohvatiOdabraniMultipleks();	
+		int cijena;		
+		int multipleks;	
 		int idProjekcije;
 		
 		try {
@@ -106,11 +104,9 @@ private OdabraniMultipleksAdapter multipleksAdapter;
 				cijena = projekcijaJson.getInt("cijena");
 				idProjekcije = projekcijaJson.getInt("idProjekcije");
 				multipleks = projekcijaJson.getInt("multipleks");
-				/*TODO moramo smanjit multipleks za 1*/
-				//multipleks -= 1;
-				
-				FilmInfo filmInf = filmAd.dohvatiDetaljeFilma(film);				
-				ProjekcijaInfo projekcija = new ProjekcijaInfo(idProjekcije, dvorana, filmInf,vrijemePocetka,  1, cijena); 	
+				FilmInfo filmInf = filmAd.dohvatiDetaljeFilma(film);	
+				/*TODO test ovog poziva"!!!*/
+				ProjekcijaInfo projekcija = new ProjekcijaInfo(idProjekcije, dvorana, filmInf,vrijemePocetka, multipleks, cijena); 	
 				
 				projekcije.add(projekcija);
 			}

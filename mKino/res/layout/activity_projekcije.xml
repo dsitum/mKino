@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#282828"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/rezervacije_lbl_grad"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#23b684"
+            android:gravity="center"
+            android:text="@string/rezevacije_grad"
+            android:textColor="#ffffffd5"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/rezervacije_spinner_grad"
+            style="@style/AppTheme"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.3"
+            android:background="#23b6a3"
+            android:entries="@array/lista_multipleksa" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/rezervacija_lblGrad"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#23b684"
+            android:gravity="center"
+            android:text="@string/rezervacije_datum"
+            android:textColor="#ffffffd5"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/rezervacije_spiner_datum"
+            style="@style/AppTheme"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="#23b6a3" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/rezervacije_popis_projekcija"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" >
+    </ListView>
+
+</LinearLayout>

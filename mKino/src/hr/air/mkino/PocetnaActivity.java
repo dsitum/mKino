@@ -1,8 +1,17 @@
 package hr.air.mkino;
 
+import java.util.List;
+
 import hr.air.mkino.R;
+import hr.air.mkino.baza.FilmoviAdapter;
+import hr.air.mkino.baza.MultipleksAdapter;
 import hr.air.mkino.baza.PrijavljeniKorisnikAdapter;
 import hr.air.mkino.core.Prijava;
+import hr.air.mkino.server.JsonFilmovi;
+import hr.air.mkino.server.JsonMultipleksi;
+import hr.air.mkino.tipovi.FilmInfo;
+import hr.air.mkino.tipovi.MultipleksInfo;
+
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -52,7 +61,7 @@ public class PocetnaActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(context, DetaljiFilmaActivity.class);
+				Intent i = new Intent(context, MojeRezervacijeActivity.class);
 				startActivity(i);
 				
 			}
@@ -65,6 +74,33 @@ public class PocetnaActivity extends Activity {
 				startActivity(i);				
 			}
 		});
+   
+        
+        /*TODO poèetno dohvaæanje multipleksa i filmova*/
+        MultipleksAdapter multipleksAdapter = new MultipleksAdapter(this);
+		List<MultipleksInfo> multipleksi = multipleksAdapter.dohvatiMultiplekse();
+		
+		if (multipleksi.size() == 0)
+		{
+			JsonMultipleksi jsonMultipleksi = new JsonMultipleksi();
+			multipleksi = jsonMultipleksi.dohvatiMultiplekse();
+			
+			// unos dohvaæenih multipleksa u lokalnu bazu
+			for (MultipleksInfo multipleks : multipleksi)
+			{
+				multipleksAdapter.unosMultipleksa(multipleks);
+			}
+		} 
+		FilmoviAdapter filmoviAdapter = new FilmoviAdapter(this);
+		List<Integer> idFilmova = filmoviAdapter.dohvatiIdFilmova();
+		if(idFilmova.size()==0)
+		{
+			JsonFilmovi jsonFilmovi = new JsonFilmovi();
+			List<FilmInfo> filmovi = jsonFilmovi.dohvatiFilmove(this);
+			filmoviAdapter.azurirajBazuFilmova(filmovi);
+		}
+		/*TODO ovo provjeriti zbog performansi i konzistentnosti, možda staviti da se samo prilikom prvog pokretanja aplikacije izvrsi!*/
+		
     }
 
     @Override
