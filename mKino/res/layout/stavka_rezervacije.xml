@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  
+        android:layout_width="wrap_content"
+        android:layout_height="104dp"
+        android:layout_gravity="right"
+        android:orientation="vertical"
+        android:paddingLeft="5dp" >
+
+        <!-- naziv filma -->
+
+        <TextView
+            android:id="@+id/rezervacija_naziv_projekcije"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:paddingTop="5dp"
+            android:text="@string/tmp_naslov_filma"
+            android:textColor="#ffffffd5"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+       
+        <!-- uloge u filmu -->
+
+        <TextView
+            android:id="@+id/rezervacija_dvorana"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:paddingTop="5dp"
+            android:text="@string/tmp_glumci_filma"
+            android:textColor="#ffffffd5"
+            android:textSize="12sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/rezervacija_kod"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:text="@string/tmp_glumci_filma"
+            android:textColor="#ffffffd5"
+            android:textSize="12sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/rezervacija_vrijeme_projekcije"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:text="@string/tmp_glumci_filma"
+            android:textColor="#ffffffd5"
+            android:textSize="12sp"
+            android:textStyle="italic" />
+        
+        <TextView
+            android:id="@+id/rezervacija_id_rezervacije"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+	    
+  
+</LinearLayout>

@@ -27,6 +27,18 @@ public class RezervacijaInfo {
 		this.kodRezervacije = kodRezervacije;
 		this.projekcija = projekcija;
 	}
+	public String getNaziv()
+	{
+		return projekcija.getNaziv();
+	}
+	public int getDvorana()
+	{
+		return projekcija.getDvorana();
+	}
+	public String getVrijeme()
+	{
+		return projekcija.getVrijemePocetka();
+	}
 	public int getIdRezervacije()
 	{
 		return idRezervacije;

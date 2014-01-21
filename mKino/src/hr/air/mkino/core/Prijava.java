@@ -94,6 +94,8 @@ public class Prijava {
 					registracije.prikaziDijalog(context);					
 				}				
 			});
+			
+			
 		}
 	
 	/**

@@ -5,10 +5,15 @@
     android:background="#282828"
     android:orientation="vertical" >
 
-    <ExpandableListView
-        android:id="@+id/moje_rezervacije_listview"
+    <TextView
+        android:id="@+id/moje_rezervacije_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ListView
+        android:id="@+id/moje_rezervacije_list_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-    </ExpandableListView>
+    </ListView>
 
 </LinearLayout>

@@ -10,6 +10,7 @@ import hr.air.mkino.core.Prijava;
 import hr.air.mkino.server.JsonFilmovi;
 import hr.air.mkino.server.JsonMultipleksi;
 import hr.air.mkino.tipovi.FilmInfo;
+import hr.air.mkino.tipovi.Korisnik;
 import hr.air.mkino.tipovi.MultipleksInfo;
 
 
@@ -61,9 +62,19 @@ public class PocetnaActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(context, MojeRezervacijeActivity.class);
-				startActivity(i);
 				
+				PrijavljeniKorisnikAdapter prijavljeniKorisnik = new PrijavljeniKorisnikAdapter(context);
+				Korisnik korisnik = prijavljeniKorisnik.dohvatiPrijavljenogKorisnika();
+				if(korisnik != null )
+				{
+					Intent i = new Intent(context, MojeRezervacijeActivity.class);
+					startActivity(i);
+				}
+				else
+				{
+					/*TODO string izmjenit*/
+					Toast.makeText(context, R.string.registracija_email, Toast.LENGTH_SHORT).show();					
+				}
 			}
 		});         
      	

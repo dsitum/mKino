@@ -3,7 +3,7 @@ package hr.air.mkino.server;
 import hr.air.mkino.tipovi.RezervacijaInfo;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
