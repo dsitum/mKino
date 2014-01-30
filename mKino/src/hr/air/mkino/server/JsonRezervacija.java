@@ -64,25 +64,25 @@ public class JsonRezervacija extends AsyncTask<String, Void, String> {
 		
 		
 		try {
-				int idProjekcije = 0;
-				String korisnickoIme ="";
+				//int idProjekcije = 0;
+				//String korisnickoIme ="";
 				String kodRezervacije="";
-			
-				List<Integer> sjedalo = new ArrayList<Integer>();
+				
+		//		List<Integer> sjedalo = new ArrayList<Integer>();
 				JSONArray rezultati = new JSONArray(jsonRezultat);
 				
 				int n = rezultati.length();
 				for(int i=0; i<n; i++) 
 				{
 					JSONObject rezultat = rezultati.getJSONObject(i);					
-					//povratnaInformacija = rezultat.getString("povratnaInformacija");					
-					idProjekcije = rezultat.getInt("idProjekcije");
-					korisnickoIme= rezultat.getString("korisnickoIme");
-					kodRezervacije = rezultat.getString("kod");
-					int sjedaloInt = rezultat.getInt("sjedalo");
-					sjedalo.add(sjedaloInt);
+										
+					//idProjekcije = rezultat.getInt("idProjekcije");
+					//korisnickoIme= rezultat.getString("korisnickoIme");
+					kodRezervacije = rezultat.getString("povratnaInformacijaId");
+					//int sjedaloInt = rezultat.getInt("sjedalo");
+					//sjedalo.add(sjedaloInt);
 				}
-				if(n>0)	rezervacija = new RezervacijaInfo(0, idProjekcije, korisnickoIme, kodRezervacije, sjedalo);
+				if(n>0)	rezervacija = new RezervacijaInfo(0, -1, null, kodRezervacije, null);
 				else rezervacija = null;
 		}			
 		catch (JSONException e) {	

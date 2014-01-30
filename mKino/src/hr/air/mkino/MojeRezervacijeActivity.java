@@ -37,7 +37,7 @@ public class MojeRezervacijeActivity extends Activity {
 		if( korisnik == null)
 		{
 			/*TODO string izmjenit*/
-			Toast.makeText(this, R.string.registracija_email, Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, R.string.moje_rezervacije_prijavite_se, Toast.LENGTH_SHORT).show();
 			this.finish();			
 		}
 		

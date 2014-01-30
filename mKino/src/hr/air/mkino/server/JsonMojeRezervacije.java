@@ -4,21 +4,16 @@ package hr.air.mkino.server;
 import hr.air.mkino.baza.ProjekcijeAdapter;
 import hr.air.mkino.tipovi.ProjekcijaInfo;
 import hr.air.mkino.tipovi.RezervacijaInfo;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-
-import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -99,31 +94,33 @@ public class JsonMojeRezervacije extends AsyncTask<String, Void, String> {
 		return rezervacija;
 	}
 
+	// pomoæna metoda koja u pozadini obraðuje http zahtjev (dohvaæanje podataka)
+	@Override
+	protected String doInBackground(String... parametri) {
+		String korisnik = parametri[0];
 
-	protected String doInBackground(String... podaciPrijava) {
 		HttpClient httpKlijent = new DefaultHttpClient();
-	 
-		HttpPost httpPostZahtjev = new HttpPost("http://mkinoairprojekt.me.pn/skripte/index.php?tip=mojeRezervacije");
+		HttpGet httpZahtjev = new HttpGet("http://mkinoairprojekt.me.pn/skripte/index.php?tip=mr&korisnik="+korisnik);
+		
 		String jsonResult = "";
-		ResponseHandler<String> handler = new BasicResponseHandler();			
-		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-		nameValuePairs.add(new BasicNameValuePair("korisnik", podaciPrijava[0]));
-  	
-
+		ResponseHandler<String> handler = new BasicResponseHandler();
+		
 		try {
-			  httpPostZahtjev.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-			jsonResult = httpKlijent.execute(httpPostZahtjev, handler);
+			jsonResult = httpKlijent.execute(httpZahtjev, handler);
 		}
 		catch(ClientProtocolException e){
+			String pogreska = e.toString();
 			e.printStackTrace();
+		
+			pogreska.charAt(0);
 		}
 		catch(IOException e){
 			e.printStackTrace();
 		}
 		
 		httpKlijent.getConnectionManager().shutdown();
+	
 		return jsonResult;
 	}
-
 
 }

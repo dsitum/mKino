@@ -107,7 +107,7 @@ public class RezervacijaActivity extends Activity {
 		}
 		else
 		{
-			Toast.makeText(this, R.string.rezervirana_sjedala, Toast.LENGTH_LONG).show();
+			Toast.makeText(this, R.string.rezervacija_nije_moguce_rezervirati, Toast.LENGTH_LONG).show();
 		}
 	}
 	
@@ -126,11 +126,11 @@ public class RezervacijaActivity extends Activity {
 		
 		if(!moguceRezervirati)
 		{
-			Toast.makeText(this, R.string.rezervacije_rezerviraj, Toast.LENGTH_LONG).show();
+			Toast.makeText(this, R.string.rezervacija_nije_moguce_rezervirati, Toast.LENGTH_LONG).show();
 		}
 		else if(listaOdabranih.size() == 0)
 		{
-			Toast.makeText(this, R.string.rezervacije_rezerviraj, Toast.LENGTH_LONG).show();
+			Toast.makeText(this, R.string.rezervacija_odaberite_sjedala, Toast.LENGTH_LONG).show();
 		}
 		else if( korisnik == null)
 		{
@@ -143,8 +143,8 @@ public class RezervacijaActivity extends Activity {
 			if(rezervacija == null)
 			{
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		        builder.setMessage(R.string.rezervacije_rezerviraj)
-		               .setPositiveButton(R.string.rezervacije_rezerviraj, new DialogInterface.OnClickListener() {
+		        builder.setMessage(R.string.rezervacija_pogreska_kod_registracije)
+		               .setPositiveButton(R.string.rezervacija_shvacam, new DialogInterface.OnClickListener() {
 		                   public void onClick(DialogInterface dialog, int id) {
 		                	   
 		                      
@@ -155,9 +155,9 @@ public class RezervacijaActivity extends Activity {
 			else
 			{
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		        builder.setTitle(R.string.rezervacije_rezerviraj)
+		        builder.setTitle(R.string.rezervacija_uspjesna)
 		        		.setMessage("Kod rezervacije: " + rezervacija.getKodRezervacije())
-		                .setPositiveButton(R.string.rezervacije_rezerviraj, new DialogInterface.OnClickListener() {
+		                .setPositiveButton(R.string.rezervacija_nastavi, new DialogInterface.OnClickListener() {
 		                   public void onClick(DialogInterface dialog, int id) {
 		                	   RezervacijaActivity.this.finish();
 		                	   Intent intent = new Intent(RezervacijaActivity.this, PocetnaActivity.class);
@@ -186,6 +186,8 @@ public class RezervacijaActivity extends Activity {
 		float postotakZauzetosti = 0;
 		if(sjedalaZauzeta.size() != 0 )  
 			postotakZauzetosti = BROJ_SJEDALA / sjedalaZauzeta.size()*100;
+		else 
+			return true;
 		if(postotakZauzetosti <= 100-OGRANICENJE_SJEDALA)
 			return false;
 		else

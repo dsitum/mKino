@@ -68,7 +68,12 @@
         <item >Subota</item>
         <item >Nedjelja</item>
     </string-array>
-    
+    <string name="rezervacija_nije_moguce_rezervirati">Nije moguće rezervirati sjedala!</string>
+    <string name="rezervacija_odaberite_sjedala">Odaberite sjedala!</string>
+    <string name="rezervacija_pogreska_kod_registracije">Dogodila se pogreška prilikom registracije! Molimo vas za strpljenje i pokušajte ponovno!</string> 
+    <string name="rezervacija_shvacam">Shvaćam!</string>
+    <string name="rezervacija_uspjesna">Uspješno ste rezervirali ulaznice!</string>
+    <string name="rezervacija_nastavi">Nastavi</string>
     <!-- dijalog_mapa_sjedala -->
     <string name="dijalog_mapa_sjedala_description">Mapa sjedala kino dvorane</string>
 
@@ -107,6 +112,6 @@
     <string name="naziv_filma_mali_lbl">Naslov:</string>
     <string name="uloge_male_lbl">Glumci:</string>
     
-    <!--  stavka_projekcije -->
-    
+    <!-- moje_rezervacije -->
+    <string name="moje_rezervacije_prijavite_se">Prijavite se za pregled vlastitih rezervacija</string>
 </resources>
