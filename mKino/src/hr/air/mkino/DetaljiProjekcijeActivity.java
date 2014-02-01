@@ -85,7 +85,7 @@ public class DetaljiProjekcijeActivity extends Activity {
 		if(multipl != null) multipleks.setText(multipl.getNaziv());		
 		
 		SlikaFilma sf = new SlikaFilma();
-		slika.setImageBitmap(sf.preuzmiSliku(detaljiProjekcije.getIdFilma()));
+		slika.setImageBitmap(sf.preuzmiVelikuSliku(detaljiProjekcije.getIdFilma()));
 				
 	
 	}
