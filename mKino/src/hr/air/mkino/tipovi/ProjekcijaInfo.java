@@ -6,9 +6,9 @@ public class ProjekcijaInfo {
 	private FilmInfo film;
 	private String vrijemePocetka;
 	private int multipleks;
-	private int cijena;
+	private float cijena;
 	
-	public ProjekcijaInfo(int idProjekcije, int dvorana, FilmInfo film, String vrijemePocetka, int multipleks, int cijena){
+	public ProjekcijaInfo(int idProjekcije, int dvorana, FilmInfo film, String vrijemePocetka, int multipleks, float cijena){
 		this.idProjekcije = idProjekcije;
 		this.dvorana = dvorana;
 		this.film = film;
@@ -17,7 +17,7 @@ public class ProjekcijaInfo {
 		this.cijena = cijena;
 	}
 	
-	public int getCijena(){
+	public float getCijena(){
 		return cijena;
 	}
 	public int getidProjekcije(){

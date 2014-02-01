@@ -88,7 +88,7 @@ ProjekcijeAdapter bazaProjekcija;
 		int film;
 		int dvorana;
 		String vrijemePocetka;
-		int cijena;		
+		float cijena;		
 		int multipleks;	
 		int idProjekcije;
 		
@@ -101,7 +101,7 @@ ProjekcijeAdapter bazaProjekcija;
 				film = projekcijaJson.getInt("film");
 				dvorana = projekcijaJson.getInt("brojDvorane");
 				vrijemePocetka = projekcijaJson.getString("vrijemePocetka");
-				cijena = projekcijaJson.getInt("cijena");
+				cijena = (float)projekcijaJson.getDouble("cijena");
 				idProjekcije = projekcijaJson.getInt("idProjekcije");
 				multipleks = projekcijaJson.getInt("multipleks");
 				FilmInfo filmInf = filmAd.dohvatiDetaljeFilma(film);	
