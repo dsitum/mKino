@@ -39,14 +39,15 @@ public class PocetnaActivity extends Activity {
         final Context context = this;
         
         ImageButton btnOtvoriMojeRezervacije= (ImageButton) findViewById(R.id.pocetna_btnMojeRezervacije);
-        ImageButton btnOtvoriMapu = (ImageButton) findViewById(R.id.pocetni_btnMapa);
-        ImageButton btnOtvoriAktualno= (ImageButton) findViewById(R.id.pocetna_btnAktualno);
+        final ImageButton btnOtvoriMapu = (ImageButton) findViewById(R.id.pocetni_btnMapa);
+        final ImageButton btnOtvoriAktualno= (ImageButton) findViewById(R.id.pocetna_btnAktualno);
         ImageButton btnOtvoriRezervacije= (ImageButton) findViewById(R.id.pocetna_brnRezerviraj);
     			
 		btnOtvoriMapu.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
+				
 				Intent i = new Intent(context, MojaMapaActivity.class);
 				startActivity(i);
 				
@@ -57,6 +58,7 @@ public class PocetnaActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+				
 				Intent i = new Intent(context, AktualnoActivity.class);
 				startActivity(i);
 				
