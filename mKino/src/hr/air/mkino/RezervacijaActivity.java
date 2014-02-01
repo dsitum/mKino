@@ -13,7 +13,7 @@ import hr.air.mkino.baza.ProjekcijeAdapter;
 import hr.air.mkino.core.Prijava;
 import hr.air.mkino.server.JsonDohvatiSjedala;
 import hr.air.mkino.server.JsonRezervacija;
-import hr.air.mkino.server.SlikaFilma;
+import hr.air.mkino.server.SlikaSaServera;
 import hr.air.mkino.tipovi.Korisnik;
 import hr.air.mkino.tipovi.MultipleksInfo;
 import hr.air.mkino.tipovi.ProjekcijaInfo;
@@ -229,8 +229,8 @@ public class RezervacijaActivity extends Activity {
 		MultipleksInfo multipl = ma.dohvatiMultipleks(detaljiProjekcije.getMultipleks());
 		if(multipl != null) multipleks.setText(multipl.getNaziv());		
 		
-		SlikaFilma sf = new SlikaFilma();
-		slika.setImageBitmap(sf.preuzmiVelikuSliku(detaljiProjekcije.getIdFilma()));
+		SlikaSaServera sf = new SlikaSaServera(this);
+		slika.setImageBitmap(sf.dohvatiVelikuSliku(detaljiProjekcije.getIdFilma()));
 		
 	
 	}

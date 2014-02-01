@@ -10,8 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import hr.air.mkino.R;
-import hr.air.mkino.server.SlikaFilma;
+import hr.air.mkino.sucelja.ISlikaFilma;
 import hr.air.mkino.tipovi.FilmInfo;
+import hr.air.mkino.uzorcidizajna.UcitajSlikuFactory;
 
 public class StavkaFilma extends ArrayAdapter<FilmInfo> {
 	private List<FilmInfo> filmovi;
@@ -35,11 +36,10 @@ public class StavkaFilma extends ArrayAdapter<FilmInfo> {
 		// dohvaæamo trenutni film
 		FilmInfo trenutniFilm = filmovi.get(pozicija);
 		
-		
 		// postavljamo sliku filma
 		ImageView slikaFilma = (ImageView)stavka.findViewById(R.id.mala_slika_filma);
-		SlikaFilma slika = new SlikaFilma();
-		slikaFilma.setImageBitmap(slika.preuzmiMaluSliku(trenutniFilm.getIdFilma()));
+		ISlikaFilma slika = UcitajSlikuFactory.ucitaj(getContext(), trenutniFilm.getIdFilma(), false);
+		slikaFilma.setImageBitmap(slika.dohvatiMaluSliku(trenutniFilm.getIdFilma()));
 		
 		// postavljamo ostale podatke
 		TextView idFilma = (TextView) stavka.findViewById(R.id.id_filma_u_bazi);

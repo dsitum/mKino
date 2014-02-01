@@ -24,7 +24,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.Toast;
-/**klasa koja služi za prikaz poèetnog zaslona aplikacije*/
+
+/**
+ * Klasa koja služi za prikaz poèetnog zaslona aplikacije
+ * @author SystemDesign
+ *
+ */
 public class PocetnaActivity extends Activity {
 
     @Override

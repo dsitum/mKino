@@ -3,7 +3,7 @@ package hr.air.mkino;
 
 import hr.air.mkino.baza.MultipleksAdapter;
 import hr.air.mkino.baza.ProjekcijeAdapter;
-import hr.air.mkino.server.SlikaFilma;
+import hr.air.mkino.server.SlikaSaServera;
 
 import hr.air.mkino.tipovi.MultipleksInfo;
 import hr.air.mkino.tipovi.ProjekcijaInfo;
@@ -84,8 +84,8 @@ public class DetaljiProjekcijeActivity extends Activity {
 		MultipleksInfo multipl = ma.dohvatiMultipleks(detaljiProjekcije.getMultipleks());
 		if(multipl != null) multipleks.setText(multipl.getNaziv());		
 		
-		SlikaFilma sf = new SlikaFilma();
-		slika.setImageBitmap(sf.preuzmiVelikuSliku(detaljiProjekcije.getIdFilma()));
+		SlikaSaServera sf = new SlikaSaServera(this);
+		slika.setImageBitmap(sf.dohvatiVelikuSliku(detaljiProjekcije.getIdFilma()));
 				
 	
 	}

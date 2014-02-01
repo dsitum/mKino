@@ -1,8 +1,9 @@
 package hr.air.mkino;
 
 import hr.air.mkino.baza.FilmoviAdapter;
-import hr.air.mkino.server.SlikaFilma;
+import hr.air.mkino.sucelja.ISlikaFilma;
 import hr.air.mkino.tipovi.FilmInfo;
+import hr.air.mkino.uzorcidizajna.UcitajSlikuFactory;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -43,8 +44,8 @@ public class DetaljiFilmaActivity extends Activity {
 		redatelj.setText(detaljiFilma.getRedatelj());
 		glavneUloge.setText(detaljiFilma.getGlavneUloge());
 		opis.setText(detaljiFilma.getOpis());
-		SlikaFilma sf = new SlikaFilma();
-		slika.setImageBitmap(sf.preuzmiVelikuSliku(detaljiFilma.getIdFilma()));
+		ISlikaFilma sf = UcitajSlikuFactory.ucitaj(getBaseContext(), detaljiFilma.getIdFilma(), true);
+		slika.setImageBitmap(sf.dohvatiVelikuSliku(detaljiFilma.getIdFilma()));
 	}
 
 	@Override
