@@ -1,5 +1,6 @@
 package hr.air.mkino.baza;
 
+import hr.air.mkino.sd.UpraviteljSDKartice;
 import hr.air.mkino.tipovi.FilmInfo;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
 
 /**
  * Ova klasa služi za dohvaæanje filmova iz lokalne baze podataka, dodavanje novih filmova i brisanje postojeæih. U ovoj bazi se uvijek trebaju nalaziti trenutno aktualni filmovi
@@ -117,6 +119,10 @@ public class FilmoviAdapter {
 			else {
 				// a ako film postoji u bazi, oèito je da se radi o filmu koji više nije aktualan (zato je web servis i vratio ponovno podatke o njemu), pa ga brišemo iz baze
 				brisanjeFilma(idFilma);
+				// takoðer brišemo i slike sa SD kartice
+				String sdKartica = Environment.getExternalStorageDirectory().getPath();
+				UpraviteljSDKartice.obrisiDatoteku(sdKartica + "/mKino/" + idFilma + ".jpg");
+				UpraviteljSDKartice.obrisiDatoteku(sdKartica + "/mKino/" + idFilma + "_mala.jpg");
 			}
 		}
 	}
