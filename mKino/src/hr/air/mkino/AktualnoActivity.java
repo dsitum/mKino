@@ -1,11 +1,8 @@
 package hr.air.mkino;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import hr.air.mkino.R;
+import hr.air.mkino.adapteri.StavkaFilma;
 import hr.air.mkino.baza.OdabraniMultipleksAdapter;
 import hr.air.mkino.server.JsonFilmovi;
 import hr.air.mkino.tipovi.FilmInfo;
@@ -16,9 +13,8 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -53,7 +49,7 @@ public class AktualnoActivity extends Activity {
 		
 		// dohvaæamo filmove i pohranjujemo ih u ListView "popisFilmova". Tu se automatski prikazuju na zaslon
 		filmovi = dohvatiFilmove();
-		ucitajFilmoveUListView();
+		ucitajFilmUListView();
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -94,25 +90,10 @@ public class AktualnoActivity extends Activity {
 	/**
 	 * Dohvaæa filmove i uèitava ih u ListView
 	 */
-	private void ucitajFilmoveUListView()
-	{
-		String[] iz = new String[] {"idFilma", "naziv", "glavneUloge"};
-		int[] u = new int[] {R.id.id_filma_u_bazi, R.id.naziv_filma_mali, R.id.uloge_filma_male};
-		
-		Map<String, String> stavka;
-		List<Map<String, String>> podaci = new ArrayList<Map<String, String>>();
-		
-		for (FilmInfo film : filmovi)
-		{
-			stavka = new HashMap<String, String>();
-			stavka.put("idFilma", String.valueOf(film.getIdFilma()));
-			stavka.put("naziv",  film.getNaziv());
-			stavka.put("glavneUloge", film.getGlavneUloge());
-			podaci.add(stavka);
-		}
-
-		ListAdapter adapter = new SimpleAdapter(this, podaci, R.layout.stavka_filma, iz, u);
-		popisFilmova.invalidateViews();
-		popisFilmova.setAdapter(adapter);
+	private void ucitajFilmUListView()
+	{				
+		ArrayAdapter<FilmInfo> adapter = new StavkaFilma(this, R.layout.stavka_filma, filmovi);
+		ListView lv = (ListView) findViewById(R.id.popis_filmova);
+		lv.setAdapter(adapter);
 	}
 }
