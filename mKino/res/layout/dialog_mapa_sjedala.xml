@@ -15,6 +15,18 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:contentDescription="@string/lbl_rezervirana_sjedala"
-        android:src="@drawable/aktualno_100x93" />
+        android:src="@drawable/platno" />
+
+    <Button
+        android:id="@+id/mapa_sjedala_nastavi_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@color/backgroundMedium"
+        android:text="@string/rezervacija_nastavi"
+        android:textColor="@color/textWhite" />
 
 </RelativeLayout>

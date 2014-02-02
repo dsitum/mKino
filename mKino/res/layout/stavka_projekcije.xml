@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="90dp"
+    android:background="@color/backgroundMedium"
     android:orientation="horizontal" >
     
     <!-- slika s lijeve strane -->
 
     <ImageView
         android:id="@+id/mala_slika_projekcije"
-        android:layout_width="80dp"
-        android:layout_height="94dp"
-        android:layout_gravity="left"
+        android:layout_width="91dp"
+        android:layout_height="79dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
         android:contentDescription="@string/slika_filma_mala"
         android:src="@drawable/film_ikona_predlozak" />
     
@@ -30,6 +32,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
+            android:layout_marginTop="3dp"
             android:paddingTop="5dp"
             android:text="@string/tmp_naslov_filma"
             android:textColor="#ffffffd5"

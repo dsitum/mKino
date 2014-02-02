@@ -31,12 +31,12 @@ public class MojeRezervacijeActivity extends Activity {
 		final Context context = this;
     
 		PrijavljeniKorisnikAdapter prijavljeniKorisnik = new PrijavljeniKorisnikAdapter(this);
-		Korisnik korisnik = prijavljeniKorisnik.dohvatiPrijavljenogKorisnika();
+		final Korisnik korisnik = prijavljeniKorisnik.dohvatiPrijavljenogKorisnika();
 		
 		
 		//1. Pokreni servis za dohvaæanje mojih rezervacija
-		JsonMojeRezervacije jsonRezervacije = new JsonMojeRezervacije();
-		List<RezervacijaInfo> rezervacije = jsonRezervacije.dohvati(korisnik.getKorisnickoIme(), this);
+		final JsonMojeRezervacije jsonRezervacije = new JsonMojeRezervacije();
+		final List<RezervacijaInfo> rezervacije = jsonRezervacije.dohvati(korisnik.getKorisnickoIme(), this);
 		
 			
 		ucitajUListView(rezervacije);
@@ -51,7 +51,9 @@ public class MojeRezervacijeActivity extends Activity {
 				JsonObrisiRegistraciju jsonObrisi = new JsonObrisiRegistraciju();
 				TextView tv = (TextView) kliknutaProjekcija.findViewById(R.id.rezervacija_kod);
 				String kod = tv.getText().toString();
-				List<RezervacijaInfo> rezervacije = jsonObrisi.dohvati(kod, context);
+				String[] separated = kod.split("-");
+				jsonObrisi.dohvati(korisnik.getKorisnickoIme(),separated[1],  context);
+				List<RezervacijaInfo> rezervacije = jsonRezervacije.dohvati(korisnik.getKorisnickoIme(), context);
 				ucitajUListView(rezervacije);
 				return true;
 			}
@@ -65,8 +67,8 @@ public class MojeRezervacijeActivity extends Activity {
 	public void ucitajUListView(List<RezervacijaInfo> rezervacije)
 	{
 		
-			String[] iz = new String[] {"idRezervacije", "naziv", "dvorana", "vrijeme", "kod"};
-			int[] u = new int[] {R.id.rezervacija_id_rezervacije, R.id.rezervacija_naziv_projekcije, R.id.rezervacija_dvorana, R.id.rezervacija_vrijeme_projekcije, R.id.rezervacija_kod};
+			String[] iz = new String[] {"idRezervacije", "naziv", "dvorana", "vrijeme", "kod", "sjedala"};
+			int[] u = new int[] {R.id.rezervacija_id_rezervacije, R.id.rezervacija_naziv_projekcije, R.id.rezervacija_dvorana, R.id.rezervacija_vrijeme_projekcije, R.id.rezervacija_kod, R.id.moje_rezervacije_sjedala};
 			String vrijeme;
 		
 			Map<String, String> stavka;
@@ -81,10 +83,16 @@ public class MojeRezervacijeActivity extends Activity {
 				stavka.put("naziv",  rezervacija.getNaziv());
 				vrijeme = rezervacija.getVrijeme();
 				stavka.put("vrijeme", vrijeme.substring(0, 16));
+				stavka.put("kod", rezervacija.getKodRezervacije());
 				stavka.put("dvorana", "Dvorana " + rezervacija.getDvorana());
-				
-				
-					podaci.add(stavka);
+				String sjedala = "";
+				for(Integer sjedalo: rezervacija.getSjedala())
+				{
+					sjedala += Integer.toString(sjedalo) + ",";
+				}
+				sjedala= sjedala.substring(0,sjedala.length()-1);
+				stavka.put("sjedala",sjedala );
+				podaci.add(stavka);
 				
 				
 			}

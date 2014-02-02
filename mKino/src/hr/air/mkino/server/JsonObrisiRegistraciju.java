@@ -1,10 +1,5 @@
 package hr.air.mkino.server;
 
-
-import hr.air.mkino.baza.ProjekcijeAdapter;
-import hr.air.mkino.tipovi.ProjekcijaInfo;
-import hr.air.mkino.tipovi.RezervacijaInfo;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,14 +18,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 import android.content.Context;
 import android.os.AsyncTask;
 
 public class JsonObrisiRegistraciju extends AsyncTask<String, Void, String> {
 	
-	public List<RezervacijaInfo> dohvati(String kod, Context c)
+	public int dohvati(String korisnickoIme, String idProjekcije, Context c)
 	{					
-		this.execute(kod);
+		this.execute(korisnickoIme, idProjekcije);
 		String jsonRezultat = "";
 		try {
 			jsonRezultat = this.get();
@@ -42,77 +38,44 @@ public class JsonObrisiRegistraciju extends AsyncTask<String, Void, String> {
 			e.printStackTrace();
 		}
 		
-		return  parsirajJson(jsonRezultat, c);			
+		return  parsirajJson(jsonRezultat);			
 	}
 
-	
-	private List<RezervacijaInfo> parsirajJson(String jsonRezultat, Context c) {		
-		List<RezervacijaInfo> rezervacija = new ArrayList<RezervacijaInfo>();		
-		ProjekcijaInfo projekcija = null;
-		ProjekcijeAdapter projekcijaAdapter = new ProjekcijeAdapter(c);
-		try {
-			int idRezervacije = 0 ;
-			int idProjekcije = -6;
-			int pomocniIdProjekcije = -7;
-	
-			List<Integer> sjedala = null;
-			String korisnickoIme = null;	
-			String kodRezervacije = null;
-			JSONArray rezultati = new JSONArray(jsonRezultat);
-				
-			int n = rezultati.length();
-			for(int i=0; i<n; i++) 
-			{
-				JSONObject rezultat = rezultati.getJSONObject(i);
-				idProjekcije = rezultat.getInt("idProjekcije");
-				
-				//uvjet æe se izvršiti ukoliko imamo više sjedala za istu projekciju, pa ih unosimo u listu i nije potrebno upisivat veæ poznate podatke o pr0jekciji
-				if(idProjekcije == pomocniIdProjekcije)
-				{
-					sjedala.add(rezultat.getInt("sjedalo"));						
-				}
-				//inaèe se radi o drugoj projekciji pa je potrebno unijeti nove podatke
-				else
-				{
-					if(i != 0)
-					{
-						projekcija = projekcijaAdapter.dohvatiProjekciju(idProjekcije, c);
-						rezervacija.add(new RezervacijaInfo(idRezervacije, idProjekcije, korisnickoIme, kodRezervacije, sjedala, projekcija));
-						
-					}
-					
-					sjedala = new ArrayList<Integer>();
-					idRezervacije = rezultat.getInt("idRezervacije");						
-					korisnickoIme= rezultat.getString("korisnickoIme");
-					kodRezervacije = rezultat.getString("kod");
-					sjedala.add(rezultat.getInt("sjedalo"));	
-				}
-				
-			}
-				
-		}			
-		catch (JSONException e) {	
 
-			e.printStackTrace();				
+	private int parsirajJson(String jsonRezultat) {		
+		int povratnaInformacijaId = 7;
+		
+		try {
+			JSONArray rezultati = new JSONArray(jsonRezultat);
+			int n = rezultati.length();
+			
+				for(int i=0; i<n; i++)
+				{
+				JSONObject rezultat = rezultati.getJSONObject(i);				
+				povratnaInformacijaId = rezultat.getInt("povratnaInformacijaId");
+				}
+			}
+		
+		catch (JSONException e) {
+			e.printStackTrace();
+			return -7;
 		}
 		
-		return rezervacija;
+		return povratnaInformacijaId;
 	}
-
-
 	protected String doInBackground(String... podaciPrijava) {
 		HttpClient httpKlijent = new DefaultHttpClient();
 	 
-		HttpPost httpPostZahtjev = new HttpPost("http://mkinoairprojekt.me.pn/skripte/index.php?tip=obrisiRezervaciju");
+		HttpPost httpPostZahtjev = new HttpPost("http://mkinoairprojekt.me.pn/skripte/index.php?tip=obrisirezervaciju");
 		String jsonResult = "";
 		ResponseHandler<String> handler = new BasicResponseHandler();			
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-		nameValuePairs.add(new BasicNameValuePair("kod", podaciPrijava[0]));
-  	
+		nameValuePairs.add(new BasicNameValuePair("korisnickoime", podaciPrijava[0]));
+		nameValuePairs.add(new BasicNameValuePair("projekcija", podaciPrijava[1]));
 
 		try {
 			  httpPostZahtjev.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-			jsonResult = httpKlijent.execute(httpPostZahtjev, handler);
+			  jsonResult = httpKlijent.execute(httpPostZahtjev, handler);
 		}
 		catch(ClientProtocolException e){
 			e.printStackTrace();

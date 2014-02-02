@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
-    android:layout_height="match_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundDark" >
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#202020"
-    android:orientation="vertical"
-    >
+    android:layout_marginTop="5dp"
+    android:background="@color/backgroundDark"
+    android:orientation="vertical" >
 
     <ImageView
         android:id="@+id/slikaFilma"
-        android:contentDescription="@string/slika_filma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:paddingTop="10dp" 
+        android:layout_marginTop="10dp"
+        android:background="@color/blueLight"
+        android:contentDescription="@string/slika_filma"
+        android:paddingBottom="10dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:paddingTop="0dp"
         android:src="@drawable/film_ikona_predlozak" />
 
     <TextView
@@ -31,17 +38,28 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/greenDark" >
 
         <TableRow
             android:id="@+id/tableRow1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/backgroundDark"
+            android:paddingRight="0dp" >
 
             <TextView
                 android:id="@+id/detalji_filma_lblTrajanje"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:background="@color/backgroundDark"
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"
                 android:text="@string/detalji_filma_lblTrajanje"
@@ -52,6 +70,9 @@
                 android:id="@+id/detalji_filma_trajanje"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp"
+                android:background="@color/backgroundDark"
                 android:paddingLeft="5dp"
                 android:text="@string/tmp_trajanje_filma"
                 android:textColor="#ffffffd5"
@@ -62,7 +83,11 @@
         <TableRow
             android:id="@+id/tableRow2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:background="@color/backgroundDark" >
 
             <TextView
                 android:id="@+id/detalji_filma_lblZanr"
@@ -86,7 +111,11 @@
         <TableRow
             android:id="@+id/tableRow3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:background="@color/backgroundDark" >
 
             <TextView
                 android:id="@+id/detalji_filma_lblredatelj"
@@ -110,7 +139,11 @@
         <TableRow
             android:id="@+id/tableRow4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:background="@color/backgroundDark" >
 
             <TextView
                 android:id="@+id/detalji_filma_lblGlumci"
@@ -138,6 +171,7 @@
         android:id="@+id/detalji_filma_lblDetalji"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:text="@string/detalji_filma_lblDetalji"
@@ -148,7 +182,12 @@
         android:id="@+id/detalji_filma_detalji"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#444242"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/backgroundMedium"
+        android:padding="10dp"
+        android:paddingBottom="0dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:text="@string/tmp_detalji_filma"

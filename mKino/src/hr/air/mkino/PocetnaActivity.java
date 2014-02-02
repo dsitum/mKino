@@ -58,7 +58,9 @@ public class PocetnaActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				
+				 if(v == btnOtvoriAktualno) {
+					 btnOtvoriAktualno.setImageResource(R.drawable.aktualno_down100x93);
+				   }
 				Intent i = new Intent(context, AktualnoActivity.class);
 				startActivity(i);
 				

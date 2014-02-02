@@ -15,7 +15,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:text="@string/prijava_korisnicko_ime"
-        android:textColor="@color/textWhite" />
+        android:textColor="@color/blueLight" />
 
     <EditText
         android:id="@+id/dialog_registracija_txtKorisnickoIme"
@@ -24,9 +24,9 @@
         android:layout_alignLeft="@+id/registracija_lblKorisnickoIme"
         android:layout_below="@+id/registracija_lblKorisnickoIme"
         android:layout_marginRight="15dp"
-        android:background="@color/textWhite"
+        android:background="@color/backgroundMedium"
         android:inputType="textCapWords"
-        android:textColor="@color/greenDark" />
+        android:textColor="@color/textWhite" />
 
     <EditText
         android:id="@+id/dialog_registracija_txtLozinka"
@@ -35,9 +35,9 @@
         android:layout_alignLeft="@+id/registracija_lblLozinka"
         android:layout_below="@+id/registracija_lblLozinka"
         android:layout_marginRight="15dp"
-        android:background="@color/textWhite"
+        android:background="@color/backgroundMedium"
         android:inputType="textPassword"
-        android:textColor="@color/greenDark" />
+        android:textColor="@color/textWhite" />
 
     <TextView
         android:id="@+id/registracija_lblLozinka"
@@ -46,7 +46,7 @@
         android:layout_alignLeft="@+id/dialog_registracija_txtKorisnickoIme"
         android:layout_below="@+id/dialog_registracija_txtKorisnickoIme"
         android:text="@string/prijava_lozinka"
-        android:textColor="@color/textWhite" />
+        android:textColor="@color/blueLight" />
 
     <TextView
         android:id="@+id/registracija_lblPonovljenaLozinka"
@@ -55,7 +55,7 @@
         android:layout_alignLeft="@+id/dialog_registracija_txtLozinka"
         android:layout_below="@+id/dialog_registracija_txtLozinka"
         android:text="@string/registracija_ponovljena_lozinka"
-        android:textColor="@color/textWhite" />
+        android:textColor="@color/blueLight" />
 
     <EditText
         android:id="@+id/dialog_registracija_txtPonovljenaLozinka"
@@ -64,11 +64,11 @@
         android:layout_alignLeft="@+id/registracija_lblPonovljenaLozinka"
         android:layout_below="@+id/registracija_lblPonovljenaLozinka"
         android:layout_marginRight="15dp"
-        android:background="@color/textWhite"
+        android:background="@color/backgroundMedium"
         android:inputType="textPassword"
-        android:textColor="@color/greenDark" >
+        android:textColor="@color/textWhite" >
 
-        <requestFocus />
+       
     </EditText>
 
     <EditText
@@ -79,10 +79,10 @@
         android:layout_below="@+id/registracija_lblIme"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:background="@color/textWhite"
+        android:background="@color/backgroundMedium"
         android:ems="10"
         android:inputType="textCapSentences"
-        android:textColor="@color/greenDark" />
+        android:textColor="@color/textWhite" />
 
     <TextView
         android:id="@+id/registracija_lblIme"
@@ -91,7 +91,7 @@
         android:layout_alignLeft="@+id/dialog_registracija_txtIme"
         android:layout_below="@+id/dialog_registracija_txtPonovljenaLozinka"
         android:text="@string/registracija_ime"
-        android:textColor="@color/textWhite" />
+        android:textColor="@color/blueLight" />
 
     <TextView
         android:id="@+id/registracija_prezime"
@@ -100,7 +100,7 @@
         android:layout_alignLeft="@+id/dialog_registracija_txtIme"
         android:layout_below="@+id/dialog_registracija_txtIme"
         android:text="@string/registracija_prezime"
-        android:textColor="@color/textWhite" />
+        android:textColor="@color/blueLight" />
 
     <EditText
         android:id="@+id/dialog_registracija_txtPrezime"
@@ -110,10 +110,10 @@
         android:layout_below="@+id/registracija_prezime"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:background="@color/textWhite"
+        android:background="@color/backgroundMedium"
         android:ems="10"
         android:inputType="textCapSentences"
-        android:textColor="@color/greenDark" />
+        android:textColor="@color/textWhite" />
 
     <TextView
         android:id="@+id/registracija_lblEmail"
@@ -122,7 +122,7 @@
         android:layout_alignLeft="@+id/registracija_prezime"
         android:layout_below="@+id/dialog_registracija_txtPrezime"
         android:text="@string/registracija_email"
-        android:textColor="@color/textWhite" />
+        android:textColor="@color/blueLight" />
 
     <EditText
         android:id="@+id/dialog_registracija_txtTelefon"
@@ -132,10 +132,10 @@
         android:layout_below="@+id/registracija_lblTelefon"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:background="@color/textWhite"
+        android:background="@color/backgroundMedium"
         android:ems="10"
         android:inputType="text"
-        android:textColor="@color/greenDark" />
+        android:textColor="@color/textWhite" />
 
     <TextView
         android:id="@+id/registracija_lblTelefon"
@@ -144,7 +144,7 @@
         android:layout_alignLeft="@+id/registracija_lblEmail"
         android:layout_below="@+id/dialog_registracija_txtEmail"
         android:text="@string/registracija_telefon"
-        android:textColor="@color/textWhite" />
+        android:textColor="@color/blueLight" />
 
     <EditText
         android:id="@+id/dialog_registracija_txtEmail"
@@ -154,10 +154,10 @@
         android:layout_below="@+id/registracija_lblEmail"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:background="@color/textWhite"
+        android:background="@color/backgroundMedium"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:textColor="@color/greenDark" />
+        android:textColor="@color/textWhite" />
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -173,16 +173,16 @@
             android:id="@+id/registracija_btnRegistrirajSe"
             android:layout_width="110sp"
             android:layout_height="match_parent"
-            android:background="@color/greenDark"
+            android:background="@color/backgroundMedium"
             android:text="@string/registracija_registriraj_se"
-            android:textColor="@color/textWhite" />
+            android:textColor="@color/greenLight" />
 
         <Button
             android:id="@+id/registracija_btnOdustani"
             android:layout_width="110sp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:background="@color/greenLight"
+            android:background="@color/backgroundMedium"
             android:text="@string/prijava_odustani"
             android:textColor="@color/textWhite" />
     </LinearLayout>

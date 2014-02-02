@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
-    android:layout_height="match_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundDark" >
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#202020"
-    android:orientation="vertical"
-    >
+    android:background="@color/backgroundDark"
+    android:orientation="vertical" >
 
     <ImageView
         android:id="@+id/projekcija_slikaFilma"
@@ -22,6 +23,8 @@
         android:id="@+id/projekcija_naslov_filma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:text="@string/tmp_naslov_filma"
@@ -31,12 +34,19 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/greenDark" >
 
         <TableRow
             android:id="@+id/tableRow1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="3dp"
+            android:background="@color/backgroundDark"
+            android:paddingLeft="0dp" >
 
             <TextView
                 android:id="@+id/projekcija_lblTrajanje"
@@ -62,7 +72,10 @@
         <TableRow
             android:id="@+id/tableRow2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="3dp"
+            android:background="@color/backgroundDark" >
 
             <TextView
                 android:id="@+id/projekcija_lblZanr"
@@ -86,7 +99,12 @@
         <TableRow
             android:id="@+id/tableRow3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="3dp"
+            android:background="@color/backgroundDark"
+            android:paddingBottom="0dp"
+            android:paddingLeft="0dp" >
 
             <TextView
                 android:id="@+id/projekcija_lblredatelj"
@@ -110,7 +128,10 @@
         <TableRow
             android:id="@+id/tableRow4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="3dp"
+            android:background="@color/backgroundDark" >
 
             <TextView
                 android:id="@+id/projekcija_lblGlumci"
@@ -136,7 +157,8 @@
         <TableRow
             android:id="@+id/tableRow5"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundDark" >
 
             <TextView
                 android:id="@+id/projekcija_dvorana"
@@ -155,7 +177,8 @@
         <TableRow
             android:id="@+id/TableRow01"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundDark" >
 
             <TextView
                 android:id="@+id/projekcija_detalji_multipleks"
@@ -168,14 +191,16 @@
         <TableRow
             android:id="@+id/tableRow6"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundDark" >
 
             <Button
                 android:id="@+id/projekcije_btnRezerviraj"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/rezervacije_rezerviraj" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/rezervacije_rezerviraj"
+                android:textColor="@color/greenLight" />
 
         </TableRow>
 
@@ -185,6 +210,7 @@
         android:id="@+id/projekcija_lblDetalji"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:text="@string/detalji_filma_lblDetalji"
@@ -195,7 +221,12 @@
         android:id="@+id/projekcija_detalji"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#444242"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/backgroundMedium"
+        android:padding="10dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:text="@string/tmp_detalji_filma"

@@ -16,7 +16,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:text="@string/prijava_korisnicko_ime"
-        android:textColor="@color/textWhite" />
+        android:textColor="@color/blueLight" />
 
     <EditText
         android:id="@+id/dialog_registracija_txtKorisnickoIme"
@@ -25,9 +25,9 @@
         android:layout_alignLeft="@+id/registracija_lblKorisnickoIme"
         android:layout_below="@+id/registracija_lblKorisnickoIme"
         android:layout_marginRight="15dp"
-        android:background="@color/textWhite"
+        android:background="@color/backgroundMedium"
         android:inputType="text"
-        android:textColor="@color/backgroundDark"
+        android:textColor="@color/textWhite"
         android:textColorHint="@color/greenDark" />
 
     <TextView
@@ -38,7 +38,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:text="@string/prijava_lozinka"
-        android:textColor="@color/textWhite" />
+        android:textColor="@color/blueLight" />
 
     <EditText
         android:id="@+id/dialog_registracija_txtLozinka"
@@ -47,9 +47,9 @@
         android:layout_alignLeft="@+id/registracija_lblLozinka"
         android:layout_below="@+id/registracija_lblLozinka"
         android:layout_marginRight="15dp"
-        android:background="@color/textWhite"
+        android:background="@color/backgroundMedium"
         android:inputType="text|textPassword"
-        android:textColor="@color/backgroundDark"
+        android:textColor="@color/textWhite"
         android:textColorHint="@color/greenDark" />
 
     <LinearLayout
@@ -75,7 +75,7 @@
             android:layout_width="110sp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:background="@color/greenLight"
+            android:background="@color/backgroundMedium"
             android:text="@string/prijava_odustani"
             android:textColor="@color/textWhite" />
     </LinearLayout>

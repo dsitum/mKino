@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#282828"
+    android:background="@color/backgroundMedium"
     android:orientation="vertical" >
 
     <TextView
         android:id="@+id/moje_rezervacije_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="3dp"
+        android:background="@color/greenDark" />
 
     <ListView
         android:id="@+id/moje_rezervacije_list_view"

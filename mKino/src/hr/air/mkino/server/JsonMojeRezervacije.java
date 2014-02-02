@@ -51,7 +51,7 @@ public class JsonMojeRezervacije extends AsyncTask<String, Void, String> {
 			int pomocniIdProjekcije = -7;
 	
 			List<Integer> sjedala = null;
-			String korisnickoIme = null;	
+			//String korisnickoIme = null;	
 			String kodRezervacije = null;
 			JSONArray rezultati = new JSONArray(jsonRezultat);
 				
@@ -64,7 +64,12 @@ public class JsonMojeRezervacije extends AsyncTask<String, Void, String> {
 				//uvjet æe se izvršiti ukoliko imamo više sjedala za istu projekciju, pa ih unosimo u listu i nije potrebno upisivat veæ poznate podatke o pr0jekciji
 				if(idProjekcije == pomocniIdProjekcije)
 				{
-					sjedala.add(rezultat.getInt("sjedalo"));						
+					sjedala.add(rezultat.getInt("brojSjedala"));	
+					if(i == n-1)
+					{
+						projekcija = projekcijaAdapter.dohvatiProjekciju(idProjekcije, c);
+						rezervacija.add(new RezervacijaInfo(idRezervacije, idProjekcije, "", kodRezervacije, sjedala, projekcija));
+					}
 				}
 				//inaèe se radi o drugoj projekciji pa je potrebno unijeti nove podatke
 				else
@@ -72,15 +77,16 @@ public class JsonMojeRezervacije extends AsyncTask<String, Void, String> {
 					if(i != 0)
 					{
 						projekcija = projekcijaAdapter.dohvatiProjekciju(idProjekcije, c);
-						rezervacija.add(new RezervacijaInfo(idRezervacije, idProjekcije, korisnickoIme, kodRezervacije, sjedala, projekcija));
+						rezervacija.add(new RezervacijaInfo(idRezervacije, idProjekcije, "", kodRezervacije, sjedala, projekcija));
 						
 					}
 					
 					sjedala = new ArrayList<Integer>();
 					idRezervacije = rezultat.getInt("idRezervacije");						
-					korisnickoIme= rezultat.getString("korisnickoIme");
+					//korisnickoIme= rezultat.getString("korisnickoIme");
 					kodRezervacije = rezultat.getString("kod");
-					sjedala.add(rezultat.getInt("sjedalo"));	
+					sjedala.add(rezultat.getInt("brojSjedala"));	
+					pomocniIdProjekcije = idProjekcije;
 				}
 				
 			}

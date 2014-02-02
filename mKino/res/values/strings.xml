@@ -74,6 +74,7 @@
     <string name="rezervacija_shvacam">Shvaćam!</string>
     <string name="rezervacija_uspjesna">Uspješno ste rezervirali ulaznice!</string>
     <string name="rezervacija_nastavi">Nastavi</string>
+    <string name="cijena">Cijena:</string>
     <!-- dijalog_mapa_sjedala -->
     <string name="dijalog_mapa_sjedala_description">Mapa sjedala kino dvorane</string>
 

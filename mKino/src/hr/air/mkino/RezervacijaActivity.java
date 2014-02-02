@@ -96,6 +96,7 @@ public class RezervacijaActivity extends Activity {
 					
 					dialogPrijava.show();
 					
+				
 				}
 			});
 			btnRezerviraj.setOnClickListener(new OnClickListener() {			
@@ -193,6 +194,7 @@ public class RezervacijaActivity extends Activity {
 		else
 			return true;
 	}
+
 	
 	/**
 	 * Metoda koja služi za dohvaæanje podataka o projekciji
@@ -218,8 +220,9 @@ public class RezervacijaActivity extends Activity {
 		TextView dvorana = (TextView) findViewById(R.id.txt_rezervacije_dvorana);
 		TextView vrijeme = (TextView) findViewById(R.id.txt_rezervacije_vrijeme);
 		TextView multipleks = (TextView) findViewById(R.id.txt_rezervacije_grad);
-		
+		TextView cijena = (TextView) findViewById(R.id.rezervacija_cijena);
 		naslov.setText(detaljiProjekcije.getNaziv());
+		cijena.setText("0.00");
 		dvorana.setText("Dvorana "+detaljiProjekcije.getDvorana());		
 		String vrijePocetkString = detaljiProjekcije.getVrijemePocetka();
 		vrijeme.setText(vrijePocetkString);
@@ -265,7 +268,7 @@ public class RezervacijaActivity extends Activity {
                    }
                    azurirajOdabranaMjesta();
                    /*TODO prikazi cijenu na layoutu i invalidate napravi*/
-                   IzracunajCijenu();
+                   
                    
                }
             }) 
@@ -285,13 +288,17 @@ public class RezervacijaActivity extends Activity {
 	public void azurirajOdabranaMjesta()
 	{
 		TextView sjedalaTV = (TextView) findViewById(R.id.rezervacije_sjedala_txt);	
+		TextView cijena = (TextView) findViewById(R.id.rezervacija_cijena);
 		if(listaOdabranih.size() == 0)
 		{
 			sjedalaTV.setText(R.string.odabir_sjedala_txt_odaberi_sjedalo);
+			cijena.setText("0.00");
 			sjedalaTV.invalidate();
 		}
 		else
 		{
+			cijena.setText(Float.toString(IzracunajCijenu()));
+			cijena.invalidate();
 			String text = "";
 			for (Integer sjedalo : listaOdabranih) {
 				text += (""+ Integer.toString(sjedalo)+",  ");

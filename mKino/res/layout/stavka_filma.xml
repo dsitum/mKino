@@ -2,25 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="80dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
+    android:background="@color/backgroundMedium"
     android:orientation="horizontal" >
     
     <!-- slika s lijeve strane -->
+
     <ImageView
         android:id="@+id/mala_slika_filma"
-        android:contentDescription="@string/slika_filma_mala"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_gravity="left"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/slika_filma_mala"
         android:src="@drawable/film_ikona_predlozak" />
     
-    
     <!-- predstavlja sav tekst pokraj slike, organiziran u 2 retka. Prvi redak je naziv filma, drugi uloge u filmu -->
-    <LinearLayout 
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="right"
-        android:paddingLeft="5dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="5dp" >
 
         <!-- naziv filma -->
         <TextView
