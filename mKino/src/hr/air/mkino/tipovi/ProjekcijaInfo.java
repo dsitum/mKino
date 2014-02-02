@@ -1,5 +1,9 @@
 package hr.air.mkino.tipovi;
-
+/**
+ * Klasa koja predstavlja slozeni tip podataka o projekcijama.
+ * @author bstivic
+ *
+ */
 public class ProjekcijaInfo {
 	private int idProjekcije;
 	private int dvorana;

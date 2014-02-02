@@ -29,7 +29,11 @@ import org.json.JSONObject;
 import android.content.Context;
 import android.os.AsyncTask;
 
-
+/**
+ * Klasa koja služi z aasinkrono dohvaæanje projekcija sa web servisa.
+ * @author bstivic
+ *
+ */
 public class JsonProjekcije extends AsyncTask <String, Void, String> {
 
 ProjekcijeAdapter bazaProjekcija;
@@ -105,7 +109,7 @@ ProjekcijeAdapter bazaProjekcija;
 				idProjekcije = projekcijaJson.getInt("idProjekcije");
 				multipleks = projekcijaJson.getInt("multipleks");
 				FilmInfo filmInf = filmAd.dohvatiDetaljeFilma(film);	
-				/*TODO test ovog poziva"!!!*/
+
 				ProjekcijaInfo projekcija = new ProjekcijaInfo(idProjekcije, dvorana, filmInf,vrijemePocetka, multipleks, cijena); 	
 				
 				projekcije.add(projekcija);
@@ -120,7 +124,6 @@ ProjekcijeAdapter bazaProjekcija;
 	    bazaProjekcija.azurirajBazuProjekcija(projekcije);
 
 		// nakon ažuriranja baze, dohvaæamo ponovno sve filmove iz baze
-		/*TODO provjeri jel ovo radi sa multiplekosm*/
 		projekcije = bazaProjekcija.dohvatiProjekcije(multipleksOdabrani, c);
 		
 		return projekcije;

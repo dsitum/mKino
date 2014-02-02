@@ -10,13 +10,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 /**
- * Klasa koja sluûi za prikaz poËetnog zaslona aplikacije
+ * Klasa koja slu≈æi za prikaz po√®etnog zaslona aplikacije
  * @author SystemDesign
  *
  */
@@ -28,61 +29,113 @@ public class PocetnaActivity extends Activity {
         setContentView(R.layout.activity_pocetna);
         final Context context = this;
         
-        ImageButton btnOtvoriMojeRezervacije= (ImageButton) findViewById(R.id.pocetna_btnMojeRezervacije);
+        final ImageButton btnOtvoriMojeRezervacije= (ImageButton) findViewById(R.id.pocetna_btnMojeRezervacije);
         final ImageButton btnOtvoriMapu = (ImageButton) findViewById(R.id.pocetni_btnMapa);
         final ImageButton btnOtvoriAktualno= (ImageButton) findViewById(R.id.pocetna_btnAktualno);
-        ImageButton btnOtvoriRezervacije= (ImageButton) findViewById(R.id.pocetna_brnRezerviraj);
+        final ImageButton btnOtvoriRezervacije= (ImageButton) findViewById(R.id.pocetna_brnRezerviraj);
     			
-		btnOtvoriMapu.setOnClickListener(new OnClickListener() {
-			
+		btnOtvoriMapu.setOnTouchListener(new OnTouchListener(){
+
+        
 			@Override
-			public void onClick(View v) {
-				
-				Intent i = new Intent(context, MojaMapaActivity.class);
-				startActivity(i);
-				
+			public boolean onTouch(View arg0, MotionEvent arg1) {
+				 switch(arg1.getAction())
+	                {
+	                case MotionEvent.ACTION_DOWN :
+	                	btnOtvoriMapu.setImageResource(R.drawable.mapa_down100_93);
+	                    break;
+	                case MotionEvent.ACTION_UP :
+	                	btnOtvoriMapu.setImageResource(R.drawable.mapa100_93);
+	                	
+	    				Intent i = new Intent(context, MojaMapaActivity.class);
+	    				startActivity(i);
+	                    break;
+	                }
+	             
+				return false;
 			}
-		});       
+
+        });
 		
-        btnOtvoriAktualno.setOnClickListener(new OnClickListener() {
+        btnOtvoriAktualno.setOnTouchListener(new OnTouchListener(){
+
+        
+			@Override
+			public boolean onTouch(View arg0, MotionEvent arg1) {
+				 switch(arg1.getAction())
+	                {
+	                case MotionEvent.ACTION_DOWN :
+	                	btnOtvoriAktualno.setImageResource(R.drawable.aktualno_down100x93);
+	                    break;
+	                case MotionEvent.ACTION_UP :
+	                	btnOtvoriAktualno.setImageResource(R.drawable.aktualno100x93);
+	                	Intent i = new Intent(context, AktualnoActivity.class);
+	    				startActivity(i);
+	                    break;
+	                }
+	             
+				return false;
+			}
+
+        });
 			
+        btnOtvoriMojeRezervacije.setOnTouchListener(new OnTouchListener(){
+
+        
 			@Override
-			public void onClick(View v) {
-				 if(v == btnOtvoriAktualno) {
-					 btnOtvoriAktualno.setImageResource(R.drawable.aktualno_down100x93);
-				   }
-				Intent i = new Intent(context, AktualnoActivity.class);
-				startActivity(i);
-				
+			public boolean onTouch(View arg0, MotionEvent arg1) {
+				 switch(arg1.getAction())
+	                {
+	                case MotionEvent.ACTION_DOWN :
+	                	btnOtvoriMojeRezervacije.setImageResource(R.drawable.mojerezervacije_dwon100_93);
+	                    break;
+	                case MotionEvent.ACTION_UP :
+	                	btnOtvoriMojeRezervacije.setImageResource(R.drawable.mojerezervacije100_93);
+	                	Toast.makeText(context, R.string.ucitavam, Toast.LENGTH_SHORT).show();
+	    				PrijavljeniKorisnikAdapter prijavljeniKorisnik = new PrijavljeniKorisnikAdapter(context);
+	    				Korisnik korisnik = prijavljeniKorisnik.dohvatiPrijavljenogKorisnika();
+	    				if(korisnik != null )
+	    				{
+	    					Intent i = new Intent(context, MojeRezervacijeActivity.class);
+	    					startActivity(i);
+	    				}
+	    				else
+	    				{
+	    					Toast.makeText(context, R.string.moje_rezervacije_prijavite_se, Toast.LENGTH_SHORT).show();					
+	    				}
+	                    break;
+	                }
+	             
+				return false;
 			}
-		});           
-      
-        btnOtvoriMojeRezervacije.setOnClickListener(new OnClickListener() {
-			
+
+        });
+        
+       
+        btnOtvoriRezervacije.setOnTouchListener(new OnTouchListener(){
+
+        
 			@Override
-			public void onClick(View v) {
-				
-				PrijavljeniKorisnikAdapter prijavljeniKorisnik = new PrijavljeniKorisnikAdapter(context);
-				Korisnik korisnik = prijavljeniKorisnik.dohvatiPrijavljenogKorisnika();
-				if(korisnik != null )
-				{
-					Intent i = new Intent(context, MojeRezervacijeActivity.class);
-					startActivity(i);
-				}
-				else
-				{
-					Toast.makeText(context, R.string.moje_rezervacije_prijavite_se, Toast.LENGTH_SHORT).show();					
-				}
+			public boolean onTouch(View arg0, MotionEvent arg1) {
+				 switch(arg1.getAction())
+	                {
+	                case MotionEvent.ACTION_DOWN :
+	                	btnOtvoriRezervacije.setImageResource(R.drawable.projekcije_down100_93);
+	                    break;
+	                case MotionEvent.ACTION_UP :
+	                	btnOtvoriRezervacije.setImageResource(R.drawable.projekcije100_93);
+	                	Toast.makeText(context, R.string.ucitavam, Toast.LENGTH_SHORT).show();
+	    				Intent i = new Intent(context, ProjekcijeActivity.class);
+	    				startActivity(i);	
+	                    break;
+	                }
+	             
+				return false;
 			}
-		});         
-     	
-        btnOtvoriRezervacije.setOnClickListener(new OnClickListener() {			
-			@Override
-			public void onClick(View v) {
-				Intent i = new Intent(context, ProjekcijeActivity.class);
-				startActivity(i);				
-			}
-		});
+
+        });
+        
+  
 		
     }
 
@@ -129,20 +182,20 @@ public class PocetnaActivity extends Activity {
     	/*ako je korisnik prijavljen, odnosno spremljeni su njegovi podaci u bazu*/
         if (prijavljeniKorisnik.dohvatiPrijavljenogKorisnika() != null)
         {
-          /*prikaûi i uljuËi opciju odjava*/
+          /*prika≈æi i ulju√®i opciju odjava*/
           menu.getItem(1).setEnabled(true);
           menu.getItem(1).setVisible(true);
-          /*iskljuËi i sakrij opciju prijava*/
+          /*isklju√®i i sakrij opciju prijava*/
           menu.getItem(0).setEnabled(false);
           menu.getItem(0).setVisible(false);
           
         }
         else 
         {
-        	/*prikaûi i uljuËi opciju prijava */     	
+        	/*prika≈æi i ulju√®i opciju prijava */     	
         	menu.getItem(0).setEnabled(true);
         	menu.getItem(0).setVisible(true);
-        	/*iskljuËi i sakrij opciju odjava */
+        	/*isklju√®i i sakrij opciju odjava */
         	menu.getItem(1).setVisible(false);
         	menu.getItem(1).setEnabled(false);            
         }

@@ -87,11 +87,14 @@ public class RezervacijaActivity extends Activity {
 				}
 			});
 			
+		
+			final Dialog dialogPrijava = new Dialog(con);
+	
 			
 			btnMapaSjedala.setOnClickListener(new OnClickListener() {			
 				@Override
 				public void onClick(View v) {
-					final Dialog dialogPrijava = new Dialog(con);
+				
 					dialogPrijava.requestWindowFeature(Window.FEATURE_NO_TITLE);
 					dialogPrijava.setContentView(R.layout.dialog_mapa_sjedala);
 					

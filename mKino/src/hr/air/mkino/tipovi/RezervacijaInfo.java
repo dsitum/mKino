@@ -1,6 +1,10 @@
 package hr.air.mkino.tipovi;
 import java.util.List;
-
+/**
+ * Klasa koja predstavalja slozeni tip podataka za rezervacije.
+ * @author bstivic
+ *
+ */
 public class RezervacijaInfo {
 	int idRezervacije;
 	int idProjekcije;

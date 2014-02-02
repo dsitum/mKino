@@ -10,11 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import android.app.Activity;
-
 import android.content.Intent;
 import android.os.Bundle;
-
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -24,6 +21,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
+/**Klasa koja služi za prikaz projekcija.
+ *   
+ * @author bstivic
+ */
 public class ProjekcijeActivity extends Activity {
 	private Spinner odabirGrada;
 	private Spinner odabirDatuma;
@@ -57,8 +58,7 @@ public class ProjekcijeActivity extends Activity {
 		    Date sadasnjiDatum = new Date();
 		    SimpleDateFormat formatDatuma = new SimpleDateFormat("dd.MM.yyyy");
 
-		    //String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-		    //int danasnjiDan = Calendar.getInstance().get(Calendar.DATE);
+		    //Zapisujemo 14 slijedeæih kalendarskih dana u spinner
 		    for (int i = 0; i < 14; i++)
 		    {			
 		    	dani.add(formatDatuma.format(sadasnjiDatum)+" " +vratiDanUTjednu(sadasnjiDatum));
@@ -71,34 +71,37 @@ public class ProjekcijeActivity extends Activity {
 		    odabirDatuma.setAdapter(adapter);
 		    odabirDatuma.setSelection(0);
 		    
-		   //racunamo koji je datum u spinneru s datumom
+		   //raèunamo koji je datum u spinneru s datumom
 		    sadasnjiDatum = new Date();
 		    odabirDatuma.setOnItemSelectedListener(new OnItemSelectedListener() {
 		    	@Override
 				public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long indeksDana) {										
 		    		Date sadasnjiDatum = new Date();
+		    		
 		    		sadasnjiDatum = Rezervacija.dodajDan(sadasnjiDatum,(int)indeksDana);		    		
 		   		    SimpleDateFormat formatDatuma2 = new SimpleDateFormat("yyyy-MM-dd");
-		    		ucitajProjekcijeUListView(formatDatuma2.format(sadasnjiDatum));
-		    		
+		   		    
+		   		    //uèitavamo datume u listview
+		    		ucitajProjekcijeUListView(formatDatuma2.format(sadasnjiDatum));		    		
 				}
 				
 				@Override
-				public void onNothingSelected(AdapterView<?> arg0) {}
-		    
+				public void onNothingSelected(AdapterView<?> arg0) {}		    
 		    
 		    });
 		    
+		    //prilikom odabira grada mijenja se prikaz projekcija za odabrani grad
 		    odabirGrada.setOnItemSelectedListener(new OnItemSelectedListener() {
 		    	@Override
 				public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long idOdabranogMultipleksa) {										
-					// pohranjujemo vrijednost spinnera u bazu podataka
-		    		//multipleksAdapter.pohraniOdabraniMultipleks((int)idOdabranogMultipleksa+1);
+
 		    		//ponovno zahtjevamo projekcije za odabrani grad
-		    		projekcije = dohvatiProjekcije((int)idOdabranogMultipleksa+1);		
+		    		projekcije = dohvatiProjekcije((int)idOdabranogMultipleksa+1);	
+		    		
 		    		Date sadasnjiDatum = new Date();
 		    		sadasnjiDatum = Rezervacija.dodajDan(sadasnjiDatum,(int)odabirDatuma.getSelectedItemPosition());
-		    		 SimpleDateFormat formatDatuma2 = new SimpleDateFormat("yyyy-MM-dd");
+		    		SimpleDateFormat formatDatuma2 = new SimpleDateFormat("yyyy-MM-dd");
+		    		//uèitavamo datume u listview
 		    		ucitajProjekcijeUListView(formatDatuma2.format(sadasnjiDatum));
 
 				}
@@ -113,6 +116,8 @@ public class ProjekcijeActivity extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View kliknutaProjekcija, int pozicijaKliknuteProjekcije, long idKli) {
 				TextView tv = (TextView) kliknutaProjekcija.findViewById(R.id.id_projekcije_u_bazi);
 				int idProjekcijeUBazi = Integer.parseInt(tv.getText().toString());
+				
+				//prilikom kilika otvaraju se detalji o projekciji
 				Intent i = new Intent(ProjekcijeActivity.this, DetaljiProjekcijeActivity.class);
 				i.putExtra("idProjekcijeUBazi", idProjekcijeUBazi);
 				startActivity(i);
@@ -125,18 +130,10 @@ public class ProjekcijeActivity extends Activity {
 		ucitajProjekcijeUListView(formatDatuma2.format(sadasnjiDatum));
 	
 	}
+		
 	
-	 
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.pocetna, menu);
-		return true;
-	}
-	
-	/**
-	 * Postavlja spinner za izbor multipleksa na vrijednost trenutnog multipleksa u bazi. Ukoliko on ne postoji ondje, odabire se prvi multipleks (indeks 0) koji je Zagreb
+	/**Postavlja spinner za izbor multipleksa na vrijednost trenutnog multipleksa u bazi.
+	 * Ukoliko on ne postoji ondje, odabire se prvi multipleks (indeks 0) koji je Zagreb
 	 */
 	private int dohvatiOdabraniMultipleks() {
 		final int ZAGREB = 1;
@@ -148,13 +145,16 @@ public class ProjekcijeActivity extends Activity {
 			return ZAGREB;
 	}
 	
-	/**
+	/**Dohvaæa projekcije.
+	 * 
 	 * Ova metoda pokreæe dohvaæanje projekcije na dva naèina. Prvo se dohvaæaju iz baze indeksi svih projekcija.
 	 * Potom se oblikuju u JSON i šalje se zahtjev web servisu. Servis vraæa samo one projekcije 
 	 * kojih nema u lokalnoj bazi, kao i one koje treba ukloniti iz lokalne baze.
 	 * Nakon toga se projekcije prikazuju na zaslon.
 	 * Ovaj princip je odabran kako bi se korisnicima uštedio podatkovni promet, odnosno,
 	 * kako se ne bi uvijek dohvaæali svi filmovi sa servisa
+	 * 
+	 * @param id multipleksa
 	 * @return ažurirane projekcije
 	 */
 	private List<ProjekcijaInfo> dohvatiProjekcije(int multipleks)
@@ -166,8 +166,8 @@ public class ProjekcijeActivity extends Activity {
 	}
 
 
-	/**
-	 * Dohvaæa projekcije i uèitava ih u ListView
+	/** Dohvaæa projekcije i uèitava ih u ListView.
+	 * @params datum projekcija
 	 */
 	private void ucitajProjekcijeUListView(String datum)
 	{
@@ -178,14 +178,16 @@ public class ProjekcijeActivity extends Activity {
 	}
 	
 	
-	/**
+	/**Filtiranje projekcija za odabrani datum.
 	 * Iz popisa svih projekcija filtrira samo današnje projekcije.
 	 * S ovim sprjeèavamo nova dohvaæanja projekcija kada se promijeni datum prikazivanja projekcija
+	 * @param odabrani datum
 	 * @return lista današnjih projekcija
 	 */
 	private List<ProjekcijaInfo> filtrirajProjekcijeZaDatum(String datum) {
 		List<ProjekcijaInfo> danasnjeProjekcije = new ArrayList<ProjekcijaInfo>();
 		
+		//prolazimo kroz sve projekcije i provjeravamo dan, mjesec i godinu poèetka
 		for(ProjekcijaInfo projekcija : projekcije)
 		{
 			if (datum.equals(projekcija.getVrijemePocetka().substring(0, 10)))
@@ -196,12 +198,17 @@ public class ProjekcijeActivity extends Activity {
 		
 		return danasnjeProjekcije;
 	}
-	
+	/**
+	 * Metoda koja vraæa dan u tjednu.
+	 * @param datum
+	 * @return string dan u tjednu
+	 */
 	 public String vratiDanUTjednu(Date datum)
 	 {   
 		 String danOriginal;
 		 SimpleDateFormat formatDana = new SimpleDateFormat("E");
 
+		 //dohvaæame dane u tjednu iz resursa
 		 String[] daniUTjednu = getResources().getStringArray(R.array.dani_u_tjednu);
 		 
 		 danOriginal = formatDana.format(datum);

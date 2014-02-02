@@ -10,7 +10,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
+/**
+ * Klasa koja služi za manipulaciju projekcijama u lokalnoj bazi.
+ * Glavni razlog korištenja ove klase je cahcing podataka.
+ * @author bstivic
+ *
+ */
 public class ProjekcijeAdapter {
 	private static String DATABASE="baza";
 	private static String TABLE="projekcije";
@@ -55,6 +60,13 @@ public class ProjekcijeAdapter {
 		dbHelper.close();
 		return projekcije;
 	}
+	
+	/**
+	 * Metoda koja služi za dohvaæanje projekcije iz baze podataka.
+	 * @param id projekcije
+	 * @param context
+	 * @return projekcija
+	 */
 	public ProjekcijaInfo dohvatiProjekciju(int id, Context con)
 	{
 		ProjekcijaInfo projekcija = null;
@@ -123,9 +135,9 @@ public class ProjekcijeAdapter {
 	}
 	
 	/**
-	 * Za dani identifikacijski broj filma, vratit æe TRUE ako film postoji u lokalnoj bazi i FALSE ako ne postoji
-	 * @param idFilma
-	 * @return TRUE ili FALSE, ovisno o tome postoji li film u bazi
+	 * Za dani identifikacijski broj projekcije, vratit æe TRUE ako projekcija postoji u lokalnoj bazi i FALSE ako ne postoji
+	 * @param idProjekcije
+	 * @return TRUE ili FALSE, ovisno o tome postoji li projekcija u bazi
 	 */
 	private boolean projekcijaPostojiUBazi(int idProjekcije)
 	{

@@ -21,9 +21,21 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.os.AsyncTask;
-
+/**
+ * Klasa koja služi za brisanje rezervacije na udaljenoj bazi podataka.
+ * @author bstivic
+ *
+ */
 public class JsonObrisiRegistraciju extends AsyncTask<String, Void, String> {
 	
+	/**
+	 * Metoda koja služi za brisanje rezervacije.
+	 * komunicira sa web servisom
+	 * @param korisnickoIme
+	 * @param idProjekcije
+	 * @param context
+	 * @return uspjesnost 0-uspjesno, - neuspjesno
+	 */
 	public int dohvati(String korisnickoIme, String idProjekcije, Context c)
 	{					
 		this.execute(korisnickoIme, idProjekcije);
@@ -41,7 +53,11 @@ public class JsonObrisiRegistraciju extends AsyncTask<String, Void, String> {
 		return  parsirajJson(jsonRezultat);			
 	}
 
-
+/**
+ * Metoda koja parsira rezultat web servisa.
+ * @param jsonRezultat
+ * @return 0 uspjesno, <0 neuspjesno
+ */
 	private int parsirajJson(String jsonRezultat) {		
 		int povratnaInformacijaId = 7;
 		
@@ -63,6 +79,10 @@ public class JsonObrisiRegistraciju extends AsyncTask<String, Void, String> {
 		
 		return povratnaInformacijaId;
 	}
+	
+	/**
+	 * Metoda koja služi za asinkronu komunikaciju sa web servisom.
+	 */
 	protected String doInBackground(String... podaciPrijava) {
 		HttpClient httpKlijent = new DefaultHttpClient();
 	 

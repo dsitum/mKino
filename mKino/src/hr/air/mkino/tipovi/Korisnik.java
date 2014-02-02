@@ -1,6 +1,8 @@
 package hr.air.mkino.tipovi;
 
-/*Klasa predstavlja složeni tip podataka koji opisuje pojedinog korisnika aplikacije
+/**
+ * Klasa predstavlja složeni tip podataka koji opisuje pojedinog korisnika aplikacije
+ * 
  * */
 public class Korisnik {
 	private String korisnickoIme;

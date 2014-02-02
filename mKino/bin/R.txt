@@ -254,8 +254,13 @@ int string lbl_vrijeme_projekcije 0x7f06003b
 int string menu_odjava 0x7f060059
 int string menu_prijava 0x7f060058
 int string menu_titleGrupaMojRacun 0x7f06005a
+int string moje_rezervacije_da 0x7f060061
+int string moje_rezervacije_obrisi 0x7f060060
 int string moje_rezervacije_prijavite_se 0x7f06005e
+int string moje_rezervacjije_oprez 0x7f060062
 int string naziv_filma_mali_lbl 0x7f06005c
+int string obrisi_rezervaciju_neuspjesno 0x7f060064
+int string obrisi_rezervaciju_uspjesno 0x7f060063
 int string odaberite_multipleks_lbl 0x7f060032
 int string odabir_najblizeg_multipleksa 0x7f060033
 int string odabir_sjedala_btn_odustani 0x7f060045
@@ -305,6 +310,7 @@ int string tmp_trajanje_filma 0x7f06002a
 int string tmp_vrijeme_pocetka_projekcije 0x7f060030
 int string tmp_zanr_filma 0x7f06002b
 int string trazilica_label 0x7f060022
+int string ucitavam 0x7f06005f
 int string uloge_male_lbl 0x7f06005d
 int style AppBaseTheme 0x7f0a0000
 int style AppTheme 0x7f0a0002

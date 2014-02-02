@@ -20,7 +20,11 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.os.AsyncTask;
-
+/**
+ * Klasa koja služi za dohvaæanje korisnièkih rezervacija sa web servisa.
+ * @author bstivic
+ *
+ */
 public class JsonMojeRezervacije extends AsyncTask<String, Void, String> {
 	
 	public List<RezervacijaInfo> dohvati(String korisnickoIme, Context c)
@@ -40,7 +44,12 @@ public class JsonMojeRezervacije extends AsyncTask<String, Void, String> {
 		return parsirajJson(jsonRezultat, c);			
 	}
 
-	
+	/**
+	 * Metoda koja služi za parsiranje json odgovora servera
+	 * @param jsonRezultat
+	 * @param context
+	 * @return lista rezervacija
+	 */
 	private List<RezervacijaInfo> parsirajJson(String jsonRezultat, Context c) {		
 		List<RezervacijaInfo> rezervacija = new ArrayList<RezervacijaInfo>();		
 		ProjekcijaInfo projekcija = null;
@@ -51,7 +60,6 @@ public class JsonMojeRezervacije extends AsyncTask<String, Void, String> {
 			int pomocniIdProjekcije = -7;
 	
 			List<Integer> sjedala = null;
-			//String korisnickoIme = null;	
 			String kodRezervacije = null;
 			JSONArray rezultati = new JSONArray(jsonRezultat);
 				
@@ -83,7 +91,6 @@ public class JsonMojeRezervacije extends AsyncTask<String, Void, String> {
 					
 					sjedala = new ArrayList<Integer>();
 					idRezervacije = rezultat.getInt("idRezervacije");						
-					//korisnickoIme= rezultat.getString("korisnickoIme");
 					kodRezervacije = rezultat.getString("kod");
 					sjedala.add(rezultat.getInt("brojSjedala"));	
 					pomocniIdProjekcije = idProjekcije;
@@ -100,7 +107,9 @@ public class JsonMojeRezervacije extends AsyncTask<String, Void, String> {
 		return rezervacija;
 	}
 
-	// pomoæna metoda koja u pozadini obraðuje http zahtjev (dohvaæanje podataka)
+	/**
+	 * Pomoæna metoda koja u pozadini obraðuje http zahtjev (dohvaæanje podataka)
+	 */
 	@Override
 	protected String doInBackground(String... parametri) {
 		String korisnik = parametri[0];

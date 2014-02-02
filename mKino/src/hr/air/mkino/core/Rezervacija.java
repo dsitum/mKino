@@ -5,7 +5,11 @@ package hr.air.mkino.core;
 import java.util.Calendar;
 import java.util.Date;
 
-
+/**
+ * Klasa sa poslovnom logikom rezervacija.
+ * @author bstivic
+ *
+ */
 public class Rezervacija{
 	
 	 /**

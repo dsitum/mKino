@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -21,7 +20,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.AsyncTask;
-/**klasa uz pomoæ koje se obavlja komunikacija sa web servisom u svrhu registracije korisnika*/
+/**
+ * klasa uz pomoæ koje se obavlja komunikacija sa web servisom u svrhu registracije korisnika
+ * 
+ * */
 public class JsonRegistracija extends AsyncTask<Korisnik, Integer, String> {
 
 	/**

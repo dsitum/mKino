@@ -22,7 +22,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.AsyncTask;
-
+/**
+ * Klasa koja služi za asinkronu komunikaciju sa web servisom sa ciljem rezervacije ulaznica.
+ * @author bstivic
+ *
+ */
 public class JsonRezervacija extends AsyncTask<String, Void, String> {
 	
 	public RezervacijaInfo rezerviraj(String korisnickoIme, int idProjekcije, List<Integer> sjedala)
@@ -58,29 +62,26 @@ public class JsonRezervacija extends AsyncTask<String, Void, String> {
 		return  parsirajJson(jsonRezultat);			
 	}
 
-	
+	/**
+	 * Metoda koja parsira JsonRezultat.
+	 * @param jsonRezultat
+	 * @return vraæa kod rezervacije koji se gradi na temelju "idKorisnika"-"idProjekcije"
+	 */
 	private RezervacijaInfo parsirajJson(String jsonRezultat) {		
 		RezervacijaInfo rezervacija = null;
 		
 		
 		try {
-				//int idProjekcije = 0;
-				//String korisnickoIme ="";
+
 				String kodRezervacije="";
-				
-		//		List<Integer> sjedalo = new ArrayList<Integer>();
 				JSONArray rezultati = new JSONArray(jsonRezultat);
 				
 				int n = rezultati.length();
 				for(int i=0; i<n; i++) 
 				{
-					JSONObject rezultat = rezultati.getJSONObject(i);					
-										
-					//idProjekcije = rezultat.getInt("idProjekcije");
-					//korisnickoIme= rezultat.getString("korisnickoIme");
+					JSONObject rezultat = rezultati.getJSONObject(i);	
 					kodRezervacije = rezultat.getString("povratnaInformacijaId");
-					//int sjedaloInt = rezultat.getInt("sjedalo");
-					//sjedalo.add(sjedaloInt);
+
 				}
 				if(n>0)	rezervacija = new RezervacijaInfo(0, -1, null, kodRezervacije, null);
 				else rezervacija = null;
@@ -112,8 +113,7 @@ public class JsonRezervacija extends AsyncTask<String, Void, String> {
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 		    nameValuePairs.add(new BasicNameValuePair("projekcija", podaciPrijava[1]));
 		    nameValuePairs.add(new BasicNameValuePair("korisnik", podaciPrijava[0]));
-		    nameValuePairs.add(new BasicNameValuePair("sjedala", podaciPrijava[2]));	    
-		  
+		    nameValuePairs.add(new BasicNameValuePair("sjedala", podaciPrijava[2])); 
 		  
 	
 		// ono što dohvatimo u jsonRezultat æe biti odgovor servera (web servisa)

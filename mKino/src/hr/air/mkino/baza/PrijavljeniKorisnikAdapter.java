@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 /**
  * Klasa koja služi za dohvaæanje, spremanje i brisanje podataka o prijavljenom korisniku u bazi.
- * Postoji samo jedan redak u tablici prijavljenikorisnik
+ * Postoji samo jedan redak u tablici prijavljenikorisnik.
  */
 public class PrijavljeniKorisnikAdapter {
 	
