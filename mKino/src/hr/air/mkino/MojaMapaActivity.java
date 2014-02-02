@@ -27,9 +27,9 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Spinner;
 
 /**
- * Ova klasa služi za prikaz multipleksa i odabir istog. Odabrani multipleks æe se pohraniti u lokalnoj bazi i biti æe korišten svaki puta kada to bude bilo potrebno u aplikaciji
+ * Ova klasa služi za prikaz multipleksa i odabir istog. 
+ * Odabrani multipleks æe se pohraniti u lokalnoj bazi i biti æe korišten svaki puta kada to bude bilo potrebno u aplikaciji
  * @author domagoj
- *
  */
 public class MojaMapaActivity extends FragmentActivity {
 	private GoogleMap mapa;
@@ -41,6 +41,7 @@ public class MojaMapaActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_moja_mapa);
+		setTitle("Prikaz multipleksa");
 		
 		mapa = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment)).getMap();
 		spinner = (Spinner) findViewById(R.id.odabir_multipleksa);
@@ -78,7 +79,7 @@ public class MojaMapaActivity extends FragmentActivity {
 		switch (item.getItemId()) {
 		case R.id.geolokacija:
 				// brišemo postojeæi multipleks iz baze i postavljamo novi (koji æe biti dobiven geolokacijom)
-				odabraniMultipleks.obrisiMultipleksIzBaze();
+				odabraniMultipleks.obrisiMultiplekseIzBaze();
 				postaviSpinner(odabraniMultipleks);
 			break;
 		default:
@@ -88,8 +89,9 @@ public class MojaMapaActivity extends FragmentActivity {
 	}
 	
 	/**
-	 * Dohvaæa multiplekse. Ukoliko postoje u lokalnoj bazi, dohvaæa ih iz nje, a ukoliko ne, dohvaæa ih sa servisa. To je uèinjeno u svrhu štednje podatkovnog prometa
-	 * @return
+	 * Dohvaæa multiplekse. 
+	 * Ukoliko postoje u lokalnoj bazi, dohvaæa ih iz nje, a ukoliko ne, dohvaæa ih sa servisa. To je uèinjeno u svrhu štednje podatkovnog prometa
+	 * @return lista s dohvaæenim multipleksima
 	 */
 	private List<MultipleksInfo> dohvatiMultiplekse() {
 		MultipleksAdapter multipleksAdapter = new MultipleksAdapter(this);
@@ -145,7 +147,7 @@ public class MojaMapaActivity extends FragmentActivity {
 	
 	/**
 	 * Postavlja poèetnu vrijednost na spinner za odabir lokacije. Ukoliko taj podatak ne postoji u bazi, postavljamo spinner na index 0 (grad Zagreb)
-	 * @param odabraniMultipleks
+	 * @param odabraniMultipleks koji æe biti postavljen na spinner
 	 */
 	private void postaviSpinner(OdabraniMultipleksAdapter odabraniMultipleks) {
 		int trenutnaVrijednost = odabraniMultipleks.dohvatiOdabraniMultipleks();

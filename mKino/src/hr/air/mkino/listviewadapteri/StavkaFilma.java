@@ -14,6 +14,11 @@ import hr.air.mkino.sucelja.ISlikaFilma;
 import hr.air.mkino.tipovi.FilmInfo;
 import hr.air.mkino.uzorcidizajna.UcitajSlikuFactory;
 
+/**
+ * Klasa je adapter koji preslikava osnovne podatke o filmu (ukljuèujuæi i sliku) u ListView.
+ * Napravljena je kako bi se omoguæio prikaz slika u ListView-u.
+ * @author domagoj
+ */
 public class StavkaFilma extends ArrayAdapter<FilmInfo> {
 	private List<FilmInfo> filmovi;
 	LayoutInflater li;

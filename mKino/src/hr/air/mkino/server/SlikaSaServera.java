@@ -19,6 +19,12 @@ import android.os.AsyncTask;
 import android.os.Environment;
 import android.util.DisplayMetrics;
 
+/**
+ * Služi za dohvaæanje slike filma sa servera.
+ * U konstruktoru prima identifikacijsku oznaku filma, koju onda poslije koristi u metodama za dohvat slike.
+ * @author domagoj
+ *
+ */
 public class SlikaSaServera extends AsyncTask<String, Void, Bitmap> implements ISlikaFilma {
 	private Context context;
 	private int idFilma;
@@ -28,6 +34,10 @@ public class SlikaSaServera extends AsyncTask<String, Void, Bitmap> implements I
 		this.idFilma = idFilma;
 	}
 	
+	/**
+	 * Dohvaæa sliku filma u velikom formatu
+	 * @return Bitmap objekt slike
+	 */
 	public Bitmap dohvatiVelikuSliku()
 	{
 		String url = "http://mkinoairprojekt.me.pn/skripte/index.php?tip=slike&id=" + idFilma;
@@ -45,6 +55,10 @@ public class SlikaSaServera extends AsyncTask<String, Void, Bitmap> implements I
 		return slika;
 	}
 	
+	/**
+	 * Dohvaæa sliku filma u malom formatu
+	 * @return Bitmap objekt slike
+	 */
 	public Bitmap dohvatiMaluSliku()
 	{
 		String url = "http://mkinoairprojekt.me.pn/skripte/index.php?tip=slikemale&id=" + idFilma;

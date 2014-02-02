@@ -19,7 +19,6 @@ import android.widget.Toast;
 /**
  * Klasa koja služi za prikaz poèetnog zaslona aplikacije
  * @author SystemDesign
- *
  */
 public class PocetnaActivity extends Activity {
 
@@ -163,12 +162,6 @@ public class PocetnaActivity extends Activity {
 		case R.id.menu_pocetna_odjava:		
 			prijava.odjava(this);			
 			break;			
-			
-		/*prikazivanje preference izbornika*/
-		case R.id.action_settings:
-			Toast.makeText(this, "postavke..", Toast.LENGTH_SHORT).show();
-			break;	
-
 		}
     	
     	return true;

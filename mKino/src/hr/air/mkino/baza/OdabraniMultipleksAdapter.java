@@ -58,7 +58,7 @@ public class OdabraniMultipleksAdapter {
 		ContentValues redak = new ContentValues();
 		redak.put("id", idOdabranogMultipleksa);
 		
-		obrisiMultipleksIzBaze();
+		obrisiMultiplekseIzBaze();
 		db = dbHelper.getWritableDatabase();
 		long rezultatUnosa = db.insert(TABLE, null, redak);
 		dbHelper.close();
@@ -66,7 +66,11 @@ public class OdabraniMultipleksAdapter {
 		return rezultatUnosa;
 	}
 	
-	public int obrisiMultipleksIzBaze()
+	/**
+	 * Briše èitavu tablicu s multipleksima
+	 * @return broj obrisanih mulitpleksa
+	 */
+	public int obrisiMultiplekseIzBaze()
 	{
 		db = dbHelper.getWritableDatabase();
 		int rezultatBrisanja = db.delete(TABLE, null, null);

@@ -73,7 +73,9 @@ public class PrijavljeniKorisnikAdapter {
 			return rezultatUnosa;
 		}
 	
-		/**brisanje retka u tablici prijavljenikorisnik što je ekvivalentno odjavi iz aplikacije*/
+		/**
+		 * Brisanje retka u tablici prijavljenikorisnik što je ekvivalentno odjavi iz aplikacije
+		 */
 		public void obrisiPrijavljenogKorisnika()
 		{
 			db = dbHelper.getWritableDatabase();

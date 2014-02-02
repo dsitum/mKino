@@ -29,7 +29,7 @@ public class MultipleksAdapter {
 	
 	/**
 	 * Dohvaæa listu multipleksa iz baze podataka u objekte "MultipleksInfo"
-	 * @return
+	 * @return lista multipleksa
 	 */
 	public List<MultipleksInfo> dohvatiMultiplekse()
 	{
@@ -54,7 +54,7 @@ public class MultipleksAdapter {
 	
 	/**
 	 * Služi za unos multipleksa u lokalnu bazu podataka. Ova metoda se poziva samo u sluèaju kada u lokalnoj bazi ne postoje mulipleksi - najèešæe pri prvom pokretanju aplikacije
-	 * @param multipleks
+	 * @param multipleks (podaci o multipleksu)
 	 * @return rezultat unosa (ono što vrati insert funkcija)
 	 */
 	public long unosMultipleksa(MultipleksInfo multipleks)
@@ -74,9 +74,9 @@ public class MultipleksAdapter {
 	}
 	
 	/**
-	 * MEtoda koja služi za dohvaæanje pojedinog multipleksa prema id-u 
+	 * Metoda koja služi za dohvaæanje pojedinog multipleksa prema id-u 
 	 * @param idMultipleksa
-	 * @return Multipleks
+	 * @return dohvaæeni multipleks
 	 */
 	public MultipleksInfo dohvatiMultipleks(int idMultipleksa)
 	{

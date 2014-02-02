@@ -27,7 +27,7 @@ import android.os.AsyncTask;
 public class JsonMultipleksi extends AsyncTask<Void, Void, String> {
 	/**
 	 * Dohvaæa multiplekse sa web servisa
-	 * @return multipleksi
+	 * @return lista multipleksa
 	 */
 	public List<MultipleksInfo> dohvatiMultiplekse()
 	{

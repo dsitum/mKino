@@ -37,6 +37,7 @@ public class ProjekcijeActivity extends Activity {
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_projekcije);
+		setTitle("Popis projekcija");
 		
 		// inicijaliziramo klasne varijable
 		odabirGrada = (Spinner) findViewById(R.id.rezervacije_spinner_grad);

@@ -27,7 +27,7 @@
             android:textSize="16sp"
             android:textStyle="bold" />
        
-        <!-- uloge u filmu -->
+        <!-- dvorana -->
 
         <TextView
             android:id="@+id/rezervacija_dvorana"
@@ -36,28 +36,33 @@
             android:layout_gravity="top"
             android:paddingLeft="10dp"
             android:paddingRight="15dp"
-            android:text="@string/tmp_glumci_filma"
+            android:text="@string/tmp_dvorana"
             android:textColor="#ffffffd5"
             android:textSize="12sp"
             android:textStyle="italic" />
 
-        <TextView
-            android:id="@+id/rezervacija_kod"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingRight="15dp"
-            android:text="@string/tmp_glumci_filma"
-            android:textColor="#ffffffd5"
-            android:textSize="12sp" />
+        <!-- kod rezervacije -->
+            
+		<TextView
+			android:id="@+id/rezervacija_kod"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:paddingLeft="10dp"
+			android:paddingRight="15dp"
+			android:text="@string/tmp_kod_rezervacije"
+			android:textColor="#ffffffd5"
+			android:textSize="12sp" />
+	        
 
+        <!-- datum -->
+        
         <TextView
             android:id="@+id/rezervacija_vrijeme_projekcije"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingRight="15dp"
-            android:text="@string/tmp_glumci_filma"
+            android:text="@string/tmp_datum"
             android:textColor="#ffffffd5"
             android:textSize="12sp" />
         
@@ -67,6 +72,8 @@
             android:layout_height="match_parent"
             android:visibility="gone" />
 
+        <!-- sjedala -->
+        
         <TextView
             android:id="@+id/moje_rezervacije_sjedala"
             android:layout_width="match_parent"
@@ -75,7 +82,7 @@
             android:paddingBottom="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="15dp"
-            android:text="@string/detalji_filma_lblGlumci"
+            android:text="@string/tmp_sjedala"
             android:textColor="@color/textWhite" />
   
 </LinearLayout>

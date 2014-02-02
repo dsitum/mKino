@@ -7,20 +7,30 @@ import hr.air.mkino.uzorcidizajna.UcitajSlikuFactory;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * Ova klasa predstavlja detalje pojedinog filma.
+ * @author domagoj
+ *
+ */
 public class DetaljiFilmaActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detalji_filma);
+		setTitle("Detalji filma");
 		
 		FilmInfo detaljiFilma = dohvatiPodatkeZaFilm();
 		prikaziPodatkeZaFilm(detaljiFilma);
 	}
 
+	/**
+	 * Dohvaæa podatke filma koji ukljuèuju naziv, glavne uloge, autora itd.
+	 * ID filma prima pomoæu podataka iz intenta, koji su poslani klikom na film sa liste svih aktualnih filmova (klasa AkutalnoActivity).
+	 * @return podaci o filmu
+	 */
 	private FilmInfo dohvatiPodatkeZaFilm() {
 		Intent i = getIntent();
 		int idFilmaUBazi = i.getIntExtra("idFilmaUBazi", 0);
@@ -29,6 +39,10 @@ public class DetaljiFilmaActivity extends Activity {
 		return fa.dohvatiDetaljeFilma(idFilmaUBazi);
 	}
 	
+	/**
+	 * Ispisuje na zaslonu informacije sve dohvaæene o filmu, ukljuèujuæi i sliku filma.
+	 * @param detaljiFilma predstavlja informacije o filmu koje treba ispisati na zaslon
+	 */
 	private void prikaziPodatkeZaFilm(FilmInfo detaljiFilma) {
 		TextView naslov = (TextView) findViewById(R.id.naslov_filma);
 		TextView trajanje = (TextView) findViewById(R.id.detalji_filma_trajanje);
@@ -46,12 +60,5 @@ public class DetaljiFilmaActivity extends Activity {
 		opis.setText(detaljiFilma.getOpis());
 		ISlikaFilma sf = UcitajSlikuFactory.ucitaj(getBaseContext(), detaljiFilma.getIdFilma(), true);
 		slika.setImageBitmap(sf.dohvatiVelikuSliku());
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.pocetna, menu);
-		return true;
 	}
 }

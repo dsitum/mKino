@@ -24,6 +24,7 @@ public class DetaljiProjekcijeActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detalji_projekcije);
+		setTitle("Detalji projekcije");
 		
 		//dohvaæamo podatke odabrane projekcije
 		ProjekcijaInfo detaljiProjekcije = dohvatiPodatkeZaProjekciju();

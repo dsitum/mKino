@@ -1,4 +1,5 @@
 package hr.air.mkino;
+
 import java.util.List;
 
 import hr.air.mkino.R;
@@ -8,7 +9,6 @@ import hr.air.mkino.tipovi.FilmInfo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -16,6 +16,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+/**
+ * Ova klasa dohvaæa i ispisuje aktualne filmove, ukljuèujuæi naslov, glavne uloge i sliku filma.
+ * @author domagoj
+ *
+ */
 public class AktualnoActivity extends Activity {
 	private ListView popisFilmova;
 	private List<FilmInfo> filmovi;
@@ -24,6 +29,7 @@ public class AktualnoActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.acitivity_aktualno);
+		setTitle("Aktualni filmovi");
 		
 		// inicijaliziramo klasne varijable
 		popisFilmova = (ListView) findViewById(R.id.popis_filmova);
@@ -44,12 +50,6 @@ public class AktualnoActivity extends Activity {
 		filmovi = dohvatiFilmove();
 		ucitajFilmUListView();
 	}
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.pocetna, menu);
-		return true;
-	}
 	
 	/**
 	 * Ova metoda pokreæe dohvaæanje filmova na dva naèina. Prvo se dohvaæaju iz baze indeksi svih filmova.
@@ -67,7 +67,7 @@ public class AktualnoActivity extends Activity {
 	}
 	
 	/**
-	 * Dohvaæa filmove i uèitava ih u ListView
+	 * Dohvaæa filmove i uèitava ih u ListView.
 	 */
 	private void ucitajFilmUListView()
 	{				

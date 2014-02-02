@@ -7,9 +7,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 
 /**
- * Ova klasa služi za dohvaæanje trenutne lokacije
+ * Ova klasa služi za dohvaæanje trenutne lokacije.
  * @author domagoj
- *
  */
 public class PratiteljLokacije implements LocationListener {
 	private final Context kontekst;
@@ -29,6 +28,12 @@ public class PratiteljLokacije implements LocationListener {
 		dohvatiLokaciju();
 	}
 	
+	/**
+	 * Dohvaæa trenutnu korisnikovu lokaciju putem GSM-a i GPS-a. 
+	 * Najprije pokušava dohvatiti lokaciju putem GSM-a (ukoliko je mreža ukljuèena).
+	 * Zatim dohvaæa lokaciju sa GPS-a, ako je dostupan.
+	 * Dohvaæenu lokaciju zapisuje u klasnu varijablu.
+	 */
 	public void dohvatiLokaciju()
 	{
 		upraviteljLokacije = (LocationManager) kontekst.getSystemService(Context.LOCATION_SERVICE);
@@ -64,6 +69,13 @@ public class PratiteljLokacije implements LocationListener {
 		
 	}
 	
+	/**
+	 * Raèuna zraènu udaljenost izmeðu odabrane toèke i dohvaæene lokacije.
+	 * Odabrana toèka je, u primjeni, jedan od multipleksa.
+	 * @param zemljopisnaDuzina
+	 * @param zemljopisnaSirina
+	 * @return udaljenost u metrima
+	 */
 	public float udaljenostDo(float zemljopisnaDuzina, float zemljopisnaSirina)
 	{
 		float[] udaljenost = new float[3];

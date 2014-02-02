@@ -34,6 +34,11 @@
     <string name="tmp_detalji_filma">Paranoid Brigadier General Jack D. Ripper of Burpelson Air Force Base, he believing that fluoridation of the American water supply is a Soviet plot to poison the U.S. populace, is able to deploy through a back door mechanism a nuclear attack on the Soviet Union without the knowledge of his superiors, including the Chair of the Joint Chiefs of Staff, General Buck Turgidson, and President Merkin Muffley. Only Ripper knows the code to recall the B-52 bombers and he has shut down communication in and out of Burpelson as a measure to protect this attack. Ripper\'s executive officer, RAF Group Captain Lionel Mandrake (on exchange from Britain), who is being held at Burpelson by Ripper, believes he knows the recall codes if he can only get a message to the outside world. Meanwhile at the Pentagon War Room, key persons including Muffley, Turgidson and nuclear scientist and adviser, a former Nazi named Dr. Strangelove, are discussing measures to stop the attack or mitigate its blow-up into an</string>
     <string name="tmp_dvorana_projekcije">Dvorana 6</string>
     <string name="tmp_vrijeme_pocetka_projekcije">15:30</string>
+    <string name="tmp_dvorana">Dvorana 8</string>
+    <string name="tmp_kod_rezervacije">8&#8211;1794</string>
+    <string name="tmp_datum">2014&#8211;02&#8211;08 23:55</string>
+    <string name="tmp_sjedala">5,8</string>
+    <string name="kod_rezervacije_lbl">Kod rezervacije:</string>
     
     
     <!-- activity_moja_mapa -->
@@ -118,7 +123,7 @@
     
     <!-- moje_rezervacije -->
     <string name="moje_rezervacije_prijavite_se">Prijavite se za pregled vlastitih rezervacija</string>
-    <string name="ucitavam">Učitavam.. .</string>
+    <string name="ucitavam">Učitavam &#8230;</string>
      <string name="moje_rezervacije_obrisi">Želite li obrisati rezervaciju?</string>
      <string name="moje_rezervacije_da">Da</string>
      <string name="moje_rezervacjije_oprez">Oprez</string>

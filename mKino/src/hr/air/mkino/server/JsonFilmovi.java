@@ -35,7 +35,7 @@ public class JsonFilmovi extends AsyncTask<String, Void, String> {
 	
 	/**
 	 * Dohvaæa filmove sa web servisa. To ne ukljuèuje one filmove koji se veæ nalaze u lokalnoj bazi
-	 * @return filmovi
+	 * @return lista filmova
 	 */
 	public List<FilmInfo> dohvatiFilmove(Context c)
 	{
@@ -76,8 +76,8 @@ public class JsonFilmovi extends AsyncTask<String, Void, String> {
 	
 	/**
 	 * Parsira JSON string dohvaæen s web servisa i ažurira bazu filmova
-	 * @param jsonRezultat
-	 * @return filmovi
+	 * @param jsonRezultat u obliku stringa
+	 * @return lista filmova iz parsiranog JSON stringa
 	 */
 	private List<FilmInfo> parsirajJson(String jsonRezultat) {
 		List<FilmInfo> filmovi = new ArrayList<FilmInfo>();

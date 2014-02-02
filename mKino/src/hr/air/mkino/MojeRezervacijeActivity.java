@@ -36,6 +36,7 @@ public class MojeRezervacijeActivity extends Activity {
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_moje_rezervacije);
+		setTitle("Moje rezervacije");
 		final Context context = this;
     
 		PrijavljeniKorisnikAdapter prijavljeniKorisnik = new PrijavljeniKorisnikAdapter(this);
@@ -52,50 +53,43 @@ public class MojeRezervacijeActivity extends Activity {
 		//dodajemo event listener na long click
 		ListView popisRezervacija = (ListView) findViewById(R.id.moje_rezervacije_list_view);
 		popisRezervacija.setOnItemLongClickListener(new OnItemLongClickListener() {
-			
-
 			@Override
 			public boolean onItemLongClick(AdapterView<?> arg0,  View kliknutaProjekcija, int pozicijaKliknuteProjekcije, long idKli) {
 				final View view = kliknutaProjekcija;
 				//provjera želi li korisnik obrisati rezervaciju
 				AlertDialog.Builder builder = new AlertDialog.Builder(context);
 			
-		        builder.setMessage(R.string.moje_rezervacije_obrisi)
-		               .setPositiveButton(R.string.moje_rezervacije_da, new DialogInterface.OnClickListener() {
-		                   
-		            	   //ukoliko želi obrisati rezervaciju
-		            	   public void onClick(DialogInterface dialog, int id) {
-		                	   
-		                	JsonObrisiRegistraciju jsonObrisi = new JsonObrisiRegistraciju();
-		       				TextView tv = (TextView) view.findViewById(R.id.rezervacija_kod);
-		       				
-		       				//izdvajamo id projekcije
-		       				String kod = tv.getText().toString();
-		       				String[] separated = kod.split("-");
-		       				
-		       				//pozivamo metodu za brisanje rezervacije
-		       				int rez = jsonObrisi.dohvati(korisnik.getKorisnickoIme(),separated[1],  context);
-		       				if(rez == 0)
-		       				{
-		       					Toast.makeText(context, R.string.obrisi_rezervaciju_uspjesno, Toast.LENGTH_LONG).show();
-		       				}
-		       				else
-		       				{
-		       					Toast.makeText(context, R.string.obrisi_rezervaciju_neuspjesno, Toast.LENGTH_LONG).show();
-		       				}
-		       				//ponovno učitavamo ažurne rezervacije
-		       				napraviRefresh();
-		       				
-		                   }
-		               });
-		        
-		        builder.show();
-		        
+		        builder.setMessage(R.string.moje_rezervacije_obrisi).setPositiveButton(R.string.moje_rezervacije_da, new DialogInterface.OnClickListener() 
+		        {            
+	        		//ukoliko želi obrisati rezervaciju
+	        	   public void onClick(DialogInterface dialog, int id) 
+	        	   { 
+						JsonObrisiRegistraciju jsonObrisi = new JsonObrisiRegistraciju();
+						TextView tv = (TextView) view.findViewById(R.id.rezervacija_kod);
+						
+						//izdvajamo id projekcije
+						String kod = tv.getText().toString();
+						String[] separated = kod.split("-");
+						
+						//pozivamo metodu za brisanje rezervacije
+						int rez = jsonObrisi.dohvati(korisnik.getKorisnickoIme(),separated[1],  context);
+						if(rez == 0)
+						{
+							Toast.makeText(context, R.string.obrisi_rezervaciju_uspjesno, Toast.LENGTH_LONG).show();
+						}
+						else
+						{
+							Toast.makeText(context, R.string.obrisi_rezervaciju_neuspjesno, Toast.LENGTH_LONG).show();
+						}
+						//ponovno učitavamo ažurne rezervacije
+						napraviRefresh();	
+	               }
+	            });
+		        builder.show();    
 		        //inaće se vraćamo
 				return false;
 			}
 		});
-		
 	}
 	
 	/**

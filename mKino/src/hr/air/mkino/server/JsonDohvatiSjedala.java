@@ -26,7 +26,7 @@ import android.os.AsyncTask;
  * klasa koja služi za prijavu korisnika u sustav uz pomoæ asinkrone komunikacije 
  * izmeðu aplikacije i servisa koji provjerava da li postoji korisnik u bazi 
  * podataka sa navedenim korisnièkim imenom i lozinkom
- *  
+ * @author bstivic
  * */
 public class JsonDohvatiSjedala extends AsyncTask<Integer, List<Integer>, String> {
 

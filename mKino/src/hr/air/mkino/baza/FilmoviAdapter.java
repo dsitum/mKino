@@ -33,7 +33,7 @@ public class FilmoviAdapter {
 	
 	/**
 	 * Koristi se za dohvaæanje svih filmova iz lokalne baze. Dohvaæeni podaci služe za prikaz na zaslon
-	 * @return
+	 * @return lista filmova dohvaæenih iz lokalne baze
 	 */
 	public List<FilmInfo> dohvatiFilmove()
 	{
@@ -63,7 +63,8 @@ public class FilmoviAdapter {
 	}
 	
 	/**
-	 * Koristi se za dohvaæanje identifikatora filmova. Ova funkcija može poslužiti kako bi pomogla da se ne dohvaæaju svi filmovi sa web servisa, nego samo oni koji æe poslije biti potrebni 
+	 * Koristi se za dohvaæanje identifikatora filmova. Ova funkcija može poslužiti kako bi pomogla da se ne dohvaæaju svi filmovi sa web servisa, nego samo oni koji æe poslije biti potrebni
+	 * @return lista indeksa filmova iz baze podataka 
 	 */
 	public List<Integer> dohvatiIdFilmova()
 	{
@@ -80,6 +81,11 @@ public class FilmoviAdapter {
 		return indeksiFilmova;
 	}
 	
+	/**
+	 * Dohvaæa detalje o filmu iz lokalne baze podataka.
+	 * @param idFilma predstavlja film za koji se žele dohvatiti podaci.
+	 * @return podaci (detalji) o filmu
+	 */
 	public FilmInfo dohvatiDetaljeFilma(int idFilma)
 	{
 		String[] stupci = new String[]{KEY,"naziv","opis","redatelj","glavneUloge","trajanje","godina","zanr","aktualno"};
@@ -104,6 +110,7 @@ public class FilmoviAdapter {
 	 * Služi za ažuriranje trenutne baze filmova.
 	 * Baza se ažurira pomoæu podataka primljenih sa web servisa.
 	 * Pod pojmom ažuriranje se misli na dodavanje filmova koji ne postoje i brisanje onih koji više nisu aktualni
+	 * @param noviFilmovi predstavlja nove filmove koje treba unijeti u bazu podataka.
 	 */
 	public void azurirajBazuFilmova(List<FilmInfo> noviFilmovi)
 	{
@@ -177,7 +184,7 @@ public class FilmoviAdapter {
 	/**
 	 * Briše film s identifikacijskim brojem "idFilma"
 	 * @param idFilma
-	 * @return
+	 * @return broj obrisanih redaka iz baze 
 	 */
 	private long brisanjeFilma(int idFilma)
 	{

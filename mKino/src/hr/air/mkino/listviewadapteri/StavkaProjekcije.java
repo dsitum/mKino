@@ -13,6 +13,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * Klasa je adapter koji preslikava osnovne podatke o projekciji (ukljuèujuæi i sliku povezanog filma) u ListView.
+ * Napravljena je kako bi se omoguæio prikaz slika u ListView-u.
+ * @author domagoj
+ */
 public class StavkaProjekcije extends ArrayAdapter<ProjekcijaInfo> {
 	private List<ProjekcijaInfo> projekcije;
 	LayoutInflater li;

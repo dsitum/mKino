@@ -39,7 +39,11 @@ import android.widget.ImageView;
 
 import android.widget.TextView;
 import android.widget.Toast;
-
+/**
+ * Ovom su klasom ostvarene rezervacije.
+ * @author bstivic
+ *
+ */
 public class RezervacijaActivity extends Activity {
 	
 	CharSequence[] sjedalaPrikaz = {};
@@ -57,6 +61,7 @@ public class RezervacijaActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rezervacije);
+		setTitle("Rezervacija projekcije");
 		
 		TextView sjedalaTV = (TextView) findViewById(R.id.rezervacije_sjedala_txt);	
 		Button btnMapaSjedala = (Button) findViewById(R.id.btn_rezervacije_mapa_sjedala);
@@ -88,19 +93,22 @@ public class RezervacijaActivity extends Activity {
 			});
 			
 		
-			final Dialog dialogPrijava = new Dialog(con);
+			final Dialog dialogSjedala = new Dialog(con);
+			dialogSjedala.requestWindowFeature(Window.FEATURE_NO_TITLE);
+			dialogSjedala.setContentView(R.layout.dialog_mapa_sjedala);
 	
 			
 			btnMapaSjedala.setOnClickListener(new OnClickListener() {			
 				@Override
 				public void onClick(View v) {
-				
-					dialogPrijava.requestWindowFeature(Window.FEATURE_NO_TITLE);
-					dialogPrijava.setContentView(R.layout.dialog_mapa_sjedala);
-					
-					dialogPrijava.show();
-					
-				
+					dialogSjedala.show();
+					Button gumbZaIzlaz = (Button) dialogSjedala.findViewById(R.id.mapa_sjedala_nastavi_btn);
+					gumbZaIzlaz.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							dialogSjedala.hide();
+						}
+					});				
 				}
 			});
 			btnRezerviraj.setOnClickListener(new OnClickListener() {			
