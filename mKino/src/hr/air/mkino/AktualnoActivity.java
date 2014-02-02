@@ -2,7 +2,7 @@ package hr.air.mkino;
 import java.util.List;
 
 import hr.air.mkino.R;
-import hr.air.mkino.adapteri.StavkaFilma;
+import hr.air.mkino.listviewadapteri.StavkaFilma;
 import hr.air.mkino.server.JsonFilmovi;
 import hr.air.mkino.tipovi.FilmInfo;
 import android.app.Activity;

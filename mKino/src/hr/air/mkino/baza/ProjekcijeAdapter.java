@@ -26,7 +26,7 @@ public class ProjekcijeAdapter {
 	}
 	/**
 	 * Koristi se za dohvaæanje svih projekcija iz lokalne baze za odreðeni multipleks. Dohvaæeni podaci služe za prikaz na zaslon
-	 * @param id multipleksa, trnutni kontekst koji služi za DBHelper
+	 * @param id multipleksa, trenutni kontekst koji služi za DBHelper
 	 * @return lista projekcija
 	 */
 	public List<ProjekcijaInfo> dohvatiProjekcije(int multipleks, Context con)

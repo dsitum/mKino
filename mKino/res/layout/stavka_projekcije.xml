@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:paddingTop="5dp"
-            android:text="@string/tmp_glumci_filma"
+            android:text="@string/tmp_dvorana_projekcije"
             android:textColor="#ffffffd5"
             android:textSize="12sp"
             android:textStyle="italic" />
@@ -57,7 +57,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
-            android:text="@string/tmp_glumci_filma"
+            android:text="@string/tmp_vrijeme_pocetka_projekcije"
             android:textColor="#ffffffd5"
             android:textSize="12sp"
             android:textStyle="italic" />

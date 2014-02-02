@@ -1,6 +1,5 @@
 package hr.air.mkino;
 
-
 import hr.air.mkino.baza.MultipleksAdapter;
 import hr.air.mkino.baza.ProjekcijeAdapter;
 import hr.air.mkino.server.SlikaSaServera;
@@ -51,7 +50,6 @@ public class DetaljiProjekcijeActivity extends Activity {
 		int idProjekcijeUBazi = i.getIntExtra("idProjekcijeUBazi", 0);
 		
 		ProjekcijeAdapter pa = new ProjekcijeAdapter(this);
-	
 		return pa.dohvatiProjekciju(idProjekcijeUBazi, this);
 	}
 	

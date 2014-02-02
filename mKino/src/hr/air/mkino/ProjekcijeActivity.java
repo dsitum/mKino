@@ -1,16 +1,14 @@
 package hr.air.mkino;
 
 import hr.air.mkino.core.Rezervacija;
+import hr.air.mkino.listviewadapteri.StavkaProjekcije;
+import hr.air.mkino.server.JsonFilmovi;
 import hr.air.mkino.server.JsonProjekcije;
 import hr.air.mkino.tipovi.ProjekcijaInfo;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-
-import java.util.Map;
-
 import android.app.Activity;
 
 import android.content.Intent;
@@ -21,16 +19,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class ProjekcijeActivity extends Activity {
-	private Spinner spinnerGrad;
-	private Spinner spinnerDatum;
+	private Spinner odabirGrada;
+	private Spinner odabirDatuma;
 	private ListView popisProjekcija;
 	private List<ProjekcijaInfo> projekcije;
 	
@@ -42,14 +38,18 @@ public class ProjekcijeActivity extends Activity {
 		setContentView(R.layout.activity_projekcije);
 		
 		// inicijaliziramo klasne varijable
-		spinnerGrad = (Spinner) findViewById(R.id.rezervacije_spinner_grad);
-		spinnerDatum = (Spinner) findViewById(R.id.rezervacije_spiner_datum);
+		odabirGrada = (Spinner) findViewById(R.id.rezervacije_spinner_grad);
+		odabirDatuma = (Spinner) findViewById(R.id.rezervacije_spiner_datum);
 		popisProjekcija= (ListView) findViewById(R.id.rezervacije_popis_projekcija);
 	
 		int odabraniMultipleks = dohvatiOdabraniMultipleks();
 
 		// postavljamo spinner na trenutno odabrani multipleks
-		spinnerGrad.setSelection(odabraniMultipleks-1);
+		odabirGrada.setSelection(odabraniMultipleks-1);
+		
+		// dohvaæamo aktualne filmove s web servisa, i pritom punimo/modificiramo lokalnu bazu filmova iz koje æe se kasnije vuæi podaci
+		JsonFilmovi jf = new JsonFilmovi();
+		jf.dohvatiFilmove(this);
 		
 		//postavljamo spinner na današnji datum i popunjavamo ga sa datumima u iduæa dva tjedna
 		ArrayList<String> dani = new ArrayList<String>();
@@ -68,12 +68,12 @@ public class ProjekcijeActivity extends Activity {
 		            android.R.layout.simple_spinner_item, dani);
 
 		    
-		    spinnerDatum.setAdapter(adapter);
-		    spinnerDatum.setSelection(0);
+		    odabirDatuma.setAdapter(adapter);
+		    odabirDatuma.setSelection(0);
 		    
-		   //racunamo koji je datum u spinneruDatum
+		   //racunamo koji je datum u spinneru s datumom
 		    sadasnjiDatum = new Date();
-		    spinnerDatum.setOnItemSelectedListener(new OnItemSelectedListener() {
+		    odabirDatuma.setOnItemSelectedListener(new OnItemSelectedListener() {
 		    	@Override
 				public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long indeksDana) {										
 		    		Date sadasnjiDatum = new Date();
@@ -89,7 +89,7 @@ public class ProjekcijeActivity extends Activity {
 		    
 		    });
 		    
-		    spinnerGrad.setOnItemSelectedListener(new OnItemSelectedListener() {
+		    odabirGrada.setOnItemSelectedListener(new OnItemSelectedListener() {
 		    	@Override
 				public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long idOdabranogMultipleksa) {										
 					// pohranjujemo vrijednost spinnera u bazu podataka
@@ -97,7 +97,7 @@ public class ProjekcijeActivity extends Activity {
 		    		//ponovno zahtjevamo projekcije za odabrani grad
 		    		projekcije = dohvatiProjekcije((int)idOdabranogMultipleksa+1);		
 		    		Date sadasnjiDatum = new Date();
-		    		sadasnjiDatum = Rezervacija.dodajDan(sadasnjiDatum,(int)spinnerDatum.getSelectedItemPosition());
+		    		sadasnjiDatum = Rezervacija.dodajDan(sadasnjiDatum,(int)odabirDatuma.getSelectedItemPosition());
 		    		 SimpleDateFormat formatDatuma2 = new SimpleDateFormat("yyyy-MM-dd");
 		    		ucitajProjekcijeUListView(formatDatuma2.format(sadasnjiDatum));
 
@@ -164,41 +164,37 @@ public class ProjekcijeActivity extends Activity {
 		List<ProjekcijaInfo> pinf = jf.dohvatiProjekcije(this, multipleks);		
 		return pinf;
 	}
-	
+
+
 	/**
 	 * Dohvaæa projekcije i uèitava ih u ListView
 	 */
-	private void ucitajProjekcijeUListView(String danProjekcije)
+	private void ucitajProjekcijeUListView(String datum)
 	{
-		String[] iz = new String[] {"idProjekcije", "naziv", "vrijeme", "dvorana"};
-		int[] u = new int[] {R.id.id_projekcije_u_bazi, R.id.naziv_projekcije_mali, R.id.vrijeme_projekcije_mali, R.id.dvorana_projekcije_mali};
-		String vrijeme;
-
-		Map<String, String> stavka;
-		List<Map<String, String>> podaci = new ArrayList<Map<String, String>>();
+		List<ProjekcijaInfo> danasnjeProjekcije = filtrirajProjekcijeZaDatum(datum);
+		ArrayAdapter<ProjekcijaInfo> adapter = new StavkaProjekcije(this, R.layout.stavka_projekcije, danasnjeProjekcije);
+		ListView lv = (ListView) findViewById(R.id.rezervacije_popis_projekcija);
+		lv.setAdapter(adapter);
+	}
+	
+	
+	/**
+	 * Iz popisa svih projekcija filtrira samo današnje projekcije.
+	 * S ovim sprjeèavamo nova dohvaæanja projekcija kada se promijeni datum prikazivanja projekcija
+	 * @return lista današnjih projekcija
+	 */
+	private List<ProjekcijaInfo> filtrirajProjekcijeZaDatum(String datum) {
+		List<ProjekcijaInfo> danasnjeProjekcije = new ArrayList<ProjekcijaInfo>();
 		
-
-		for (ProjekcijaInfo projekcija : projekcije)
+		for(ProjekcijaInfo projekcija : projekcije)
 		{
-			
-			stavka = new HashMap<String, String>();
-			stavka.put("idProjekcije", String.valueOf(projekcija.getidProjekcije()));
-			stavka.put("naziv",  projekcija.getNaziv());
-			vrijeme= projekcija.getVrijemePocetka();			
-			stavka.put("vrijeme", vrijeme.substring(11, 16));
-			stavka.put("dvorana", "Dvorana " + projekcija.getDvorana());
-			
-			/*TODO parsirat datum i provjerit jel najviše pola sata do projekcije, inace se ne moze prikazati*/			
-			if(0==vrijeme.substring(0, 10).compareTo(danProjekcije.substring(0, 10)))
+			if (datum.equals(projekcija.getVrijemePocetka().substring(0, 10)))
 			{
-				podaci.add(stavka);
+				danasnjeProjekcije.add(projekcija);
 			}
-			
 		}
-		ListAdapter adapter = new SimpleAdapter(this, podaci, R.layout.stavka_projekcije, iz, u);
-		popisProjekcija.invalidateViews();
-		popisProjekcija.setAdapter(adapter);
 		
+		return danasnjeProjekcije;
 	}
 	
 	 public String vratiDanUTjednu(Date datum)

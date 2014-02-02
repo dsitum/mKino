@@ -75,7 +75,7 @@ public class JsonFilmovi extends AsyncTask<String, Void, String> {
 	}
 	
 	/**
-	 * Parsira JSON string dohvaæen s web servisa
+	 * Parsira JSON string dohvaæen s web servisa i ažurira bazu filmova
 	 * @param jsonRezultat
 	 * @return filmovi
 	 */
