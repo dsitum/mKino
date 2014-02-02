@@ -22,6 +22,7 @@ import org.json.JSONObject;
 import android.content.Context;
 import android.os.AsyncTask;
 
+
 public class JsonObrisiRegistraciju extends AsyncTask<String, Void, String> {
 	
 	public int dohvati(String korisnickoIme, String idProjekcije, Context c)

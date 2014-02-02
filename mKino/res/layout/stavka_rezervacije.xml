@@ -7,6 +7,7 @@
     android:layout_marginRight="3dp"
     android:layout_marginTop="2dp"
     android:background="@color/backgroundDark"
+    android:clickable="true"
     android:orientation="vertical"
     android:paddingLeft="5dp" >
 
