@@ -20,13 +20,15 @@ import android.os.Environment;
 import android.util.DisplayMetrics;
 
 public class SlikaSaServera extends AsyncTask<String, Void, Bitmap> implements ISlikaFilma {
-	Context context;
+	private Context context;
+	private int idFilma;
 	
-	public SlikaSaServera(Context context) {
+	public SlikaSaServera(Context context, int idFilma) {
 		this.context = context;
+		this.idFilma = idFilma;
 	}
 	
-	public Bitmap dohvatiVelikuSliku(int idFilma)
+	public Bitmap dohvatiVelikuSliku()
 	{
 		String url = "http://mkinoairprojekt.me.pn/skripte/index.php?tip=slike&id=" + idFilma;
 		this.execute(url);
@@ -39,11 +41,11 @@ public class SlikaSaServera extends AsyncTask<String, Void, Bitmap> implements I
 			e.printStackTrace();
 		}
 		
-		pohraniSlikuNaSD(slika, idFilma, true);
+		pohraniSlikuNaSD(slika, true);
 		return slika;
 	}
 	
-	public Bitmap dohvatiMaluSliku(int idFilma)
+	public Bitmap dohvatiMaluSliku()
 	{
 		String url = "http://mkinoairprojekt.me.pn/skripte/index.php?tip=slikemale&id=" + idFilma;
 		this.execute(url);
@@ -56,7 +58,7 @@ public class SlikaSaServera extends AsyncTask<String, Void, Bitmap> implements I
 			e.printStackTrace();
 		}
 		
-		pohraniSlikuNaSD(slika, idFilma, false);
+		pohraniSlikuNaSD(slika, false);
 		return slika;
 	}
 	
@@ -66,7 +68,7 @@ public class SlikaSaServera extends AsyncTask<String, Void, Bitmap> implements I
 	 * @param slika koju treba pohraniti
 	 * @param velikaSlika radi li se o velikoj slici ili maloj (sa ListView-a)
 	 */
-	private void pohraniSlikuNaSD(Bitmap slika, int idFilma, boolean velikaSlika) {
+	private void pohraniSlikuNaSD(Bitmap slika, boolean velikaSlika) {
 		String putanjaDoSlike;
 		String sdKartica = Environment.getExternalStorageDirectory().getPath();
 		

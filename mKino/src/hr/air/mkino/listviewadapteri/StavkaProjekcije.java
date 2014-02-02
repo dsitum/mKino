@@ -39,7 +39,7 @@ public class StavkaProjekcije extends ArrayAdapter<ProjekcijaInfo> {
 		// postavljamo sliku filma
 		ImageView slikaFilma = (ImageView)stavka.findViewById(R.id.mala_slika_projekcije);
 		ISlikaFilma slika = UcitajSlikuFactory.ucitaj(getContext(), trenutnaProjekcija.getIdFilma(), false);
-		slikaFilma.setImageBitmap(slika.dohvatiMaluSliku(trenutnaProjekcija.getIdFilma()));
+		slikaFilma.setImageBitmap(slika.dohvatiMaluSliku());
 		
 		// postavljamo ostale podatke
 		TextView idProjekcije = (TextView) stavka.findViewById(R.id.id_projekcije_u_bazi);

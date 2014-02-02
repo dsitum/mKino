@@ -77,7 +77,6 @@
     <string name="rezervacija_uspjesna">Uspješno ste rezervirali ulaznice!</string>
     <string name="rezervacija_nastavi">Nastavi</string>
     <string name="cijena">Cijena:</string>
-    <string name="ucitavam">Učitavam.. .</string>
     <!-- dijalog_mapa_sjedala -->
     <string name="dijalog_mapa_sjedala_description">Mapa sjedala kino dvorane</string>
 
@@ -118,10 +117,4 @@
     
     <!-- moje_rezervacije -->
     <string name="moje_rezervacije_prijavite_se">Prijavite se za pregled vlastitih rezervacija</string>
-    <string name="moje_rezervacije_obrisi">Želite li obrisati rezervaciju?</string>
-    <string name="moje_rezervacije_da">Da</string>
-    <string name="moje_rezervacjije_oprez">Oprez</string>
-    <string name="obrisi_rezervaciju_uspjesno">Uspješno brisanje rezervacije!</string>
-    <string name="obrisi_rezervaciju_neuspjesno">Neuspjesno brisanje rezervacije!</string>
-    
 </resources>

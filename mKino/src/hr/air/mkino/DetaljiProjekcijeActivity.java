@@ -2,10 +2,11 @@ package hr.air.mkino;
 
 import hr.air.mkino.baza.MultipleksAdapter;
 import hr.air.mkino.baza.ProjekcijeAdapter;
-import hr.air.mkino.server.SlikaSaServera;
+import hr.air.mkino.sucelja.ISlikaFilma;
 
 import hr.air.mkino.tipovi.MultipleksInfo;
 import hr.air.mkino.tipovi.ProjekcijaInfo;
+import hr.air.mkino.uzorcidizajna.UcitajSlikuFactory;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -82,9 +83,8 @@ public class DetaljiProjekcijeActivity extends Activity {
 		MultipleksInfo multipl = ma.dohvatiMultipleks(detaljiProjekcije.getMultipleks());
 		if(multipl != null) multipleks.setText(multipl.getNaziv());		
 		
-		SlikaSaServera sf = new SlikaSaServera(this);
-		slika.setImageBitmap(sf.dohvatiVelikuSliku(detaljiProjekcije.getIdFilma()));
-				
+		ISlikaFilma sf = UcitajSlikuFactory.ucitaj(this, detaljiProjekcije.getIdFilma(), true);
+		slika.setImageBitmap(sf.dohvatiVelikuSliku());		
 	
 	}
 

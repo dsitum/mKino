@@ -24,10 +24,10 @@ public class UcitajSlikuFactory {
 		
 		if (slika.exists())
 		{
-			return new LokalnaSlika();
+			return new LokalnaSlika(idFilma);
 		} else
 		{
-			return new SlikaSaServera(c);
+			return new SlikaSaServera(c, idFilma);
 		}
 	}
 }

@@ -10,9 +10,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -29,113 +28,61 @@ public class PocetnaActivity extends Activity {
         setContentView(R.layout.activity_pocetna);
         final Context context = this;
         
-        final ImageButton btnOtvoriMojeRezervacije= (ImageButton) findViewById(R.id.pocetna_btnMojeRezervacije);
+        ImageButton btnOtvoriMojeRezervacije= (ImageButton) findViewById(R.id.pocetna_btnMojeRezervacije);
         final ImageButton btnOtvoriMapu = (ImageButton) findViewById(R.id.pocetni_btnMapa);
         final ImageButton btnOtvoriAktualno= (ImageButton) findViewById(R.id.pocetna_btnAktualno);
-        final ImageButton btnOtvoriRezervacije= (ImageButton) findViewById(R.id.pocetna_brnRezerviraj);
+        ImageButton btnOtvoriRezervacije= (ImageButton) findViewById(R.id.pocetna_brnRezerviraj);
     			
-		btnOtvoriMapu.setOnTouchListener(new OnTouchListener(){
-
-        
-			@Override
-			public boolean onTouch(View arg0, MotionEvent arg1) {
-				 switch(arg1.getAction())
-	                {
-	                case MotionEvent.ACTION_DOWN :
-	                	btnOtvoriMapu.setImageResource(R.drawable.mapa_down100_93);
-	                    break;
-	                case MotionEvent.ACTION_UP :
-	                	btnOtvoriMapu.setImageResource(R.drawable.mapa100_93);
-	                	
-	    				Intent i = new Intent(context, MojaMapaActivity.class);
-	    				startActivity(i);
-	                    break;
-	                }
-	             
-				return false;
-			}
-
-        });
-		
-        btnOtvoriAktualno.setOnTouchListener(new OnTouchListener(){
-
-        
-			@Override
-			public boolean onTouch(View arg0, MotionEvent arg1) {
-				 switch(arg1.getAction())
-	                {
-	                case MotionEvent.ACTION_DOWN :
-	                	btnOtvoriAktualno.setImageResource(R.drawable.aktualno_down100x93);
-	                    break;
-	                case MotionEvent.ACTION_UP :
-	                	btnOtvoriAktualno.setImageResource(R.drawable.aktualno100x93);
-	                	Intent i = new Intent(context, AktualnoActivity.class);
-	    				startActivity(i);
-	                    break;
-	                }
-	             
-				return false;
-			}
-
-        });
+		btnOtvoriMapu.setOnClickListener(new OnClickListener() {
 			
-        btnOtvoriMojeRezervacije.setOnTouchListener(new OnTouchListener(){
-
-        
 			@Override
-			public boolean onTouch(View arg0, MotionEvent arg1) {
-				 switch(arg1.getAction())
-	                {
-	                case MotionEvent.ACTION_DOWN :
-	                	btnOtvoriMojeRezervacije.setImageResource(R.drawable.mojerezervacije_dwon100_93);
-	                    break;
-	                case MotionEvent.ACTION_UP :
-	                	btnOtvoriMojeRezervacije.setImageResource(R.drawable.mojerezervacije100_93);
-	                	Toast.makeText(context, R.string.ucitavam, Toast.LENGTH_SHORT).show();
-	    				PrijavljeniKorisnikAdapter prijavljeniKorisnik = new PrijavljeniKorisnikAdapter(context);
-	    				Korisnik korisnik = prijavljeniKorisnik.dohvatiPrijavljenogKorisnika();
-	    				if(korisnik != null )
-	    				{
-	    					Intent i = new Intent(context, MojeRezervacijeActivity.class);
-	    					startActivity(i);
-	    				}
-	    				else
-	    				{
-	    					Toast.makeText(context, R.string.moje_rezervacije_prijavite_se, Toast.LENGTH_SHORT).show();					
-	    				}
-	                    break;
-	                }
-	             
-				return false;
+			public void onClick(View v) {
+				
+				Intent i = new Intent(context, MojaMapaActivity.class);
+				startActivity(i);
+				
 			}
-
-        });
-        
-       
-        btnOtvoriRezervacije.setOnTouchListener(new OnTouchListener(){
-
-        
+		});       
+		
+        btnOtvoriAktualno.setOnClickListener(new OnClickListener() {
+			
 			@Override
-			public boolean onTouch(View arg0, MotionEvent arg1) {
-				 switch(arg1.getAction())
-	                {
-	                case MotionEvent.ACTION_DOWN :
-	                	btnOtvoriRezervacije.setImageResource(R.drawable.projekcije_down100_93);
-	                    break;
-	                case MotionEvent.ACTION_UP :
-	                	btnOtvoriRezervacije.setImageResource(R.drawable.projekcije100_93);
-	                	Toast.makeText(context, R.string.ucitavam, Toast.LENGTH_SHORT).show();
-	    				Intent i = new Intent(context, ProjekcijeActivity.class);
-	    				startActivity(i);	
-	                    break;
-	                }
-	             
-				return false;
+			public void onClick(View v) {
+				 if(v == btnOtvoriAktualno) {
+					 btnOtvoriAktualno.setImageResource(R.drawable.aktualno_down100x93);
+				   }
+				Intent i = new Intent(context, AktualnoActivity.class);
+				startActivity(i);
+				
 			}
-
-        });
-        
-  
+		});           
+      
+        btnOtvoriMojeRezervacije.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				PrijavljeniKorisnikAdapter prijavljeniKorisnik = new PrijavljeniKorisnikAdapter(context);
+				Korisnik korisnik = prijavljeniKorisnik.dohvatiPrijavljenogKorisnika();
+				if(korisnik != null )
+				{
+					Intent i = new Intent(context, MojeRezervacijeActivity.class);
+					startActivity(i);
+				}
+				else
+				{
+					Toast.makeText(context, R.string.moje_rezervacije_prijavite_se, Toast.LENGTH_SHORT).show();					
+				}
+			}
+		});         
+     	
+        btnOtvoriRezervacije.setOnClickListener(new OnClickListener() {			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(context, ProjekcijeActivity.class);
+				startActivity(i);				
+			}
+		});
 		
     }
 

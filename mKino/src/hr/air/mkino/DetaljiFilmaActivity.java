@@ -45,7 +45,7 @@ public class DetaljiFilmaActivity extends Activity {
 		glavneUloge.setText(detaljiFilma.getGlavneUloge());
 		opis.setText(detaljiFilma.getOpis());
 		ISlikaFilma sf = UcitajSlikuFactory.ucitaj(getBaseContext(), detaljiFilma.getIdFilma(), true);
-		slika.setImageBitmap(sf.dohvatiVelikuSliku(detaljiFilma.getIdFilma()));
+		slika.setImageBitmap(sf.dohvatiVelikuSliku());
 	}
 
 	@Override

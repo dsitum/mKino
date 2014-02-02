@@ -11,9 +11,7 @@ import hr.air.mkino.server.JsonObrisiRegistraciju;
 import hr.air.mkino.tipovi.Korisnik;
 import hr.air.mkino.tipovi.RezervacijaInfo;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,7 +20,6 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MojeRezervacijeActivity extends Activity {
 
@@ -50,43 +47,14 @@ public class MojeRezervacijeActivity extends Activity {
 			
 
 			@Override
-			public boolean onItemLongClick(AdapterView<?> arg0,  View kliknutaProjekcija, int pozicijaKliknuteProjekcije, long idKli) {
-				final View view = kliknutaProjekcija;
-				//provjera želi li korisnik obrisati rezervaciju
-				AlertDialog.Builder builder = new AlertDialog.Builder(context);
-			
-		        builder.setMessage(R.string.moje_rezervacije_obrisi)
-		               .setPositiveButton(R.string.moje_rezervacije_da, new DialogInterface.OnClickListener() {
-		                   
-		            	   //ukoliko želi obrisati rezervaciju
-		            	   public void onClick(DialogInterface dialog, int id) {
-		                	   
-		                	JsonObrisiRegistraciju jsonObrisi = new JsonObrisiRegistraciju();
-		       				TextView tv = (TextView) view.findViewById(R.id.rezervacija_kod);
-		       				
-		       				String kod = tv.getText().toString();
-		       				String[] separated = kod.split("-");
-		       				
-		       				int rez = jsonObrisi.dohvati(korisnik.getKorisnickoIme(),separated[1],  context);
-		       				if(rez == 0)
-		       				{
-		       					Toast.makeText(context, R.string.obrisi_rezervaciju_uspjesno, Toast.LENGTH_LONG).show();
-		       				}
-		       				else
-		       				{
-		       					Toast.makeText(context, R.string.obrisi_rezervaciju_neuspjesno, Toast.LENGTH_LONG).show();
-		       				}
-		       				//ponovno uèitavamo ažurne rezervacije
-		       				//List<RezervacijaInfo> rezervacije = jsonRezervacije.dohvati(korisnik.getKorisnickoIme(), context);
-		       				//ucitajUListView(rezervacije);
-		       				napraviRefresh();
-		       				
-		                   }
-		               });
-		        
-		        builder.show();
-		        
-		        //inaèe se vraæamo
+			public boolean onItemLongClick(AdapterView<?> arg0, View kliknutaProjekcija, int pozicijaKliknuteProjekcije, long idKli) {
+				JsonObrisiRegistraciju jsonObrisi = new JsonObrisiRegistraciju();
+				TextView tv = (TextView) kliknutaProjekcija.findViewById(R.id.rezervacija_kod);
+				String kod = tv.getText().toString();
+				String[] separated = kod.split("-");
+				jsonObrisi.dohvati(korisnik.getKorisnickoIme(),separated[1],  context);
+				List<RezervacijaInfo> rezervacije = jsonRezervacije.dohvati(korisnik.getKorisnickoIme(), context);
+				ucitajUListView(rezervacije);
 				return true;
 			}
 		});
@@ -94,16 +62,7 @@ public class MojeRezervacijeActivity extends Activity {
 	}
 	
 	
-	public void napraviRefresh()
-	{
-
-		JsonMojeRezervacije jsonRezervacije = new JsonMojeRezervacije();
-		PrijavljeniKorisnikAdapter prijavljeniKorisnik = new PrijavljeniKorisnikAdapter(this);
-		final Korisnik korisnik = prijavljeniKorisnik.dohvatiPrijavljenogKorisnika();
-		
-		List<RezervacijaInfo> rezervacije = jsonRezervacije.dohvati(korisnik.getKorisnickoIme(), this);
-	    ucitajUListView(rezervacije);
-	}
+	
 	
 	public void ucitajUListView(List<RezervacijaInfo> rezervacije)
 	{
@@ -140,7 +99,6 @@ public class MojeRezervacijeActivity extends Activity {
 			
 			ListView popisRezervacija = (ListView) findViewById(R.id.moje_rezervacije_list_view);
 			ListAdapter adapter = new SimpleAdapter(this, podaci, R.layout.stavka_rezervacije, iz, u);
-			
 			popisRezervacija.invalidateViews();
 			popisRezervacija.setAdapter(adapter);
 	}
