@@ -20,7 +20,6 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MojeRezervacijeActivity extends Activity {
 
@@ -29,22 +28,16 @@ public class MojeRezervacijeActivity extends Activity {
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_moje_rezervacije);
-				final Context context = this;
+		final Context context = this;
     
 		PrijavljeniKorisnikAdapter prijavljeniKorisnik = new PrijavljeniKorisnikAdapter(this);
 		Korisnik korisnik = prijavljeniKorisnik.dohvatiPrijavljenogKorisnika();
-		
-		if( korisnik == null)
-		{
-			/*TODO string izmjenit*/
-			Toast.makeText(this, R.string.moje_rezervacije_prijavite_se, Toast.LENGTH_SHORT).show();
-			this.finish();			
-		}
 		
 		
 		//1. Pokreni servis za dohvaæanje mojih rezervacija
 		JsonMojeRezervacije jsonRezervacije = new JsonMojeRezervacije();
 		List<RezervacijaInfo> rezervacije = jsonRezervacije.dohvati(korisnik.getKorisnickoIme(), this);
+		
 			
 		ucitajUListView(rezervacije);
 		

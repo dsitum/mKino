@@ -79,8 +79,7 @@ public class PocetnaActivity extends Activity {
 				}
 				else
 				{
-					/*TODO string izmjenit*/
-					Toast.makeText(context, R.string.registracija_email, Toast.LENGTH_SHORT).show();					
+					Toast.makeText(context, R.string.moje_rezervacije_prijavite_se, Toast.LENGTH_SHORT).show();					
 				}
 			}
 		});         

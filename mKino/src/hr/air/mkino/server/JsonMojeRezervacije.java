@@ -37,7 +37,7 @@ public class JsonMojeRezervacije extends AsyncTask<String, Void, String> {
 			e.printStackTrace();
 		}
 		
-		return  parsirajJson(jsonRezultat, c);			
+		return parsirajJson(jsonRezultat, c);			
 	}
 
 	
