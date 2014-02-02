@@ -3,7 +3,6 @@ import java.util.List;
 
 import hr.air.mkino.R;
 import hr.air.mkino.adapteri.StavkaFilma;
-import hr.air.mkino.baza.OdabraniMultipleksAdapter;
 import hr.air.mkino.server.JsonFilmovi;
 import hr.air.mkino.tipovi.FilmInfo;
 import android.app.Activity;
@@ -15,11 +14,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 public class AktualnoActivity extends Activity {
-	private Spinner spinner;
 	private ListView popisFilmova;
 	private List<FilmInfo> filmovi;
 	
@@ -29,11 +26,7 @@ public class AktualnoActivity extends Activity {
 		setContentView(R.layout.acitivity_aktualno);
 		
 		// inicijaliziramo klasne varijable
-		spinner = (Spinner) findViewById(R.id.odabir_multipleksa_filmovi);
 		popisFilmova = (ListView) findViewById(R.id.popis_filmova);
-		
-		// postavljamo spinner na trenutno odabrani multipleks
-		spinner.setSelection(dohvatiOdabraniMultipleks());
 		
 		// postavljamo listener na ListView s filmovima
 		popisFilmova.setOnItemClickListener(new OnItemClickListener() {
@@ -56,20 +49,6 @@ public class AktualnoActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.pocetna, menu);
 		return true;
-	}
-	
-	/**
-	 * Postavlja spinner za izbor multipleksa na vrijednost trenutnog multipleksa u bazi. Ukoliko on ne postoji ondje, odabire se prvi multipleks (indeks 0) koji je Zagreb
-	 */
-	private int dohvatiOdabraniMultipleks() {
-		final int ZAGREB = 0;
-		OdabraniMultipleksAdapter oma = new OdabraniMultipleksAdapter(this);
-		int odabraniMultipleks = oma.dohvatiOdabraniMultipleks();
-		
-		if (odabraniMultipleks >= 0)
-			return odabraniMultipleks;
-		else
-			return ZAGREB;
 	}
 	
 	/**
