@@ -1,0 +1,50 @@
+	private List<RezervacijaInfo> parsirajJson(String jsonRezultat, Context c) {		
+		List<RezervacijaInfo> rezervacije = new ArrayList<RezervacijaInfo>();		
+		ProjekcijaInfo projekcija = null;
+		ProjekcijeAdapter projekcijaAdapter = new ProjekcijeAdapter(c);
+		try {
+			int idRezervacije = 0;
+			int idProjekcije;
+	
+			List<Integer> sjedala = null;
+			String kodRezervacije = null;
+			JSONArray rezultati;
+
+			rezultati = new JSONArray(jsonRezultat);
+		
+			
+			int n = rezultati.length();
+			for(int i=0; i<n; i++) 
+			{
+				JSONObject rezultat = rezultati.getJSONObject(i);	
+				idRezervacije = rezultat.getInt("idRezervacije");
+				idProjekcije = rezultat.getInt("idProjekcije");
+				kodRezervacije = rezultat.getString("kod");
+				projekcija = projekcijaAdapter.dohvatiProjekciju(idProjekcije, c);
+				
+				sjedala = new ArrayList<Integer>();
+				sjedala.add(rezultat.getInt("brojSjedala"));
+				
+				i++;
+				Log.d("AIR", i + "");
+				while(i<n)
+				{
+					rezultat = rezultati.getJSONObject(i);
+					if (idProjekcije == rezultat.getInt("idProjekcije"))
+					{
+						sjedala.add(rezultat.getInt("brojSjedala"));
+					} else
+					{
+						i--;
+						break;
+					}
+				}
+				
+				
+				rezervacije.add(new RezervacijaInfo(idRezervacije, idProjekcije, "", kodRezervacije, sjedala, projekcija));
+			}	
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return rezervacije;
+	}
